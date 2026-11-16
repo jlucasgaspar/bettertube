@@ -1,0 +1,1 @@
+BetterTube is a chrome extension for an enhanced YouTube experience in desktop and it is still an empty project
