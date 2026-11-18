@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T19:46:37Z",
+  "title": "Design System: BetterTube",
+  "extensions": {
+    "colorMeta": {
+      "cue-red": {
+        "role": "primary",
+        "displayName": "Cue Red",
+        "canonical": "#d93a22",
+        "tonalRamp": [
+          "#360e08",
+          "#621a0f",
+          "#8d2616",
+          "#b2301c",
+          "#d93a22",
+          "#e26b59",
+          "#ec9c90",
+          "#f7d8d3"
+        ]
+      },
+      "focus-ember": {
+        "role": "primary",
+        "displayName": "Focus Ember",
+        "canonical": "#ff6a4d",
+        "tonalRamp": [
+          "#401a13",
+          "#733023",
+          "#a64532",
+          "#d1573f",
+          "#ff6a4d",
+          "#ff8f7a",
+          "#ffb4a6",
+          "#ffe1db"
+        ]
+      },
+      "white-leader": {
+        "role": "neutral",
+        "displayName": "White Leader",
+        "canonical": "#faf8f7",
+        "tonalRamp": [
+          "#3e3e3e",
+          "#70706f",
+          "#a2a1a1",
+          "#cdcbcb",
+          "#faf8f7",
+          "#fbfaf9",
+          "#fcfcfb",
+          "#fefefd"
+        ]
+      },
+      "leader-surface": {
+        "role": "neutral",
+        "displayName": "Leader Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#404040",
+          "#737373",
+          "#a6a6a6",
+          "#d1d1d1",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "ink-light": {
+        "role": "neutral",
+        "displayName": "Leader Ink",
+        "canonical": "#1a1514",
+        "tonalRamp": [
+          "#060505",
+          "#0c0909",
+          "#110e0d",
+          "#151110",
+          "#1a1514",
+          "#53504f",
+          "#8c8a8a",
+          "#d1d0d0"
+        ]
+      },
+      "projection-black": {
+        "role": "neutral",
+        "displayName": "Projection Black",
+        "canonical": "#131110",
+        "tonalRamp": [
+          "#050404",
+          "#090807",
+          "#0c0b0a",
+          "#100e0d",
+          "#131110",
+          "#4e4c4c",
+          "#898888",
+          "#d0cfcf"
+        ]
+      },
+      "black-surface": {
+        "role": "neutral",
+        "displayName": "Black Surface",
+        "canonical": "#1d1a19",
+        "tonalRamp": [
+          "#070606",
+          "#0d0c0b",
+          "#131110",
+          "#181514",
+          "#1d1a19",
+          "#565352",
+          "#8e8c8c",
+          "#d2d1d1"
+        ]
+      },
+      "projection-white": {
+        "role": "neutral",
+        "displayName": "Projection White",
+        "canonical": "#f2eeec",
+        "tonalRamp": [
+          "#3c3c3b",
+          "#6d6b6a",
+          "#9d9b99",
+          "#c6c3c2",
+          "#f2eeec",
+          "#f5f2f1",
+          "#f8f6f6",
+          "#fcfcfb"
+        ]
+      },
+      "leader-gray-light": {
+        "role": "neutral",
+        "displayName": "Leader Gray (light)",
+        "canonical": "#5f5755",
+        "tonalRamp": [
+          "#181615",
+          "#2b2726",
+          "#3e3937",
+          "#4e4746",
+          "#5f5755",
+          "#878180",
+          "#afabaa",
+          "#dfdddd"
+        ]
+      },
+      "leader-gray-dark": {
+        "role": "neutral",
+        "displayName": "Leader Gray (dark)",
+        "canonical": "#a8a09d",
+        "tonalRamp": [
+          "#2a2827",
+          "#4c4847",
+          "#6d6866",
+          "#8a8381",
+          "#a8a09d",
+          "#beb8b6",
+          "#d4d0ce",
+          "#eeeceb"
+        ]
+      },
+      "rule-light": {
+        "role": "neutral",
+        "displayName": "Hairline (light)",
+        "canonical": "#e6e0de",
+        "tonalRamp": [
+          "#3a3838",
+          "#676564",
+          "#969290",
+          "#bdb8b6",
+          "#e6e0de",
+          "#ece8e6",
+          "#f2f0ee",
+          "#faf9f8"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Hairline (dark)",
+        "canonical": "#2b2725",
+        "tonalRamp": [
+          "#0b0a09",
+          "#131211",
+          "#1c1918",
+          "#23201e",
+          "#2b2725",
+          "#605d5c",
+          "#959392",
+          "#d5d4d3"
+        ]
+      },
+      "rule-strong-light": {
+        "role": "neutral",
+        "displayName": "Strong Hairline (light)",
+        "canonical": "#857d7a",
+        "tonalRamp": [
+          "#211f1e",
+          "#3c3837",
+          "#56514f",
+          "#6d6664",
+          "#857d7a",
+          "#a49e9b",
+          "#c2bebc",
+          "#e7e5e4"
+        ]
+      },
+      "rule-strong-dark": {
+        "role": "neutral",
+        "displayName": "Strong Hairline (dark)",
+        "canonical": "#6b6361",
+        "tonalRamp": [
+          "#1b1918",
+          "#302d2c",
+          "#46403f",
+          "#585150",
+          "#6b6361",
+          "#908a88",
+          "#b5b1b0",
+          "#e1e0df"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section title on the options page only."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "BetterTube wordmark in rail and popup."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "About copy and placeholders."
+      },
+      "body-strong": {
+        "displayName": "Body strong",
+        "purpose": "Options row labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, selects, popup labels, rail items."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Tagline under the wordmark."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions."
+      },
+      {
+        "name": "switch-move",
+        "value": "160ms",
+        "purpose": "Switch track and thumb."
+      },
+      {
+        "name": "border-hover",
+        "value": "140ms",
+        "purpose": "Button border on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "48rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Switch",
+      "kind": "custom",
+      "refersTo": "switch",
+      "description": "Standard role=switch button; accent track when on.",
+      "html": "<div style=\"display:flex;gap:16px;padding:16px\"><button class=\"ds-switch\" role=\"switch\" aria-checked=\"false\"></button><button class=\"ds-switch\" role=\"switch\" aria-checked=\"true\"></button></div>",
+      "css": ".ds-switch{position:relative;width:2.5rem;height:1.375rem;border:1px solid #857d7a;border-radius:999px;background:transparent;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-switch::after{content:'';position:absolute;top:2px;left:2px;width:1rem;height:1rem;border-radius:999px;background:#5f5755;transition:transform 160ms cubic-bezier(0.16,1,0.3,1)}.ds-switch[aria-checked='true']{background:#d93a22;border-color:#d93a22}.ds-switch[aria-checked='true']::after{transform:translateX(1.125rem);background:#ffffff}.ds-switch:focus-visible{outline:2px solid #d93a22;outline-offset:2px}"
+    },
+    {
+      "name": "Cue Dot and Tick",
+      "kind": "custom",
+      "refersTo": "cue-dot",
+      "description": "Lit accent when the feature is on; tick for sections without a switch.",
+      "html": "<div style=\"display:flex;gap:16px;align-items:center;padding:16px\"><span class=\"ds-cue\"></span><span class=\"ds-cue ds-on\"></span><span class=\"ds-tick\"></span></div>",
+      "css": ".ds-cue{display:inline-block;width:.5rem;height:.5rem;border:1px solid #857d7a;border-radius:999px;background:#faf8f7}.ds-cue.ds-on{background:#d93a22;border-color:#d93a22}.ds-tick{position:relative;display:inline-block;width:.5rem;height:.5rem}.ds-tick::after{content:'';position:absolute;top:50%;left:0;width:100%;height:1px;background:#857d7a}"
+    },
+    {
+      "name": "Setting Row",
+      "kind": "custom",
+      "refersTo": "switch",
+      "description": "Cue dot, label, description, switch; nested rows indent.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-cue ds-on\"></span><div class=\"ds-grow\"><div class=\"ds-label\">Hide Shorts</div><div class=\"ds-desc\">Remove Shorts shelves everywhere.</div></div><button class=\"ds-switch\" role=\"switch\" aria-checked=\"true\"></button></div>",
+      "css": ".ds-row{display:flex;align-items:flex-start;gap:16px;padding:16px;border-bottom:1px solid #e6e0de;font-family:Barlow,system-ui,sans-serif;color:#1a1514}.ds-grow{flex:1}.ds-label{font-weight:500;font-size:1rem}.ds-desc{margin-top:2px;font-size:.875rem;color:#5f5755}.ds-cue{margin-top:8px;width:.5rem;height:.5rem;border:1px solid #857d7a;border-radius:999px}.ds-cue.ds-on{background:#d93a22;border-color:#d93a22}.ds-switch{align-self:center;position:relative;width:2.5rem;height:1.375rem;border:1px solid #857d7a;border-radius:999px;background:transparent}.ds-switch::after{content:'';position:absolute;top:2px;left:2px;width:1rem;height:1rem;border-radius:999px;background:#5f5755}.ds-switch[aria-checked='true']{background:#d93a22;border-color:#d93a22}.ds-switch[aria-checked='true']::after{transform:translateX(1.125rem);background:#ffffff}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Native select in the leader palette.",
+      "html": "<select class=\"ds-field\"><option>English</option><option>Portugues</option></select>",
+      "css": ".ds-field{appearance:none;min-width:11rem;padding:.375rem 2rem .375rem .625rem;border:1px solid #857d7a;border-radius:4px;background-color:#ffffff;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%238d8a7f' stroke-width='1.5'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right .625rem center;color:#1a1514;font:inherit;font-size:.875rem}.ds-field:hover{border-color:#1a1514}.ds-field:focus-visible{outline:2px solid #d93a22;outline-offset:2px}"
+    },
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "btn",
+      "description": "Outlined button; only variant.",
+      "html": "<button class=\"ds-btn\">Open settings</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem .875rem;border:1px solid #857d7a;border-radius:4px;background:transparent;color:#1a1514;font:500 .875rem Barlow,system-ui,sans-serif;cursor:pointer;transition:border-color 140ms cubic-bezier(0.16,1,0.3,1)}.ds-btn:hover{border-color:#1a1514}.ds-btn:focus-visible{outline:2px solid #d93a22;outline-offset:2px}"
+    },
+    {
+      "name": "Rail Item",
+      "kind": "nav",
+      "refersTo": "rail-item-current",
+      "description": "Rail stop: cue dot or tick, label; current has surface fill and bold.",
+      "html": "<nav class=\"ds-rail\"><a class=\"ds-item ds-current\"><span class=\"ds-cue ds-on\"></span>Shorts</a><a class=\"ds-item\"><span class=\"ds-cue\"></span>Ads</a><a class=\"ds-item\"><span class=\"ds-tick\"></span>About</a></nav>",
+      "css": ".ds-rail{display:flex;flex-direction:column;gap:4px;width:13rem;font-family:Barlow,system-ui,sans-serif;font-size:.875rem}.ds-item{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;color:#5f5755}.ds-item:hover{color:#1a1514}.ds-current{background:#ffffff;color:#1a1514;font-weight:700}.ds-cue{width:.5rem;height:.5rem;border:1px solid #857d7a;border-radius:999px;background:#faf8f7}.ds-cue.ds-on{background:#d93a22;border-color:#d93a22}.ds-tick{position:relative;width:.5rem;height:.5rem}.ds-tick::after{content:'';position:absolute;top:50%;left:0;width:100%;height:1px;background:#857d7a}"
+    },
+    {
+      "name": "Registration Mark",
+      "kind": "custom",
+      "refersTo": "cue-dot",
+      "description": "Ring and crosshair with accent center; the one authored mark.",
+      "html": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" style=\"color:#1a1514\"><circle cx=\"14\" cy=\"14\" r=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M14 1v26M1 14h26\" stroke=\"currentColor\" stroke-width=\"1.5\"/><circle cx=\"14\" cy=\"14\" r=\"3\" fill=\"#d93a22\"/></svg>",
+      "css": ""
+    }
+  ],
+  "narrative": {
+    "northStar": "The Projection Leader",
+    "overview": "The panel is a reel leader: a strip of cue marks you read before the film starts. A clean white leader in light, a true-black projection room in dark, one red-orange accent (between YouTube red and Claude terracotta) that means exactly three things (on, focus, selection). Nothing else is colored, so a lit dot is always information. Hierarchy comes from scale contrast in one sturdy grotesque (Barlow), not from decoration, cards or shadow.",
+    "keyCharacteristics": [
+      "One accent (cue red), used only for on, focus, and text selection.",
+      "Flat, tonal, bordered: no shadows, no cards, hairline rules between rows.",
+      "Strict five-step type scale, Barlow 400/500/700, tabular numerals globally.",
+      "Cue dot plus switch always paired; state is never shown by one alone.",
+      "Two themes sharing one token set: light (white leader) and dark (true black), plus system."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "The accent appears only for on, focus, and selection. If something is red-orange it is lit; never use it for decoration, links or hierarchy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Focus Follows Theme Rule",
+        "body": "Focus ring is 2px with 2px offset: Cue Red (#d93a22) in light, the brighter Focus Ember (#ff6a4d) in dark, so the ring holds contrast on both grounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paired State Rule",
+        "body": "A cue dot never appears alone on a toggle row; it always sits beside its switch.",
+        "section": "colors"
+      },
+      {
+        "name": "The Five Steps Rule",
+        "body": "Only 12, 14, 16, 22 and 40px exist. A new size is a new step in the scale, not a one-off.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Tabular numerals are on at the root; do not turn them off.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Shadow Rule",
+        "body": "State is carried by fill, border and weight, never by elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pair every toggle's switch with a cue dot, and let both read the same value.",
+      "Do keep the accent for on, focus, and selection only.",
+      "Do build hierarchy from the 12/14/16/22/40 scale and weight 400/500/700.",
+      "Do separate rows with 1px hairlines and indent sub-settings 28px under their master.",
+      "Do use standard controls (switch button, native select, outlined button) in the leader's palette.",
+      "Do use the same token set for light and dark; switch themes by redefining the CSS custom properties only."
+    ],
+    "donts": [
+      "Don't use blue toggles, gray-on-gray sidebars or any second accent color.",
+      "Don't add shadows, cards or gradients to separate content.",
+      "Don't introduce a font size or weight outside the scale.",
+      "Don't use the accent for decoration, links or the current rail item.",
+      "Don't number the rail sections or add kickers and eyebrows above titles."
+    ]
+  }
+}
