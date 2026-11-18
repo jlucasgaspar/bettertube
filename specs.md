@@ -12,7 +12,7 @@ Status values: `todo` · `in-progress` · `done`.
 | --------- | ------------------------- | ------ |
 | M0        | Foundation                | done   |
 | M1        | Settings core             | done   |
-| M2        | YouTube integration layer | todo   |
+| M2        | YouTube integration layer | done   |
 | M3        | Save videos               | todo   |
 | M4        | Custom home               | todo   |
 | M5        | Shorts blocking           | todo   |
@@ -133,11 +133,11 @@ Acceptance: settings persist across reloads, locale and theme switch live, unit 
 
 Tasks:
 
-- [ ] Content script bootstrap on youtube.com
-- [ ] SPA navigation handling (`yt-navigate-finish`)
-- [ ] Central selector module
-- [ ] Shadow-root UI mounting helper
-- [ ] Page-type detection (home, watch, search, shorts, channel)
+- [x] Content script bootstrap on youtube.com
+- [x] SPA navigation handling (`yt-navigate-finish`)
+- [x] Central selector module
+- [x] Shadow-root UI mounting helper
+- [x] Page-type detection (home, watch, search, shorts, channel)
 
 Acceptance: a test component mounts and survives SPA navigation without duplicates or leaks.
 
