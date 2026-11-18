@@ -11,7 +11,7 @@ Status values: `todo` · `in-progress` · `done`.
 | Milestone | Title                     | Status |
 | --------- | ------------------------- | ------ |
 | M0        | Foundation                | done   |
-| M1        | Settings core             | todo   |
+| M1        | Settings core             | done   |
 | M2        | YouTube integration layer | todo   |
 | M3        | Save videos               | todo   |
 | M4        | Custom home               | todo   |
@@ -38,7 +38,7 @@ Milestones are executed one at a time, only when José asks.
 ### Stack
 
 - **WXT** (MV3, Vite-based) + **React 19** + **TypeScript** (strict) + **pnpm**.
-- **Tailwind CSS v4** + **shadcn/ui** (Radix primitives) for popup and options page. Alternatives considered: Radix only, Base UI, Ark UI. The **impeccable** skill drives the visual direction (`DESIGN.md`); component library choice is revisited in M1.
+- **Tailwind CSS v4** for the popup and options page, with own-styled native controls (`role="switch"` button, `<select>`, `<a>` nav). Decision (M1): no shadcn/Radix for now. The impeccable "Projection Leader" direction asks for standard controls with a custom skin, the surfaces are small, and fewer dependencies keep the extension light. Radix or shadcn can be added later when a complex widget is needed (dialog, popover, combobox). Icons: `lucide-react`. Font: Barlow (self-hosted via `@fontsource`). The **impeccable** skill drives the visual direction (`DESIGN.md`, `PRODUCT.md`).
 - UI injected into youtube.com is mounted with WXT `createShadowRootUi` for CSS isolation. Portals (dialogs, popovers) must target the shadow root.
 
 ### Tooling
@@ -117,13 +117,13 @@ Acceptance: `pnpm check` green; `pnpm build` produces a loadable extension; a ba
 
 Tasks:
 
-- [ ] Typed storage layer with versioned schema and migrations
-- [ ] Feature-flag/settings model for all planned options
-- [ ] Options page and popup shell
-- [ ] Component library decision + setup (shadcn/ui or alternative)
-- [ ] i18n infrastructure with the 6 locales
-- [ ] Theme: system / light / dark
-- [ ] `DESIGN.md` via impeccable skill
+- [x] Typed storage layer with versioned schema and migrations
+- [x] Feature-flag/settings model for all planned options
+- [x] Options page and popup shell
+- [x] Component library decision + setup (shadcn/ui or alternative)
+- [x] i18n infrastructure with the 6 locales
+- [x] Theme: system / light / dark
+- [x] `DESIGN.md` via impeccable skill
 
 Acceptance: settings persist across reloads, locale and theme switch live, unit tests for storage and migrations.
 
