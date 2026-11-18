@@ -27,7 +27,7 @@ export const fr: Messages = {
   'theme.dark': 'Sombre',
 
   'home.title': 'Accueil',
-  'home.enabled': "Remplacer l'accueil de YouTube",
+  'home.enabled': 'Accueil avec mes vidéos enregistrées',
   'home.enabled.desc': 'Affiche vos vidéos enregistrées à la place du flux par défaut.',
   'home.watchLater': 'Inclure À regarder plus tard',
   'home.watchLater.desc':
@@ -40,7 +40,7 @@ export const fr: Messages = {
   'shorts.redirect.desc': 'Les liens vers un Short s’ouvrent dans le lecteur habituel.',
 
   'recommendations.title': 'Recommandations',
-  'recommendations.enabled': 'Bloquer les recommandations',
+  'recommendations.enabled': 'Masquer les vidéos suggérées',
   'recommendations.enabled.desc':
     'Retire les vidéos suggérées à côté et à la suite de la vidéo regardée.',
   'recommendations.showSaved': 'Afficher les vidéos enregistrées à la place',
@@ -60,8 +60,27 @@ export const fr: Messages = {
     'Coupe le son de toute publicité encore diffusée et clique sur Passer dès que possible.',
 
   'saved.title': 'Vidéos enregistrées',
-  'saved.placeholder':
-    "Vos vidéos enregistrées apparaîtront ici quand l'enregistrement sera disponible.",
+
+  'saved.button.enabled': 'Bouton Enregistrer sur les vidéos',
+  'saved.button.enabled.desc':
+    'Ajoute un bouton Ajouter à BetterTube à côté de J’aime sur les pages de vidéo.',
+  'saved.empty.title': 'Rien d’enregistré pour l’instant',
+  'saved.empty.desc':
+    'Ouvrez une vidéo sur YouTube et cliquez sur Enregistrer à côté de J’aime. Elle apparaîtra ici.',
+  'saved.count.one': '{count} vidéo',
+  'saved.count.other': '{count} vidéos',
+  'saved.savedOn': 'Enregistrée le {date}',
+  'saved.moveUp': 'Monter',
+  'saved.moveDown': 'Descendre',
+  'saved.remove': 'Retirer',
+  'saved.export': 'Exporter en JSON',
+  'saved.import': 'Importer un JSON',
+  'saved.import.done': '{added} ajoutées, {skipped} ignorées.',
+  'saved.import.error': 'Ce fichier n’est pas un export BetterTube.',
+  'save.button.save': 'Ajouter à BetterTube',
+  'save.button.saved': 'Dans BetterTube',
+  'save.button.save.title': 'Enregistrer dans BetterTube',
+  'save.button.saved.title': 'Retirer de BetterTube',
 
   'about.title': 'À propos',
   'about.description':

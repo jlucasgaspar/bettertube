@@ -13,7 +13,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M0        | Foundation                | done   |
 | M1        | Settings core             | done   |
 | M2        | YouTube integration layer | done   |
-| M3        | Save videos               | todo   |
+| M3        | Save videos               | done   |
 | M4        | Custom home               | todo   |
 | M5        | Shorts blocking           | todo   |
 | M6        | Recommendations control   | todo   |
@@ -147,9 +147,9 @@ Acceptance: a test component mounts and survives SPA navigation without duplicat
 
 Tasks:
 
-- [ ] "Save to BetterTube" button in the watch page action bar (toggle state)
-- [ ] Saved videos stored in `storage.local` (id, title, channel, thumbnail, savedAt)
-- [ ] Manage list in options: remove, reorder, export/import JSON
+- [x] "Save to BetterTube" button in the watch page action bar (toggle state)
+- [x] Saved videos stored in `storage.local` (id, title, channel, thumbnail, savedAt)
+- [x] Manage list in options: remove, reorder, export/import JSON
 
 Acceptance: save/unsave works across navigation and reloads; export then import restores the list.
 

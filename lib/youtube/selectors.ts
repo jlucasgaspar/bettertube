@@ -4,6 +4,10 @@
 export const selectors = {
   /** Container the watch page action bar (Like, Share, ...) renders into. */
   watchActions: '#top-level-buttons-computed',
+  /** Title heading of the watch page. */
+  watchTitle: 'ytd-watch-metadata h1',
+  /** Channel link under the watch page title. */
+  watchChannel: 'ytd-watch-metadata ytd-channel-name a',
   /** Home feed grid. */
   homeFeed: 'ytd-rich-grid-renderer',
   /** The page manager element YouTube swaps content into on SPA navigation. */

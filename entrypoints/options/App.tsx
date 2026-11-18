@@ -9,6 +9,7 @@ import {
   SlidersHorizontal,
   Smartphone,
 } from 'lucide-react';
+import { SavedVideosPanel } from '../../components/saved-videos-panel';
 import { PreferenceFields } from '../../components/preference-fields';
 import { RegistrationMark } from '../../components/registration-mark';
 import { SwitchRow } from '../../components/setting-row';
@@ -121,6 +122,13 @@ function Section({ id }: { id: SectionId }) {
       return (
         <section>
           <SectionTitle>{t('general.title')}</SectionTitle>
+          <SwitchRow
+            label={t('saved.button.enabled')}
+            description={t('saved.button.enabled.desc')}
+            checked={settings.saveButton.enabled}
+            stateLabel={state(settings.saveButton.enabled)}
+            onChange={(enabled) => update({ saveButton: { enabled } })}
+          />
           <PreferenceFields />
         </section>
       );
@@ -232,7 +240,7 @@ function Section({ id }: { id: SectionId }) {
       return (
         <section>
           <SectionTitle>{t('saved.title')}</SectionTitle>
-          <p className="max-w-prose text-base text-muted">{t('saved.placeholder')}</p>
+          <SavedVideosPanel />
         </section>
       );
     case 'about':

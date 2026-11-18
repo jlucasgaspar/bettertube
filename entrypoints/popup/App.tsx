@@ -18,6 +18,13 @@ export default function App() {
         <>
           <SwitchRow
             compact
+            label={t('saved.button.enabled')}
+            checked={settings.saveButton.enabled}
+            stateLabel={state(settings.saveButton.enabled)}
+            onChange={(enabled) => update({ saveButton: { enabled } })}
+          />
+          <SwitchRow
+            compact
             label={t('home.enabled')}
             checked={settings.home.enabled}
             stateLabel={state(settings.home.enabled)}
