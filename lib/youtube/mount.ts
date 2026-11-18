@@ -13,6 +13,8 @@ export interface MountOptions<TMounted> {
   pages: PageType[];
   /** Key into the central selector module. */
   anchor: SelectorKey;
+  /** Extra CSS for the shadow root. */
+  css?: string;
   append?: ShadowRootContentScriptUiOptions<TMounted>['append'];
   onMount: ShadowRootContentScriptUiOptions<TMounted>['onMount'];
   onRemove?: ShadowRootContentScriptUiOptions<TMounted>['onRemove'];
@@ -37,6 +39,7 @@ export async function createPageMount<TMounted>(
     name: options.name,
     position: 'inline',
     anchor: selectors[options.anchor],
+    css: options.css,
     append: options.append ?? 'last',
     onMount: options.onMount,
     onRemove: options.onRemove,

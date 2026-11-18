@@ -27,7 +27,7 @@ export const es: Messages = {
   'theme.dark': 'Oscuro',
 
   'home.title': 'Inicio',
-  'home.enabled': 'Reemplazar el inicio de YouTube',
+  'home.enabled': 'Inicio con mis videos guardados',
   'home.enabled.desc': 'Muestra tus videos guardados en lugar del feed predeterminado.',
   'home.watchLater': 'Incluir Ver más tarde',
   'home.watchLater.desc': 'Añade tu lista Ver más tarde de YouTube debajo de tus videos guardados.',
@@ -39,7 +39,7 @@ export const es: Messages = {
   'shorts.redirect.desc': 'Los enlaces a un Short se abren en el reproductor normal.',
 
   'recommendations.title': 'Recomendaciones',
-  'recommendations.enabled': 'Bloquear recomendaciones',
+  'recommendations.enabled': 'Ocultar videos sugeridos',
   'recommendations.enabled.desc':
     'Quita los videos sugeridos junto al video que ves y al terminar.',
   'recommendations.showSaved': 'Mostrar videos guardados en su lugar',
@@ -56,7 +56,26 @@ export const es: Messages = {
   'ads.autoSkip.desc': 'Silencia cualquier anuncio que aún suene y pulsa Saltar en cuanto aparece.',
 
   'saved.title': 'Videos guardados',
-  'saved.placeholder': 'Tus videos guardados aparecerán aquí cuando guardar esté disponible.',
+
+  'saved.button.enabled': 'Botón Guardar en los videos',
+  'saved.button.enabled.desc':
+    'Añade un botón Guardar en BetterTube junto a Me gusta en las páginas de video.',
+  'saved.empty.title': 'Nada guardado todavía',
+  'saved.empty.desc': 'Abre un video en YouTube y pulsa Guardar junto a Me gusta. Aparecerá aquí.',
+  'saved.count.one': '{count} video',
+  'saved.count.other': '{count} videos',
+  'saved.savedOn': 'Guardado el {date}',
+  'saved.moveUp': 'Subir',
+  'saved.moveDown': 'Bajar',
+  'saved.remove': 'Quitar',
+  'saved.export': 'Exportar JSON',
+  'saved.import': 'Importar JSON',
+  'saved.import.done': '{added} añadidos, {skipped} omitidos.',
+  'saved.import.error': 'Ese archivo no es una exportación de BetterTube.',
+  'save.button.save': 'Guardar en BetterTube',
+  'save.button.saved': 'En BetterTube',
+  'save.button.save.title': 'Guardar en BetterTube',
+  'save.button.saved.title': 'Quitar de BetterTube',
 
   'about.title': 'Acerca de',
   'about.description':

@@ -10,6 +10,9 @@ export type ThemeSetting = (typeof THEMES)[number];
 export interface Settings {
   locale: LocaleSetting;
   theme: ThemeSetting;
+  saveButton: {
+    enabled: boolean;
+  };
   home: {
     enabled: boolean;
     showWatchLater: boolean;
@@ -36,6 +39,7 @@ export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartia
 export const DEFAULT_SETTINGS: Settings = {
   locale: 'auto',
   theme: 'system',
+  saveButton: { enabled: true },
   home: { enabled: false, showWatchLater: true },
   shorts: { enabled: false, redirectToWatch: false },
   recommendations: { enabled: false, showSaved: false },

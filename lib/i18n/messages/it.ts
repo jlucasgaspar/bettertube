@@ -27,7 +27,7 @@ export const it: Messages = {
   'theme.dark': 'Scuro',
 
   'home.title': 'Home',
-  'home.enabled': 'Sostituisci la home di YouTube',
+  'home.enabled': 'Home con i miei video salvati',
   'home.enabled.desc': 'Mostra i tuoi video salvati al posto del feed predefinito.',
   'home.watchLater': 'Includi Guarda più tardi',
   'home.watchLater.desc':
@@ -40,7 +40,7 @@ export const it: Messages = {
   'shorts.redirect.desc': 'I link a uno Short si aprono nel player normale.',
 
   'recommendations.title': 'Consigli',
-  'recommendations.enabled': 'Blocca i consigli',
+  'recommendations.enabled': 'Nascondi i video suggeriti',
   'recommendations.enabled.desc': 'Rimuove i video suggeriti accanto e dopo il video che guardi.',
   'recommendations.showSaved': 'Mostra invece i video salvati',
   'recommendations.showSaved.desc': 'Riempie lo spazio vuoto con i video che hai salvato.',
@@ -58,8 +58,26 @@ export const it: Messages = {
     'Silenzia ogni annuncio ancora in riproduzione e preme Salta appena compare.',
 
   'saved.title': 'Video salvati',
-  'saved.placeholder':
-    'I tuoi video salvati compariranno qui quando il salvataggio sarà disponibile.',
+
+  'saved.button.enabled': 'Pulsante Salva sui video',
+  'saved.button.enabled.desc':
+    'Aggiunge un pulsante Salva su BetterTube accanto a Mi piace nelle pagine dei video.',
+  'saved.empty.title': 'Ancora niente di salvato',
+  'saved.empty.desc': 'Apri un video su YouTube e premi Salva accanto a Mi piace. Comparirà qui.',
+  'saved.count.one': '{count} video',
+  'saved.count.other': '{count} video',
+  'saved.savedOn': 'Salvato il {date}',
+  'saved.moveUp': 'Sposta su',
+  'saved.moveDown': 'Sposta giù',
+  'saved.remove': 'Rimuovi',
+  'saved.export': 'Esporta JSON',
+  'saved.import': 'Importa JSON',
+  'saved.import.done': '{added} aggiunti, {skipped} ignorati.',
+  'saved.import.error': 'Questo file non è un’esportazione di BetterTube.',
+  'save.button.save': 'Salva su BetterTube',
+  'save.button.saved': 'In BetterTube',
+  'save.button.save.title': 'Salva su BetterTube',
+  'save.button.saved.title': 'Rimuovi da BetterTube',
 
   'about.title': 'Informazioni',
   'about.description':

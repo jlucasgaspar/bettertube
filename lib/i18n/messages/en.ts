@@ -25,7 +25,7 @@ export const en = {
   'theme.dark': 'Dark',
 
   'home.title': 'Home',
-  'home.enabled': 'Replace the YouTube home',
+  'home.enabled': 'Home with my saved videos',
   'home.enabled.desc': 'Show your saved videos instead of the default feed.',
   'home.watchLater': 'Include Watch Later',
   'home.watchLater.desc': 'Add your YouTube Watch Later list below your saved videos.',
@@ -37,7 +37,7 @@ export const en = {
   'shorts.redirect.desc': 'Links to a Short open in the normal player instead.',
 
   'recommendations.title': 'Recommendations',
-  'recommendations.enabled': 'Block recommendations',
+  'recommendations.enabled': 'Hide suggested videos',
   'recommendations.enabled.desc': 'Remove suggested videos next to and after the video you watch.',
   'recommendations.showSaved': 'Show saved videos instead',
   'recommendations.showSaved.desc': 'Fill the empty space with videos you saved.',
@@ -53,7 +53,25 @@ export const en = {
   'ads.autoSkip.desc': 'Mute any ad that still plays and press Skip as soon as it appears.',
 
   'saved.title': 'Saved videos',
-  'saved.placeholder': 'Your saved videos will be listed here once saving is available.',
+
+  'saved.button.enabled': 'Save button on videos',
+  'saved.button.enabled.desc': 'Adds a Save to BetterTube button next to Like on video pages.',
+  'saved.empty.title': 'Nothing saved yet',
+  'saved.empty.desc': 'Open a video on YouTube and press Save next to Like. It will show up here.',
+  'saved.count.one': '{count} video',
+  'saved.count.other': '{count} videos',
+  'saved.savedOn': 'Saved {date}',
+  'saved.moveUp': 'Move up',
+  'saved.moveDown': 'Move down',
+  'saved.remove': 'Remove',
+  'saved.export': 'Export JSON',
+  'saved.import': 'Import JSON',
+  'saved.import.done': '{added} added, {skipped} skipped.',
+  'saved.import.error': 'That file is not a BetterTube export.',
+  'save.button.save': 'Save to BetterTube',
+  'save.button.saved': 'In BetterTube',
+  'save.button.save.title': 'Save to BetterTube',
+  'save.button.saved.title': 'Remove from BetterTube',
 
   'about.title': 'About',
   'about.description':
