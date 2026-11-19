@@ -48,7 +48,8 @@ export const en = {
   'recommendations.enabled': 'Hide suggested videos',
   'recommendations.enabled.desc': 'Remove suggested videos next to and after the video you watch.',
   'recommendations.showSaved': 'Show saved videos instead',
-  'recommendations.showSaved.desc': 'Fill the empty space with videos you saved.',
+  'recommendations.showSaved.desc':
+    'Fill the empty space with your saved videos, Watch Later and saved channels.',
 
   'ads.title': 'Ads',
   'ads.enabled': 'Block ads',
@@ -109,6 +110,8 @@ export const en = {
   'customHome.channels.title': 'Saved channels',
   'customHome.loading': 'Loading…',
   'customHome.retry': 'Try again',
+  'customHome.showMore': 'Show more',
+  'customHome.showLess': 'Show less',
   'customHome.menu.open': 'More options',
   'customHome.menu.remove': 'Remove',
   'customHome.order.label': 'Order by',

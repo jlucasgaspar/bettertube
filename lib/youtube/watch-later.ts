@@ -66,6 +66,28 @@ export async function fetchWatchLater(fetcher: typeof fetch = fetch): Promise<Wa
   return parseWatchLater(await response.text());
 }
 
+let cache: { at: number; videos: WatchLaterVideo[] } | undefined;
+
+/** Forget the cached list, for example after changing the playlist. */
+export function clearWatchLaterCache() {
+  cache = undefined;
+}
+
+/**
+ * Like `fetchWatchLater`, but reuses a recent result. The watch page asks on every video, and the
+ * playlist page is heavy, so one request every few minutes is enough.
+ */
+export async function fetchWatchLaterCached(
+  ttlMs = 5 * 60 * 1000,
+  now = Date.now(),
+  fetcher: typeof fetch = fetch,
+): Promise<WatchLaterVideo[]> {
+  if (cache && now - cache.at < ttlMs) return cache.videos;
+  const videos = await fetchWatchLater(fetcher);
+  cache = { at: now, videos };
+  return videos;
+}
+
 // --- Removing a video -----------------------------------------------------------------------
 //
 // This edits the user's real Watch Later list through YouTube's own InnerTube endpoint, the same
@@ -149,4 +171,5 @@ export async function removeFromWatchLater(
   if (!response.ok) throw new WatchLaterError(`Request failed with ${response.status}`);
   const result = (await response.json()) as { status?: string };
   if (result.status !== 'STATUS_SUCCEEDED') throw new WatchLaterError('YouTube did not confirm');
+  clearWatchLaterCache();
 }

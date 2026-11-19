@@ -51,7 +51,8 @@ export const es: Messages = {
   'recommendations.enabled.desc':
     'Quita los videos sugeridos junto al video que ves y al terminar.',
   'recommendations.showSaved': 'Mostrar videos guardados en su lugar',
-  'recommendations.showSaved.desc': 'Llena el espacio vacío con los videos que guardaste.',
+  'recommendations.showSaved.desc':
+    'Llena el espacio vacío con tus videos guardados, Ver más tarde y canales guardados.',
 
   'ads.title': 'Anuncios',
   'ads.enabled': 'Bloquear anuncios',
@@ -112,6 +113,8 @@ export const es: Messages = {
   'customHome.channels.title': 'Canales guardados',
   'customHome.loading': 'Cargando…',
   'customHome.retry': 'Reintentar',
+  'customHome.showMore': 'Mostrar más',
+  'customHome.showLess': 'Mostrar menos',
   'customHome.menu.open': 'Más opciones',
   'customHome.menu.remove': 'Quitar',
   'customHome.order.label': 'Ordenar por',

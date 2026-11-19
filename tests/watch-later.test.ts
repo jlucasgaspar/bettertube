@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   WatchLaterError,
+  clearWatchLaterCache,
   fetchWatchLater,
+  fetchWatchLaterCached,
   parseWatchLater,
   removeFromWatchLater,
 } from '../lib/youtube/watch-later';
@@ -121,5 +123,30 @@ describe('removeFromWatchLater', () => {
     await expect(removeFromWatchLater('x', { ...options, pageText: '', fetcher })).rejects.toThrow(
       WatchLaterError,
     );
+  });
+});
+
+describe('fetchWatchLaterCached', () => {
+  it('reuses a recent result and refetches after the ttl', async () => {
+    clearWatchLaterCache();
+    let calls = 0;
+    const fetcher = (async () => {
+      calls++;
+      return new Response(page({ x: renderer('vid00000001', 'One') }));
+    }) as unknown as typeof fetch;
+    await fetchWatchLaterCached(1000, 0, fetcher);
+    await fetchWatchLaterCached(1000, 500, fetcher);
+    expect(calls).toBe(1);
+    await fetchWatchLaterCached(1000, 1500, fetcher);
+    expect(calls).toBe(2);
+  });
+
+  it('does not cache a failure', async () => {
+    clearWatchLaterCache();
+    const failing = (async () => new Response('', { status: 500 })) as unknown as typeof fetch;
+    await expect(fetchWatchLaterCached(1000, 0, failing)).rejects.toThrow(WatchLaterError);
+    const ok = (async () =>
+      new Response(page({ x: renderer('vid00000001', 'One') }))) as unknown as typeof fetch;
+    await expect(fetchWatchLaterCached(1000, 1, ok)).resolves.toHaveLength(1);
   });
 });
