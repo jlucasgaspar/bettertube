@@ -79,6 +79,17 @@ export default function App() {
             stateLabel={state(settings.recommendations.enabled)}
             onChange={(enabled) => update({ recommendations: { enabled } })}
           />
+          {settings.recommendations.enabled && (
+            <SwitchRow
+              compact
+              nested
+              label={t('recommendations.showSaved')}
+              checked={settings.recommendations.showSaved}
+              disabled={off}
+              stateLabel={state(settings.recommendations.showSaved)}
+              onChange={(showSaved) => update({ recommendations: { showSaved } })}
+            />
+          )}
           <SwitchRow
             compact
             label={t('ads.enabled')}
