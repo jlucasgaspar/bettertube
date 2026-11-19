@@ -117,6 +117,10 @@ export const pt_BR: Messages = {
   'customHome.retry': 'Tentar de novo',
   'customHome.menu.open': 'Mais opções',
   'customHome.menu.remove': 'Remover',
+  'customHome.order.label': 'Ordenar por',
+  'customHome.order.default': 'Ordem padrão',
+  'customHome.order.newest': 'Mais recentes primeiro',
+  'customHome.order.oldest': 'Mais antigos primeiro',
   'customHome.watchLater.removeError':
     'Não foi possível remover do Assistir mais tarde. Nada foi alterado.',
   'customHome.scroll.prev': 'Rolar para a esquerda',

@@ -19,6 +19,16 @@ import {
   removeFromWatchLater,
   type WatchLaterVideo,
 } from '../lib/youtube/watch-later';
+import {
+  getHomeOrder,
+  orderItems,
+  setHomeOrder,
+  watchHomeOrder,
+  DEFAULT_HOME_ORDER,
+  type HomeOrder,
+  type HomeOrderSection,
+  type HomeOrderSettings,
+} from '../lib/home-order';
 import { Carousel, CardMenu, HOME_CAROUSEL_CSS } from './home-carousel';
 import { usePageTheme, useSettings } from './inject-hooks';
 
@@ -39,7 +49,16 @@ export const CUSTOM_HOME_CSS = `${HOME_CAROUSEL_CSS}
     --ink: #f1f1f1; --muted: #aaaaaa; --line: #3f3f3f; --surface: #272727; --bg: #0f0f0f;
   }
   section + section { margin-top: 40px; }
-  h2 { margin: 0 0 16px; font: 700 20px/1.2 Roboto, Arial, sans-serif; }
+  .head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 16px; }
+  h2 { margin: 0; font: 700 20px/1.2 Roboto, Arial, sans-serif; }
+  .order { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
+  .order select {
+    height: 32px; padding: 0 28px 0 12px; border: 1px solid var(--line); border-radius: 16px;
+    background: var(--bg); color: var(--ink); font: 500 13px Roboto, Arial, sans-serif; cursor: pointer;
+  }
+  .order select:hover { background: var(--surface); }
+  .order select:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .home[data-page-theme='dark'] { color-scheme: dark; }
   a { color: inherit; text-decoration: none; }
   a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
   .thumb {
@@ -74,10 +93,12 @@ type Translate = (key: MessageKey) => string;
 function CardRow({
   t,
   compact,
+  resetKey,
   children,
 }: {
   t: Translate;
   compact?: boolean;
+  resetKey?: string;
   children: ReactNode;
 }) {
   return (
@@ -85,18 +106,72 @@ function CardRow({
       prevLabel={t('customHome.scroll.prev')}
       nextLabel={t('customHome.scroll.next')}
       compact={compact}
+      resetKey={resetKey}
     >
       {children}
     </Carousel>
   );
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+function Section({
+  title,
+  control,
+  children,
+}: {
+  title: string;
+  control?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <section>
-      <h2>{title}</h2>
+      <div className="head">
+        <h2>{title}</h2>
+        {control}
+      </div>
       {children}
     </section>
+  );
+}
+
+/** The saved order for each section, live across tabs. */
+function useHomeOrder(): HomeOrderSettings {
+  const [order, setOrder] = useState<HomeOrderSettings>(DEFAULT_HOME_ORDER);
+  useEffect(() => {
+    let active = true;
+    void getHomeOrder().then((value) => active && setOrder(value));
+    const stop = watchHomeOrder((value) => setOrder(value));
+    return () => {
+      active = false;
+      stop();
+    };
+  }, []);
+  return order;
+}
+
+/** "Order by" picker. Watch Later has no stored order of its own, so it skips "Default order". */
+function OrderSelect({
+  section,
+  value,
+  t,
+}: {
+  section: HomeOrderSection;
+  value: HomeOrder;
+  t: Translate;
+}) {
+  return (
+    <label className="order">
+      {t('customHome.order.label')}
+      <select
+        value={value}
+        onChange={(event) => void setHomeOrder(section, event.target.value as HomeOrder)}
+      >
+        {section !== 'watchLater' && (
+          <option value="default">{t('customHome.order.default')}</option>
+        )}
+        <option value="newest">{t('customHome.order.newest')}</option>
+        <option value="oldest">{t('customHome.order.oldest')}</option>
+      </select>
+    </label>
   );
 }
 
@@ -110,15 +185,17 @@ interface Card {
 function VideoRow({
   videos,
   t,
+  order,
   onRemove,
 }: {
   videos: Card[];
   t: Translate;
+  order: HomeOrder;
   /** Adds the three-dots menu to each card. */
   onRemove?: (id: string) => void;
 }) {
   return (
-    <CardRow t={t}>
+    <CardRow t={t} resetKey={order}>
       {videos.map((video) => (
         <li key={video.id}>
           <a href={`/watch?v=${video.id}`}>
@@ -140,6 +217,7 @@ function VideoRow({
 }
 
 function SavedVideosSection({ t }: { t: Translate }) {
+  const order = useHomeOrder();
   const [videos, setVideos] = useState<SavedVideo[] | undefined>();
   useEffect(() => {
     let active = true;
@@ -152,13 +230,25 @@ function SavedVideosSection({ t }: { t: Translate }) {
   }, []);
 
   return (
-    <Section title={t('customHome.saved.title')}>
+    <Section
+      title={t('customHome.saved.title')}
+      control={
+        videos && videos.length > 1 ? (
+          <OrderSelect section="saved" value={order.saved} t={t} />
+        ) : undefined
+      }
+    >
       {!videos ? (
         <p className="state">{t('customHome.loading')}</p>
       ) : videos.length === 0 ? (
         <p className="state">{t('customHome.saved.empty')}</p>
       ) : (
-        <VideoRow videos={videos} t={t} onRemove={(id) => void unsaveVideo(id)} />
+        <VideoRow
+          videos={orderItems(videos, order.saved)}
+          t={t}
+          order={order.saved}
+          onRemove={(id) => void unsaveVideo(id)}
+        />
       )}
     </Section>
   );
@@ -168,6 +258,7 @@ type WatchLaterState =
   { status: 'loading' } | { status: 'error' } | { status: 'ready'; videos: WatchLaterVideo[] };
 
 function WatchLaterSection({ t }: { t: Translate }) {
+  const order = useHomeOrder();
   const [state, setState] = useState<WatchLaterState>({ status: 'loading' });
 
   const [attempt, setAttempt] = useState(0);
@@ -204,7 +295,14 @@ function WatchLaterSection({ t }: { t: Translate }) {
   };
 
   return (
-    <Section title={t('customHome.watchLater.title')}>
+    <Section
+      title={t('customHome.watchLater.title')}
+      control={
+        state.status === 'ready' && state.videos.length > 1 ? (
+          <OrderSelect section="watchLater" value={order.watchLater} t={t} />
+        ) : undefined
+      }
+    >
       {removeFailed && (
         <p className="state" role="alert">
           {t('customHome.watchLater.removeError')}
@@ -225,13 +323,19 @@ function WatchLaterSection({ t }: { t: Translate }) {
         (state.videos.length === 0 ? (
           <p className="state">{t('customHome.watchLater.empty')}</p>
         ) : (
-          <VideoRow videos={state.videos} t={t} onRemove={remove} />
+          <VideoRow
+            videos={orderItems(state.videos, order.watchLater)}
+            t={t}
+            order={order.watchLater}
+            onRemove={remove}
+          />
         ))}
     </Section>
   );
 }
 
 function SavedChannelsSection({ t }: { t: Translate }) {
+  const order = useHomeOrder();
   const [channels, setChannels] = useState<SavedChannel[] | undefined>();
   useEffect(() => {
     let active = true;
@@ -244,14 +348,21 @@ function SavedChannelsSection({ t }: { t: Translate }) {
   }, []);
 
   return (
-    <Section title={t('customHome.channels.title')}>
+    <Section
+      title={t('customHome.channels.title')}
+      control={
+        channels && channels.length > 1 ? (
+          <OrderSelect section="channels" value={order.channels} t={t} />
+        ) : undefined
+      }
+    >
       {!channels ? (
         <p className="state">{t('customHome.loading')}</p>
       ) : channels.length === 0 ? (
         <p className="state">{t('customHome.channels.empty')}</p>
       ) : (
-        <CardRow t={t} compact>
-          {channels.map((channel) => (
+        <CardRow t={t} compact resetKey={order.channels}>
+          {orderItems(channels, order.channels).map((channel) => (
             <li key={channel.id} className="has-menu">
               <a className="channel" href={channelUrl(channel.id)}>
                 {channel.avatar ? (

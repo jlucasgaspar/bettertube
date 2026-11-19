@@ -117,6 +117,10 @@ export const de: Messages = {
   'customHome.retry': 'Erneut versuchen',
   'customHome.menu.open': 'Weitere Optionen',
   'customHome.menu.remove': 'Entfernen',
+  'customHome.order.label': 'Sortieren nach',
+  'customHome.order.default': 'Standardreihenfolge',
+  'customHome.order.newest': 'Neueste zuerst',
+  'customHome.order.oldest': 'Älteste zuerst',
   'customHome.watchLater.removeError':
     'Konnte nicht aus „Später ansehen“ entfernt werden. Es wurde nichts geändert.',
   'customHome.scroll.prev': 'Nach links scrollen',
