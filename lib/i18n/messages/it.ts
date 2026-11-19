@@ -11,6 +11,7 @@ export const it: Messages = {
   'nav.recommendations': 'Consigli',
   'nav.ads': 'Annunci',
   'nav.saved': 'Video salvati',
+  'nav.channels': 'Canali salvati',
   'nav.about': 'Informazioni',
 
   'state.on': 'Attivo',
@@ -26,12 +27,19 @@ export const it: Messages = {
   'theme.light': 'Chiaro',
   'theme.dark': 'Scuro',
 
+  'enabled.label': 'Attiva',
+  'enabled.desc':
+    'Interruttore generale. Se disattivato, YouTube appare e funziona come al solito.',
+
   'home.title': 'Home',
-  'home.enabled': 'Home con i miei video salvati',
-  'home.enabled.desc': 'Mostra i tuoi video salvati al posto del feed predefinito.',
-  'home.watchLater': 'Includi Guarda più tardi',
-  'home.watchLater.desc':
-    'Aggiunge la tua lista Guarda più tardi di YouTube sotto i video salvati.',
+  'home.enabled': 'Home personalizzata',
+  'home.enabled.desc': 'Sostituisce il feed predefinito con le tue sezioni.',
+  'home.showSaved': 'Mostra i video salvati',
+  'home.showSaved.desc': 'I video che hai salvato su BetterTube.',
+  'home.showWatchLater': 'Mostra i video di Guarda più tardi',
+  'home.showWatchLater.desc': 'La tua lista Guarda più tardi di YouTube.',
+  'home.showChannels': 'Mostra i canali salvati',
+  'home.showChannels.desc': 'I canali che hai salvato su BetterTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Blocca gli Shorts',
@@ -59,9 +67,6 @@ export const it: Messages = {
 
   'saved.title': 'Video salvati',
 
-  'saved.button.enabled': 'Pulsante Salva sui video',
-  'saved.button.enabled.desc':
-    'Aggiunge un pulsante Salva su BetterTube accanto a Mi piace nelle pagine dei video.',
   'saved.empty.title': 'Ancora niente di salvato',
   'saved.empty.desc': 'Apri un video su YouTube e premi Salva accanto a Mi piace. Comparirà qui.',
   'saved.count.one': '{count} video',
@@ -79,12 +84,36 @@ export const it: Messages = {
   'save.button.save.title': 'Salva su BetterTube',
   'save.button.saved.title': 'Rimuovi da BetterTube',
 
+  'channels.title': 'Canali salvati',
+  'channels.empty.title': 'Nessun canale salvato',
+  'channels.empty.desc':
+    'Apri un canale su YouTube e premi Salva canale su BetterTube accanto a Iscriviti. Apparirà qui.',
+  'channels.count.one': '{count} canale',
+  'channels.count.other': '{count} canali',
+  'channel.button.save': 'Salva canale su BetterTube',
+  'channel.button.saved': 'Canale su BetterTube',
+  'channel.button.save.title': 'Salva canale su BetterTube',
+  'channel.button.saved.title': 'Rimuovi canale da BetterTube',
+
   'about.title': 'Informazioni',
   'about.description':
     'BetterTube è un’estensione Chrome open source per un YouTube migliore sul desktop.',
   'about.privacy': 'Tutto resta nel tuo browser. Nessun account, nessun server.',
   'about.disclaimer': 'Non affiliato a, approvato da o sponsorizzato da YouTube o Google.',
   'about.version': 'Versione',
+
+  'customHome.saved.title': 'Video salvati',
+  'customHome.watchLater.title': 'Guarda più tardi',
+  'customHome.channels.title': 'Canali salvati',
+  'customHome.loading': 'Caricamento…',
+  'customHome.retry': 'Riprova',
+  'customHome.saved.empty':
+    'Nessun video salvato. Premi Salva accanto a Mi piace su qualsiasi video.',
+  'customHome.watchLater.empty': 'La tua lista Guarda più tardi è vuota.',
+  'customHome.watchLater.error':
+    'Impossibile caricare la tua lista Guarda più tardi. Verifica di aver effettuato l’accesso a YouTube.',
+  'customHome.channels.empty':
+    'Nessun canale salvato. Premi Salva canale su BetterTube accanto a Iscriviti.',
 
   'popup.openSettings': 'Apri impostazioni',
 };

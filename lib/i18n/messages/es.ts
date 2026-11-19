@@ -11,6 +11,7 @@ export const es: Messages = {
   'nav.recommendations': 'Recomendaciones',
   'nav.ads': 'Anuncios',
   'nav.saved': 'Videos guardados',
+  'nav.channels': 'Canales guardados',
   'nav.about': 'Acerca de',
 
   'state.on': 'Activado',
@@ -26,11 +27,18 @@ export const es: Messages = {
   'theme.light': 'Claro',
   'theme.dark': 'Oscuro',
 
+  'enabled.label': 'Activar',
+  'enabled.desc': 'Interruptor general. Desactivado, YouTube se ve y funciona como siempre.',
+
   'home.title': 'Inicio',
-  'home.enabled': 'Inicio con mis videos guardados',
-  'home.enabled.desc': 'Muestra tus videos guardados en lugar del feed predeterminado.',
-  'home.watchLater': 'Incluir Ver más tarde',
-  'home.watchLater.desc': 'Añade tu lista Ver más tarde de YouTube debajo de tus videos guardados.',
+  'home.enabled': 'Página de inicio personalizada',
+  'home.enabled.desc': 'Sustituye el feed predeterminado por tus propias secciones.',
+  'home.showSaved': 'Mostrar videos guardados',
+  'home.showSaved.desc': 'Videos que guardaste en BetterTube.',
+  'home.showWatchLater': 'Mostrar videos de Ver más tarde',
+  'home.showWatchLater.desc': 'Tu lista Ver más tarde de YouTube.',
+  'home.showChannels': 'Mostrar canales guardados',
+  'home.showChannels.desc': 'Canales que guardaste en BetterTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Bloquear Shorts',
@@ -57,9 +65,6 @@ export const es: Messages = {
 
   'saved.title': 'Videos guardados',
 
-  'saved.button.enabled': 'Botón Guardar en los videos',
-  'saved.button.enabled.desc':
-    'Añade un botón Guardar en BetterTube junto a Me gusta en las páginas de video.',
   'saved.empty.title': 'Nada guardado todavía',
   'saved.empty.desc': 'Abre un video en YouTube y pulsa Guardar junto a Me gusta. Aparecerá aquí.',
   'saved.count.one': '{count} video',
@@ -77,12 +82,36 @@ export const es: Messages = {
   'save.button.save.title': 'Guardar en BetterTube',
   'save.button.saved.title': 'Quitar de BetterTube',
 
+  'channels.title': 'Canales guardados',
+  'channels.empty.title': 'Aún no hay canales guardados',
+  'channels.empty.desc':
+    'Abre un canal en YouTube y pulsa Guardar canal en BetterTube junto a Suscribirse. Aparecerá aquí.',
+  'channels.count.one': '{count} canal',
+  'channels.count.other': '{count} canales',
+  'channel.button.save': 'Guardar canal en BetterTube',
+  'channel.button.saved': 'Canal en BetterTube',
+  'channel.button.save.title': 'Guardar canal en BetterTube',
+  'channel.button.saved.title': 'Quitar canal de BetterTube',
+
   'about.title': 'Acerca de',
   'about.description':
     'BetterTube es una extensión de Chrome de código abierto para un mejor YouTube en el escritorio.',
   'about.privacy': 'Todo se queda en tu navegador. No hay cuenta ni servidor.',
   'about.disclaimer': 'Sin afiliación, respaldo ni patrocinio de YouTube o Google.',
   'about.version': 'Versión',
+
+  'customHome.saved.title': 'Videos guardados',
+  'customHome.watchLater.title': 'Ver más tarde',
+  'customHome.channels.title': 'Canales guardados',
+  'customHome.loading': 'Cargando…',
+  'customHome.retry': 'Reintentar',
+  'customHome.saved.empty':
+    'Aún no hay videos guardados. Pulsa Guardar junto a Me gusta en cualquier video.',
+  'customHome.watchLater.empty': 'Tu lista Ver más tarde está vacía.',
+  'customHome.watchLater.error':
+    'No se pudo cargar tu lista Ver más tarde. Comprueba que hayas iniciado sesión en YouTube.',
+  'customHome.channels.empty':
+    'Aún no hay canales guardados. Pulsa Guardar canal en BetterTube junto a Suscribirse.',
 
   'popup.openSettings': 'Abrir ajustes',
 };

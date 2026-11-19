@@ -8,7 +8,9 @@ import {
   ShieldBan,
   SlidersHorizontal,
   Smartphone,
+  Users,
 } from 'lucide-react';
+import { SavedChannelsPanel } from '../../components/saved-channels-panel';
 import { SavedVideosPanel } from '../../components/saved-videos-panel';
 import { PreferenceFields } from '../../components/preference-fields';
 import { RegistrationMark } from '../../components/registration-mark';
@@ -16,7 +18,8 @@ import { SwitchRow } from '../../components/setting-row';
 import { useApp } from '../../lib/app-context';
 import type { MessageKey } from '../../lib/i18n';
 
-type SectionId = 'general' | 'home' | 'shorts' | 'recommendations' | 'ads' | 'saved' | 'about';
+type SectionId =
+  'general' | 'home' | 'shorts' | 'recommendations' | 'ads' | 'saved' | 'channels' | 'about';
 
 const SECTIONS: {
   id: SectionId;
@@ -28,6 +31,7 @@ const SECTIONS: {
   { id: 'recommendations', icon: PanelRightClose },
   { id: 'ads', icon: ShieldBan },
   { id: 'saved', icon: Bookmark },
+  { id: 'channels', icon: Users },
   { id: 'about', icon: Info },
 ];
 
@@ -59,10 +63,10 @@ export default function App() {
 
   // Rail dots show each feature's cue state; sections without a feature get a plain tick.
   const cue: Partial<Record<SectionId, boolean>> = {
-    home: settings.home.enabled,
-    shorts: settings.shorts.enabled,
-    recommendations: settings.recommendations.enabled,
-    ads: settings.ads.enabled,
+    home: settings.enabled && settings.home.enabled,
+    shorts: settings.enabled && settings.shorts.enabled,
+    recommendations: settings.enabled && settings.recommendations.enabled,
+    ads: settings.enabled && settings.ads.enabled,
   };
 
   return (
@@ -116,6 +120,7 @@ function SectionTitle({ children }: { children: ReactNode }) {
 function Section({ id }: { id: SectionId }) {
   const { settings, update, t } = useApp();
   const state = (on: boolean) => t(on ? 'state.on' : 'state.off');
+  const off = !settings.enabled;
 
   switch (id) {
     case 'general':
@@ -123,11 +128,11 @@ function Section({ id }: { id: SectionId }) {
         <section>
           <SectionTitle>{t('general.title')}</SectionTitle>
           <SwitchRow
-            label={t('saved.button.enabled')}
-            description={t('saved.button.enabled.desc')}
-            checked={settings.saveButton.enabled}
-            stateLabel={state(settings.saveButton.enabled)}
-            onChange={(enabled) => update({ saveButton: { enabled } })}
+            label={t('enabled.label')}
+            description={t('enabled.desc')}
+            checked={settings.enabled}
+            stateLabel={state(settings.enabled)}
+            onChange={(enabled) => update({ enabled })}
           />
           <PreferenceFields />
         </section>
@@ -140,18 +145,41 @@ function Section({ id }: { id: SectionId }) {
             label={t('home.enabled')}
             description={t('home.enabled.desc')}
             checked={settings.home.enabled}
+            disabled={off}
             stateLabel={state(settings.home.enabled)}
             onChange={(enabled) => update({ home: { enabled } })}
           />
-          <SwitchRow
-            nested
-            label={t('home.watchLater')}
-            description={t('home.watchLater.desc')}
-            checked={settings.home.showWatchLater}
-            disabled={!settings.home.enabled}
-            stateLabel={state(settings.home.showWatchLater)}
-            onChange={(showWatchLater) => update({ home: { showWatchLater } })}
-          />
+          {settings.home.enabled && (
+            <>
+              <SwitchRow
+                nested
+                label={t('home.showSaved')}
+                description={t('home.showSaved.desc')}
+                checked={settings.home.showSaved}
+                disabled={off}
+                stateLabel={state(settings.home.showSaved)}
+                onChange={(showSaved) => update({ home: { showSaved } })}
+              />
+              <SwitchRow
+                nested
+                label={t('home.showWatchLater')}
+                description={t('home.showWatchLater.desc')}
+                checked={settings.home.showWatchLater}
+                disabled={off}
+                stateLabel={state(settings.home.showWatchLater)}
+                onChange={(showWatchLater) => update({ home: { showWatchLater } })}
+              />
+              <SwitchRow
+                nested
+                label={t('home.showChannels')}
+                description={t('home.showChannels.desc')}
+                checked={settings.home.showChannels}
+                disabled={off}
+                stateLabel={state(settings.home.showChannels)}
+                onChange={(showChannels) => update({ home: { showChannels } })}
+              />
+            </>
+          )}
         </section>
       );
     case 'shorts':
@@ -162,6 +190,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('shorts.enabled')}
             description={t('shorts.enabled.desc')}
             checked={settings.shorts.enabled}
+            disabled={off}
             stateLabel={state(settings.shorts.enabled)}
             onChange={(enabled) => update({ shorts: { enabled } })}
           />
@@ -169,6 +198,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('shorts.redirect')}
             description={t('shorts.redirect.desc')}
             checked={settings.shorts.redirectToWatch}
+            disabled={off}
             stateLabel={state(settings.shorts.redirectToWatch)}
             onChange={(redirectToWatch) => update({ shorts: { redirectToWatch } })}
           />
@@ -182,6 +212,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('recommendations.enabled')}
             description={t('recommendations.enabled.desc')}
             checked={settings.recommendations.enabled}
+            disabled={off}
             stateLabel={state(settings.recommendations.enabled)}
             onChange={(enabled) => update({ recommendations: { enabled } })}
           />
@@ -190,7 +221,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('recommendations.showSaved')}
             description={t('recommendations.showSaved.desc')}
             checked={settings.recommendations.showSaved}
-            disabled={!settings.recommendations.enabled}
+            disabled={off || !settings.recommendations.enabled}
             stateLabel={state(settings.recommendations.showSaved)}
             onChange={(showSaved) => update({ recommendations: { showSaved } })}
           />
@@ -204,6 +235,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('ads.enabled')}
             description={t('ads.enabled.desc')}
             checked={settings.ads.enabled}
+            disabled={off}
             stateLabel={state(settings.ads.enabled)}
             onChange={(enabled) => update({ ads: { enabled } })}
           />
@@ -212,7 +244,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('ads.blockRequests')}
             description={t('ads.blockRequests.desc')}
             checked={settings.ads.blockRequests}
-            disabled={!settings.ads.enabled}
+            disabled={off || !settings.ads.enabled}
             stateLabel={state(settings.ads.blockRequests)}
             onChange={(blockRequests) => update({ ads: { blockRequests } })}
           />
@@ -221,7 +253,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('ads.stripPlayerAds')}
             description={t('ads.stripPlayerAds.desc')}
             checked={settings.ads.stripPlayerAds}
-            disabled={!settings.ads.enabled}
+            disabled={off || !settings.ads.enabled}
             stateLabel={state(settings.ads.stripPlayerAds)}
             onChange={(stripPlayerAds) => update({ ads: { stripPlayerAds } })}
           />
@@ -230,7 +262,7 @@ function Section({ id }: { id: SectionId }) {
             label={t('ads.autoSkip')}
             description={t('ads.autoSkip.desc')}
             checked={settings.ads.autoSkip}
-            disabled={!settings.ads.enabled}
+            disabled={off || !settings.ads.enabled}
             stateLabel={state(settings.ads.autoSkip)}
             onChange={(autoSkip) => update({ ads: { autoSkip } })}
           />
@@ -241,6 +273,13 @@ function Section({ id }: { id: SectionId }) {
         <section>
           <SectionTitle>{t('saved.title')}</SectionTitle>
           <SavedVideosPanel />
+        </section>
+      );
+    case 'channels':
+      return (
+        <section>
+          <SectionTitle>{t('channels.title')}</SectionTitle>
+          <SavedChannelsPanel />
         </section>
       );
     case 'about':

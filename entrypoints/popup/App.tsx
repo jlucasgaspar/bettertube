@@ -7,6 +7,7 @@ import { useApp } from '../../lib/app-context';
 export default function App() {
   const { settings, update, t, loaded } = useApp();
   const state = (on: boolean) => t(on ? 'state.on' : 'state.off');
+  const off = !settings.enabled;
 
   return (
     <div className="w-[22.5rem] px-4 pt-4 pb-4" aria-busy={!loaded}>
@@ -18,22 +19,55 @@ export default function App() {
         <>
           <SwitchRow
             compact
-            label={t('saved.button.enabled')}
-            checked={settings.saveButton.enabled}
-            stateLabel={state(settings.saveButton.enabled)}
-            onChange={(enabled) => update({ saveButton: { enabled } })}
+            label={t('enabled.label')}
+            checked={settings.enabled}
+            stateLabel={state(settings.enabled)}
+            onChange={(enabled) => update({ enabled })}
           />
           <SwitchRow
             compact
             label={t('home.enabled')}
             checked={settings.home.enabled}
+            disabled={off}
             stateLabel={state(settings.home.enabled)}
             onChange={(enabled) => update({ home: { enabled } })}
           />
+          {settings.home.enabled && (
+            <>
+              <SwitchRow
+                compact
+                nested
+                label={t('home.showSaved')}
+                checked={settings.home.showSaved}
+                disabled={off}
+                stateLabel={state(settings.home.showSaved)}
+                onChange={(showSaved) => update({ home: { showSaved } })}
+              />
+              <SwitchRow
+                compact
+                nested
+                label={t('home.showWatchLater')}
+                checked={settings.home.showWatchLater}
+                disabled={off}
+                stateLabel={state(settings.home.showWatchLater)}
+                onChange={(showWatchLater) => update({ home: { showWatchLater } })}
+              />
+              <SwitchRow
+                compact
+                nested
+                label={t('home.showChannels')}
+                checked={settings.home.showChannels}
+                disabled={off}
+                stateLabel={state(settings.home.showChannels)}
+                onChange={(showChannels) => update({ home: { showChannels } })}
+              />
+            </>
+          )}
           <SwitchRow
             compact
             label={t('shorts.enabled')}
             checked={settings.shorts.enabled}
+            disabled={off}
             stateLabel={state(settings.shorts.enabled)}
             onChange={(enabled) => update({ shorts: { enabled } })}
           />
@@ -41,6 +75,7 @@ export default function App() {
             compact
             label={t('recommendations.enabled')}
             checked={settings.recommendations.enabled}
+            disabled={off}
             stateLabel={state(settings.recommendations.enabled)}
             onChange={(enabled) => update({ recommendations: { enabled } })}
           />
@@ -48,6 +83,7 @@ export default function App() {
             compact
             label={t('ads.enabled')}
             checked={settings.ads.enabled}
+            disabled={off}
             stateLabel={state(settings.ads.enabled)}
             onChange={(enabled) => update({ ads: { enabled } })}
           />

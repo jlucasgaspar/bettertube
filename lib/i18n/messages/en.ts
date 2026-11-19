@@ -9,6 +9,7 @@ export const en = {
   'nav.recommendations': 'Recommendations',
   'nav.ads': 'Ads',
   'nav.saved': 'Saved videos',
+  'nav.channels': 'Saved channels',
   'nav.about': 'About',
 
   'state.on': 'On',
@@ -24,11 +25,18 @@ export const en = {
   'theme.light': 'Light',
   'theme.dark': 'Dark',
 
+  'enabled.label': 'Enable',
+  'enabled.desc': 'Master switch. When off, YouTube looks and works as usual.',
+
   'home.title': 'Home',
-  'home.enabled': 'Home with my saved videos',
-  'home.enabled.desc': 'Show your saved videos instead of the default feed.',
-  'home.watchLater': 'Include Watch Later',
-  'home.watchLater.desc': 'Add your YouTube Watch Later list below your saved videos.',
+  'home.enabled': 'Custom Home Page',
+  'home.enabled.desc': 'Replace the default feed with your own sections.',
+  'home.showSaved': 'Show saved videos',
+  'home.showSaved.desc': 'Videos you saved with BetterTube.',
+  'home.showWatchLater': 'Show watch later videos',
+  'home.showWatchLater.desc': 'Your YouTube Watch Later list.',
+  'home.showChannels': 'Show saved channels',
+  'home.showChannels.desc': 'Channels you saved with BetterTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Block Shorts',
@@ -54,8 +62,6 @@ export const en = {
 
   'saved.title': 'Saved videos',
 
-  'saved.button.enabled': 'Save button on videos',
-  'saved.button.enabled.desc': 'Adds a Save to BetterTube button next to Like on video pages.',
   'saved.empty.title': 'Nothing saved yet',
   'saved.empty.desc': 'Open a video on YouTube and press Save next to Like. It will show up here.',
   'saved.count.one': '{count} video',
@@ -73,12 +79,35 @@ export const en = {
   'save.button.save.title': 'Save to BetterTube',
   'save.button.saved.title': 'Remove from BetterTube',
 
+  'channels.title': 'Saved channels',
+  'channels.empty.title': 'No channels saved yet',
+  'channels.empty.desc':
+    'Open a channel on YouTube and press Save channel to BetterTube next to Subscribe. It will show up here.',
+  'channels.count.one': '{count} channel',
+  'channels.count.other': '{count} channels',
+  'channel.button.save': 'Save channel to BetterTube',
+  'channel.button.saved': 'Channel in BetterTube',
+  'channel.button.save.title': 'Save channel to BetterTube',
+  'channel.button.saved.title': 'Remove channel from BetterTube',
+
   'about.title': 'About',
   'about.description':
     'BetterTube is an open source Chrome extension for a better YouTube on desktop.',
   'about.privacy': 'Everything stays in your browser. There is no account and no server.',
   'about.disclaimer': 'Not affiliated with, endorsed by or sponsored by YouTube or Google.',
   'about.version': 'Version',
+
+  'customHome.saved.title': 'Saved videos',
+  'customHome.watchLater.title': 'Watch Later',
+  'customHome.channels.title': 'Saved channels',
+  'customHome.loading': 'Loading…',
+  'customHome.retry': 'Try again',
+  'customHome.saved.empty': 'No saved videos yet. Press Save next to Like on any video.',
+  'customHome.watchLater.empty': 'Your Watch Later list is empty.',
+  'customHome.watchLater.error':
+    'Could not load your Watch Later list. Make sure you are signed in to YouTube.',
+  'customHome.channels.empty':
+    'No saved channels yet. Press Save channel to BetterTube next to Subscribe.',
 
   'popup.openSettings': 'Open settings',
 } as const;
