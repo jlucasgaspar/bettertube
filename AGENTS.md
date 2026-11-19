@@ -15,6 +15,13 @@ Instructions for AI coding agents working on BetterTube. `CLAUDE.md` is a symlin
 - Chat with José: Brazilian Portuguese (keep technical terms in English).
 - Extension UI strings go through i18n (`en`, `pt_BR`, `es`, `fr`, `it`, `de`). No hardcoded user-facing text.
 
+## Branches and pull requests
+
+- Every change goes on a new branch (`feat-...`, `fix-...`, `docs-...`) created from an up-to-date `main`.
+- Commit, push the branch, then give José the pull request link: `https://github.com/jlucasgaspar/bettertube/pull/new/<branch>`.
+- **Never merge.** Do not merge into `main`, do not push to `main`, do not open and merge a PR. José reviews and merges.
+- Never mark a task or milestone `done` in `specs.md` as part of a merge. See Workflow.
+
 ## Commits
 
 - Run `pnpm check` before every commit (format, lint, typecheck, tests).
