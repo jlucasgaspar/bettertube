@@ -17,7 +17,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M4        | Custom home               | in-progress |
 | M5        | Shorts blocking           | done        |
 | M6        | Recommendations control   | in-progress |
-| M7        | Ad handling               | in-progress |
+| M7        | Ad handling               | done        |
 | M8        | Polish & release          | todo        |
 
 Milestones are executed one at a time, only when José asks.
