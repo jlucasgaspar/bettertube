@@ -208,9 +208,9 @@ Outlined only: transparent fill, 1px Strong Hairline, 4px radius, 14px/500 label
 
 A vertical list on desktop, with a 1px Strong Hairline connector at 28px from the left running through every stop behind the dots. Each item: cue dot or tick, 16px icon, 14px label, 4px radius. Inactive: Leader Gray, ink on hover. Current: Surface fill and bold (700). No numerals, no accent color for current; current is carried by fill and weight.
 
-### Registration Mark
+### Brand Mark
 
-Ring, crosshair and accent center dot. Used once per surface, beside the wordmark.
+A white shield holding a play button, on a 28px-radius Cue Red tile. Shield means control and protection, play means YouTube. The same art ships as the toolbar and store icon (`assets/logo.svg`, PNGs in `public/icon`). Used once per surface, beside the wordmark. Fixed colors on every theme: the tile is always the accent.
 
 ### Motion
 

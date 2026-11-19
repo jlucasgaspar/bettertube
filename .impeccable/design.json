@@ -316,11 +316,11 @@
       "css": ".ds-rail{display:flex;flex-direction:column;gap:4px;width:13rem;font-family:Barlow,system-ui,sans-serif;font-size:.875rem}.ds-item{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;color:#5f5755}.ds-item:hover{color:#1a1514}.ds-current{background:#ffffff;color:#1a1514;font-weight:700}.ds-cue{width:.5rem;height:.5rem;border:1px solid #857d7a;border-radius:999px;background:#faf8f7}.ds-cue.ds-on{background:#d93a22;border-color:#d93a22}.ds-tick{position:relative;width:.5rem;height:.5rem}.ds-tick::after{content:'';position:absolute;top:50%;left:0;width:100%;height:1px;background:#857d7a}"
     },
     {
-      "name": "Registration Mark",
+      "name": "Brand Mark",
       "kind": "custom",
       "refersTo": "cue-dot",
-      "description": "Ring and crosshair with accent center; the one authored mark.",
-      "html": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" style=\"color:#1a1514\"><circle cx=\"14\" cy=\"14\" r=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M14 1v26M1 14h26\" stroke=\"currentColor\" stroke-width=\"1.5\"/><circle cx=\"14\" cy=\"14\" r=\"3\" fill=\"#d93a22\"/></svg>",
+      "description": "White shield holding a play button on the accent tile; the one authored mark.",
+      "html": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 128 128\"><rect width=\"128\" height=\"128\" rx=\"28\" fill=\"#d93a22\"/><path d=\"M64 16L104 30V62C104 86 88 102 64 112C40 102 24 86 24 62V30Z\" fill=\"#fff\"/><path d=\"M54 46v36l30-18z\" fill=\"#d93a22\"/></svg>",
       "css": ""
     }
   ],
