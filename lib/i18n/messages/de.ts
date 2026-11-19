@@ -117,6 +117,8 @@ export const de: Messages = {
   'customHome.retry': 'Erneut versuchen',
   'customHome.menu.open': 'Weitere Optionen',
   'customHome.menu.remove': 'Entfernen',
+  'customHome.watchLater.removeError':
+    'Konnte nicht aus „Später ansehen“ entfernt werden. Es wurde nichts geändert.',
   'customHome.scroll.prev': 'Nach links scrollen',
   'customHome.scroll.next': 'Nach rechts scrollen',
   'customHome.saved.empty':

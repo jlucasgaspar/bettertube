@@ -111,6 +111,7 @@ export const en = {
   'customHome.retry': 'Try again',
   'customHome.menu.open': 'More options',
   'customHome.menu.remove': 'Remove',
+  'customHome.watchLater.removeError': 'Could not remove it from Watch Later. Nothing was changed.',
   'customHome.scroll.prev': 'Scroll left',
   'customHome.scroll.next': 'Scroll right',
   'customHome.saved.empty': 'No saved videos yet. Press Save next to Like on any video.',

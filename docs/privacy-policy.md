@@ -28,6 +28,8 @@ You can delete all of this by removing the saved items in the options page, or b
 
 If you enable the Watch Later section, BetterTube requests your Watch Later playlist from youtube.com using your existing YouTube session, from the page you are already on. The result is shown on screen and is not stored or sent anywhere else.
 
+If you choose **Remove** on a Watch Later video, BetterTube sends that request to youtube.com, with your session, to remove the video from your Watch Later playlist on your YouTube account. It is the same action as removing it on YouTube itself, and nothing is sent to any other server.
+
 ## Remote code
 
 BetterTube does not load or run remote code. All code ships inside the extension package.

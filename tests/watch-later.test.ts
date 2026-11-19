@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { WatchLaterError, fetchWatchLater, parseWatchLater } from '../lib/youtube/watch-later';
+import {
+  WatchLaterError,
+  fetchWatchLater,
+  parseWatchLater,
+  removeFromWatchLater,
+} from '../lib/youtube/watch-later';
 
 const page = (data: unknown) =>
   `<html><script nonce="x">var ytInitialData = ${JSON.stringify(data)};</script></html>`;
@@ -63,5 +68,58 @@ describe('fetchWatchLater', () => {
   it('throws on a failed request', async () => {
     const fetcher = (async () => new Response('', { status: 500 })) as unknown as typeof fetch;
     await expect(fetchWatchLater(fetcher)).rejects.toThrow(WatchLaterError);
+  });
+});
+
+describe('removeFromWatchLater', () => {
+  const pageText =
+    '{"INNERTUBE_API_KEY":"KEY123","INNERTUBE_CLIENT_NAME":"WEB","INNERTUBE_CLIENT_VERSION":"2.20990101.00.00"}';
+  const options = {
+    pageText,
+    cookie: 'a=1; SAPISID=secret; b=2',
+    origin: 'https://www.youtube.com',
+    nowSeconds: 1000,
+  };
+
+  it('asks YouTube to remove the video from the WL playlist, signed with the session', async () => {
+    let seen: { url: string; init: RequestInit } | undefined;
+    const fetcher = (async (url: string, init: RequestInit) => {
+      seen = { url, init };
+      return new Response(JSON.stringify({ status: 'STATUS_SUCCEEDED' }));
+    }) as unknown as typeof fetch;
+    await removeFromWatchLater('vid00000001', { ...options, fetcher });
+    expect(seen?.url).toBe('/youtubei/v1/browse/edit_playlist?key=KEY123&prettyPrint=false');
+    expect(seen?.init.method).toBe('POST');
+    expect(JSON.parse(seen?.init.body as string)).toEqual({
+      context: { client: { clientName: 'WEB', clientVersion: '2.20990101.00.00' } },
+      playlistId: 'WL',
+      actions: [{ action: 'ACTION_REMOVE_VIDEO_BY_VIDEO_ID', removedVideoId: 'vid00000001' }],
+    });
+    const headers = seen?.init.headers as Record<string, string>;
+    expect(headers.Authorization).toMatch(/^SAPISIDHASH 1000_[0-9a-f]{40}$/);
+    expect(headers['X-Origin']).toBe('https://www.youtube.com');
+  });
+
+  it('throws when YouTube refuses or does not confirm', async () => {
+    const reply = (body: BodyInit, status = 200) =>
+      (async () => new Response(body, { status })) as unknown as typeof fetch;
+    await expect(
+      removeFromWatchLater('x', { ...options, fetcher: reply('{}', 403) }),
+    ).rejects.toThrow(WatchLaterError);
+    await expect(
+      removeFromWatchLater('x', { ...options, fetcher: reply('{"status":"STATUS_FAILED"}') }),
+    ).rejects.toThrow(WatchLaterError);
+  });
+
+  it('throws before any request when signed out or the page config is missing', async () => {
+    const fetcher = (async () => {
+      throw new Error('should not be called');
+    }) as unknown as typeof fetch;
+    await expect(removeFromWatchLater('x', { ...options, cookie: 'a=1', fetcher })).rejects.toThrow(
+      'Not signed in',
+    );
+    await expect(removeFromWatchLater('x', { ...options, pageText: '', fetcher })).rejects.toThrow(
+      WatchLaterError,
+    );
   });
 });
