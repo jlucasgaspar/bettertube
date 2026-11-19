@@ -170,7 +170,6 @@ Tasks:
 - [x] Section 2: YouTube Watch Later via adapter (see decisions)
 - [x] Section 3: BetterTube saved channels (data from M3)
 - [x] Loading, empty and error states; graceful fallback when the adapter breaks
-- [ ] Videos and channels open without a full page reload. Not done: cards are plain links today (full navigation). Needs a MAIN-world bridge to YouTube's router.
 
 Acceptance: toggling `enabled` off removes all injected UI without a reload and the migration is unit tested; save/unsave of channels survives navigation and reloads; home shows each enabled section independently; disabling "Custom Home Page" restores stock YouTube.
 
@@ -244,4 +243,5 @@ Not scheduled. Promote to a milestone when José approves.
 - Tags or folders for saved videos
 - Sync saved list across devices (`storage.sync` subset or file-based)
 - Settings export/import
+- Custom home: open videos and channels without a full page reload. Cards are plain links today (full navigation). Needs a MAIN-world bridge to YouTube's router. Moved out of M4.
 - Docs site built with MDX
