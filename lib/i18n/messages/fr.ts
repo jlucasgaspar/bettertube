@@ -117,6 +117,8 @@ export const fr: Messages = {
   'customHome.channels.title': 'Chaînes enregistrées',
   'customHome.loading': 'Chargement…',
   'customHome.retry': 'Réessayer',
+  'customHome.showMore': 'Afficher plus',
+  'customHome.showLess': 'Afficher moins',
   'customHome.menu.open': 'Plus d’options',
   'customHome.menu.remove': 'Retirer',
   'customHome.order.label': 'Trier par',

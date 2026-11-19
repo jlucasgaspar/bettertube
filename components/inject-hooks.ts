@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { resolveLocale } from '../lib/i18n';
+import { getSavedChannels, watchSavedChannels, type SavedChannel } from '../lib/saved-channels';
+import { getSavedVideos, watchSavedVideos, type SavedVideo } from '../lib/saved-videos';
 import { DEFAULT_SETTINGS, getSettings, watchSettings, type Settings } from '../lib/settings';
 
 // Hooks shared by the UI BetterTube injects into YouTube pages.
@@ -39,3 +41,25 @@ export function useSettings(): Settings {
 export function useLocale() {
   return resolveLocale(useSettings().locale, navigator.language);
 }
+
+/** A list kept in browser storage, loaded once and then live. `undefined` while loading. */
+function useStoredList<T>(
+  read: () => Promise<T[]>,
+  watch: (callback: (list: T[]) => void) => () => void,
+): T[] | undefined {
+  const [list, setList] = useState<T[] | undefined>();
+  useEffect(() => {
+    let active = true;
+    void read().then((value) => active && setList(value));
+    const stop = watch((value) => setList(value));
+    return () => {
+      active = false;
+      stop();
+    };
+  }, [read, watch]);
+  return list;
+}
+
+export const useSavedVideoList = () => useStoredList<SavedVideo>(getSavedVideos, watchSavedVideos);
+export const useSavedChannelList = () =>
+  useStoredList<SavedChannel>(getSavedChannels, watchSavedChannels);

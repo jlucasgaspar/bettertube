@@ -51,7 +51,8 @@ export const it: Messages = {
   'recommendations.enabled': 'Nascondi i video suggeriti',
   'recommendations.enabled.desc': 'Rimuove i video suggeriti accanto e dopo il video che guardi.',
   'recommendations.showSaved': 'Mostra invece i video salvati',
-  'recommendations.showSaved.desc': 'Riempie lo spazio vuoto con i video che hai salvato.',
+  'recommendations.showSaved.desc':
+    'Riempie lo spazio vuoto con i tuoi video salvati, Guarda più tardi e i canali salvati.',
 
   'ads.title': 'Annunci',
   'ads.enabled': 'Blocca gli annunci',
@@ -114,6 +115,8 @@ export const it: Messages = {
   'customHome.channels.title': 'Canali salvati',
   'customHome.loading': 'Caricamento…',
   'customHome.retry': 'Riprova',
+  'customHome.showMore': 'Mostra altro',
+  'customHome.showLess': 'Mostra meno',
   'customHome.menu.open': 'Altre opzioni',
   'customHome.menu.remove': 'Rimuovi',
   'customHome.order.label': 'Ordina per',

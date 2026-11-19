@@ -1,19 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { resolveLocale, translate, type MessageKey } from '../lib/i18n';
-import {
-  channelUrl,
-  getSavedChannels,
-  unsaveChannel,
-  watchSavedChannels,
-  type SavedChannel,
-} from '../lib/saved-channels';
-import {
-  getSavedVideos,
-  unsaveVideo,
-  watchSavedVideos,
-  type SavedVideo,
-} from '../lib/saved-videos';
+import { channelUrl, unsaveChannel } from '../lib/saved-channels';
+import { unsaveVideo } from '../lib/saved-videos';
 import {
   fetchWatchLater,
   removeFromWatchLater,
@@ -30,7 +19,7 @@ import {
   type HomeOrderSettings,
 } from '../lib/home-order';
 import { Carousel, CardMenu, HOME_CAROUSEL_CSS } from './home-carousel';
-import { usePageTheme, useSettings } from './inject-hooks';
+import { usePageTheme, useSavedChannelList, useSavedVideoList, useSettings } from './inject-hooks';
 
 /**
  * Styles for the shadow root. YouTube's own CSS variables do not reach the shadow root reliably,
@@ -218,16 +207,7 @@ function VideoRow({
 
 function SavedVideosSection({ t }: { t: Translate }) {
   const order = useHomeOrder();
-  const [videos, setVideos] = useState<SavedVideo[] | undefined>();
-  useEffect(() => {
-    let active = true;
-    void getSavedVideos().then((list) => active && setVideos(list));
-    const stop = watchSavedVideos((list) => setVideos(list));
-    return () => {
-      active = false;
-      stop();
-    };
-  }, []);
+  const videos = useSavedVideoList();
 
   return (
     <Section
@@ -336,16 +316,7 @@ function WatchLaterSection({ t }: { t: Translate }) {
 
 function SavedChannelsSection({ t }: { t: Translate }) {
   const order = useHomeOrder();
-  const [channels, setChannels] = useState<SavedChannel[] | undefined>();
-  useEffect(() => {
-    let active = true;
-    void getSavedChannels().then((list) => active && setChannels(list));
-    const stop = watchSavedChannels((list) => setChannels(list));
-    return () => {
-      active = false;
-      stop();
-    };
-  }, []);
+  const channels = useSavedChannelList();
 
   return (
     <Section
