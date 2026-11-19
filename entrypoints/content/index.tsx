@@ -8,6 +8,7 @@ import { createPageMount } from '../../lib/youtube/mount';
 import { onNavigate } from '../../lib/youtube/navigation';
 import type { PageType } from '../../lib/youtube/page-type';
 import { selectors } from '../../lib/youtube/selectors';
+import { shortsToWatchUrl } from '../../lib/youtube/shorts';
 
 /** The custom home needs the switch on and at least one section to show. */
 function customHomeActive({ enabled, home }: Settings): boolean {
@@ -65,6 +66,12 @@ export default defineContentScript({
     });
     const homeFeedHider = createHider('bettertube-hide-home-feed', selectors.homeFeed);
 
+    const shortsFeedHider = createHider('bettertube-hide-shorts-feed', selectors.shortsFeed);
+    const shortsGuideHider = createHider(
+      'bettertube-hide-shorts-guide',
+      selectors.shortsGuideEntry,
+    );
+
     // Every feature needs the master switch on, its own setting, and a page that allows it.
     let pageType: PageType = 'other';
     let settings = await getSettings();
@@ -75,6 +82,14 @@ export default defineContentScript({
       const home = customHomeActive(settings);
       customHome.update(home ? pageType : 'other');
       homeFeedHider.set(home && pageType === 'home');
+
+      const blockShorts = on && settings.shorts.enabled;
+      shortsFeedHider.set(blockShorts);
+      shortsGuideHider.set(blockShorts);
+      if (on && settings.shorts.redirectToWatch && pageType === 'shorts') {
+        const target = shortsToWatchUrl(location.href);
+        if (target) location.replace(target);
+      }
     };
 
     const stopNavigation = onNavigate((info) => {
@@ -92,6 +107,8 @@ export default defineContentScript({
       saveChannelButton.dispose();
       customHome.dispose();
       homeFeedHider.set(false);
+      shortsFeedHider.set(false);
+      shortsGuideHider.set(false);
     });
   },
 });
