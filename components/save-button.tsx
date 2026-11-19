@@ -1,10 +1,10 @@
 import { Bookmark } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { resolveLocale, translate, type MessageKey } from '../lib/i18n';
+import { translate, type MessageKey } from '../lib/i18n';
 import { getSavedVideos, saveVideo, unsaveVideo, watchSavedVideos } from '../lib/saved-videos';
-import { DEFAULT_SETTINGS, getSettings, watchSettings } from '../lib/settings';
 import { events } from '../lib/youtube/selectors';
 import { currentVideoId, readVideo } from '../lib/youtube/video';
+import { useLocale, usePageTheme } from './inject-hooks';
 
 /**
  * Styles for the shadow root. YouTube's own CSS variables do not reach the shadow root reliably,
@@ -32,37 +32,6 @@ export const SAVE_BUTTON_CSS = `
   button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
   svg { flex: none; }
 `;
-
-type PageTheme = 'light' | 'dark';
-
-/** YouTube marks its dark theme with a `dark` attribute on <html>, whatever the OS says. */
-function readPageTheme(): PageTheme {
-  return document.documentElement.hasAttribute('dark') ? 'dark' : 'light';
-}
-
-function usePageTheme() {
-  const [theme, setTheme] = useState(readPageTheme);
-  useEffect(() => {
-    const observer = new MutationObserver(() => setTheme(readPageTheme()));
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dark'] });
-    return () => observer.disconnect();
-  }, []);
-  return theme;
-}
-
-function useLocale() {
-  const [setting, setSetting] = useState(DEFAULT_SETTINGS.locale);
-  useEffect(() => {
-    let active = true;
-    void getSettings().then((settings) => active && setSetting(settings.locale));
-    const stop = watchSettings((settings) => setSetting(settings.locale));
-    return () => {
-      active = false;
-      stop();
-    };
-  }, []);
-  return resolveLocale(setting, navigator.language);
-}
 
 /** The video on screen. YouTube reuses the action bar across videos, so follow navigation. */
 function useVideoId() {

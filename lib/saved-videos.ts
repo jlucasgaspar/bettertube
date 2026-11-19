@@ -50,16 +50,20 @@ export function normalizeList(stored: unknown): SavedVideo[] {
 }
 
 /** Newest first. Saving an already saved video keeps its place. */
-export function addToList(list: SavedVideo[], video: SavedVideo): SavedVideo[] {
-  return list.some((item) => item.id === video.id) ? list : [video, ...list];
+export function addToList<T extends { id: string }>(list: T[], entry: T): T[] {
+  return list.some((item) => item.id === entry.id) ? list : [entry, ...list];
 }
 
-export function removeFromList(list: SavedVideo[], id: string): SavedVideo[] {
+export function removeFromList<T extends { id: string }>(list: T[], id: string): T[] {
   return list.filter((item) => item.id !== id);
 }
 
 /** Move an item one step; out-of-range moves return the list unchanged. */
-export function moveInList(list: SavedVideo[], id: string, direction: -1 | 1): SavedVideo[] {
+export function moveInList<T extends { id: string }>(
+  list: T[],
+  id: string,
+  direction: -1 | 1,
+): T[] {
   const from = list.findIndex((item) => item.id === id);
   const to = from + direction;
   if (from === -1 || to < 0 || to >= list.length) return list;
