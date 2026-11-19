@@ -14,7 +14,11 @@ import {
   watchSavedVideos,
   type SavedVideo,
 } from '../lib/saved-videos';
-import { fetchWatchLater, type WatchLaterVideo } from '../lib/youtube/watch-later';
+import {
+  fetchWatchLater,
+  removeFromWatchLater,
+  type WatchLaterVideo,
+} from '../lib/youtube/watch-later';
 import { Carousel, CardMenu, HOME_CAROUSEL_CSS } from './home-carousel';
 import { usePageTheme, useSettings } from './inject-hooks';
 
@@ -110,7 +114,7 @@ function VideoRow({
 }: {
   videos: Card[];
   t: Translate;
-  /** Only for lists BetterTube owns. Watch Later belongs to YouTube, so it has no menu. */
+  /** Adds the three-dots menu to each card. */
   onRemove?: (id: string) => void;
 }) {
   return (
@@ -167,6 +171,7 @@ function WatchLaterSection({ t }: { t: Translate }) {
   const [state, setState] = useState<WatchLaterState>({ status: 'loading' });
 
   const [attempt, setAttempt] = useState(0);
+  const [removeFailed, setRemoveFailed] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -184,8 +189,27 @@ function WatchLaterSection({ t }: { t: Translate }) {
     setAttempt((count) => count + 1);
   };
 
+  /** Hide the card right away, ask YouTube, and reload the real list if YouTube says no. */
+  const remove = (id: string) => {
+    setRemoveFailed(false);
+    setState((current) =>
+      current.status === 'ready'
+        ? { status: 'ready', videos: current.videos.filter((video) => video.id !== id) }
+        : current,
+    );
+    removeFromWatchLater(id).catch(() => {
+      setRemoveFailed(true);
+      setAttempt((count) => count + 1);
+    });
+  };
+
   return (
     <Section title={t('customHome.watchLater.title')}>
+      {removeFailed && (
+        <p className="state" role="alert">
+          {t('customHome.watchLater.removeError')}
+        </p>
+      )}
       {state.status === 'loading' && <p className="state">{t('customHome.loading')}</p>}
       {state.status === 'error' && (
         <div>
@@ -201,7 +225,7 @@ function WatchLaterSection({ t }: { t: Translate }) {
         (state.videos.length === 0 ? (
           <p className="state">{t('customHome.watchLater.empty')}</p>
         ) : (
-          <VideoRow videos={state.videos} t={t} />
+          <VideoRow videos={state.videos} t={t} onRemove={remove} />
         ))}
     </Section>
   );

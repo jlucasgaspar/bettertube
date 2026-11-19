@@ -119,6 +119,8 @@ export const fr: Messages = {
   'customHome.retry': 'Réessayer',
   'customHome.menu.open': 'Plus d’options',
   'customHome.menu.remove': 'Retirer',
+  'customHome.watchLater.removeError':
+    'Impossible de retirer la vidéo de À regarder plus tard. Rien n’a été modifié.',
   'customHome.scroll.prev': 'Défiler vers la gauche',
   'customHome.scroll.next': 'Défiler vers la droite',
   'customHome.saved.empty':

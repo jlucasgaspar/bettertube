@@ -114,6 +114,7 @@ export const es: Messages = {
   'customHome.retry': 'Reintentar',
   'customHome.menu.open': 'Más opciones',
   'customHome.menu.remove': 'Quitar',
+  'customHome.watchLater.removeError': 'No se pudo quitar de Ver más tarde. No se cambió nada.',
   'customHome.scroll.prev': 'Desplazar a la izquierda',
   'customHome.scroll.next': 'Desplazar a la derecha',
   'customHome.saved.empty':

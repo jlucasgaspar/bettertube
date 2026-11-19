@@ -116,6 +116,8 @@ export const it: Messages = {
   'customHome.retry': 'Riprova',
   'customHome.menu.open': 'Altre opzioni',
   'customHome.menu.remove': 'Rimuovi',
+  'customHome.watchLater.removeError':
+    'Impossibile rimuovere da Guarda più tardi. Non è stato modificato nulla.',
   'customHome.scroll.prev': 'Scorri a sinistra',
   'customHome.scroll.next': 'Scorri a destra',
   'customHome.saved.empty':
