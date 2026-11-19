@@ -18,7 +18,8 @@ Status values: `todo` · `in-progress` · `done`.
 | M5        | Shorts blocking           | done        |
 | M6        | Recommendations control   | in-progress |
 | M7        | Ad handling               | done        |
-| M8        | Polish & release          | todo        |
+| M8        | Polish                    | in-progress |
+| M9        | Release                   | todo        |
 
 Milestones are executed one at a time, only when José asks.
 
@@ -85,7 +86,7 @@ Layered, each layer toggleable:
 2. MAIN-world script stripping `adPlacements` / `playerAds` from the player response (most effective, most brittle).
 3. Fallback: detect `.ad-showing`, mute, speed up, click "Skip ad" when available, restore player state after.
 
-Risks: YouTube anti-adblock detection and Chrome Web Store policy. Revisit before M8.
+Risks: YouTube anti-adblock detection and Chrome Web Store policy. Revisit before M9.
 
 ### YouTube SPA handling
 
@@ -204,15 +205,24 @@ Tasks:
 
 Acceptance: with all layers off, stock behavior; each layer verifiable on its own.
 
-### M8 — Polish & release
+### M8 — Polish
 
 Tasks:
 
-- [ ] Accessibility pass (keyboard, contrast, ARIA)
-- [ ] Performance budget (content script cost, bundle size)
-- [ ] impeccable audit/polish pass
-- [ ] Store assets, screenshots, privacy policy
-- [ ] Chrome Web Store submission, v1.0.0
+- [x] Accessibility pass (keyboard, contrast, ARIA). Contrast tokens locked by `tests/contrast.test.ts`; dark `--line-strong` raised to `#787070` (control borders were 2.9:1 on surface).
+- [x] Performance budget (content script cost, bundle size): `pnpm budget` checks the build against limits in `scripts/check-budget.mjs`.
+- [x] impeccable audit pass (no blockers)
+- [x] impeccable polish pass (Ads counter title size fixed; popup and options checked in light/dark, en/de, desktop and mobile)
+
+### M9 — Release
+
+Tasks:
+
+- [ ] Review the ad handling policy risk for the Chrome Web Store (see Ads section)
+- [ ] Store assets: screenshots (1280x800), small promo tile (440x280), optional marquee. Listing copy is drafted in `docs/store-listing.md`
+- [ ] Privacy policy: text is in `docs/privacy-policy.md`; host it at a public URL
+- [ ] Bump `version` to `1.0.0`, run `pnpm check`, `pnpm build`, `pnpm budget`, `pnpm test:e2e`
+- [ ] Chrome Web Store submission and `v1.0.0` tag
 
 ---
 
