@@ -54,10 +54,12 @@ interface CarouselProps {
   nextLabel: string;
   /** Rows without a thumbnail (channels): center the arrows on the row. */
   compact?: boolean;
+  /** When this value changes the row jumps back to its start, for example after a new sort order. */
+  resetKey?: string;
 }
 
 /** A horizontal row that scrolls sideways, with arrows that appear only when there is more to see. */
-export function Carousel({ children, prevLabel, nextLabel, compact }: CarouselProps) {
+export function Carousel({ children, prevLabel, nextLabel, compact, resetKey }: CarouselProps) {
   const rail = useRef<HTMLUListElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -81,6 +83,10 @@ export function Carousel({ children, prevLabel, nextLabel, compact }: CarouselPr
       mutations.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    rail.current?.scrollTo({ left: 0 });
+  }, [resetKey]);
 
   const scrollBy = (direction: -1 | 1) => {
     const element = rail.current;
