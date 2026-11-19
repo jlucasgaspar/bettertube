@@ -21,6 +21,28 @@ export const selectors = {
   pageManager: 'ytd-page-manager',
   /** Sidebar guide entries. */
   guideEntries: 'ytd-guide-entry-renderer',
+  /**
+   * Shorts shelves and Shorts items in feeds (home, search, subscriptions, watch next): dedicated
+   * shelf renderers, their section wrappers, and any video card linking to a Short.
+   */
+  shortsFeed: [
+    'ytd-reel-shelf-renderer',
+    'ytd-rich-shelf-renderer[is-shorts]',
+    'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts])',
+    'ytd-rich-section-renderer:has(ytd-reel-shelf-renderer)',
+    'ytd-rich-item-renderer:has(a[href^="/shorts/"])',
+    'ytd-video-renderer:has(a[href^="/shorts/"])',
+    'ytd-grid-video-renderer:has(a[href^="/shorts/"])',
+    'ytd-compact-video-renderer:has(a[href^="/shorts/"])',
+    'grid-shelf-view-model:has(a[href^="/shorts/"])',
+    'yt-lockup-view-model:has(a[href^="/shorts/"])',
+  ].join(', '),
+  /** Shorts entry in the expanded sidebar and in the collapsed mini sidebar. */
+  shortsGuideEntry: [
+    'ytd-guide-entry-renderer:has(a[href^="/shorts"])',
+    'ytd-mini-guide-entry-renderer:has(a[href^="/shorts"])',
+    'ytd-mini-guide-entry-renderer[aria-label="Shorts"]',
+  ].join(', '),
 } as const;
 
 export type SelectorKey = keyof typeof selectors;
