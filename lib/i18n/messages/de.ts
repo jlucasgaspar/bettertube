@@ -11,6 +11,7 @@ export const de: Messages = {
   'nav.recommendations': 'Empfehlungen',
   'nav.ads': 'Werbung',
   'nav.saved': 'Gespeicherte Videos',
+  'nav.channels': 'Gespeicherte Kanäle',
   'nav.about': 'Über',
 
   'state.on': 'An',
@@ -26,12 +27,18 @@ export const de: Messages = {
   'theme.light': 'Hell',
   'theme.dark': 'Dunkel',
 
+  'enabled.label': 'Aktivieren',
+  'enabled.desc': 'Hauptschalter. Ist er aus, sieht YouTube aus und funktioniert wie gewohnt.',
+
   'home.title': 'Startseite',
-  'home.enabled': 'Startseite mit meinen gespeicherten Videos',
-  'home.enabled.desc': 'Zeigt deine gespeicherten Videos statt des Standard-Feeds.',
-  'home.watchLater': 'Später ansehen einbeziehen',
-  'home.watchLater.desc':
-    'Fügt deine YouTube-Liste „Später ansehen“ unter deinen gespeicherten Videos hinzu.',
+  'home.enabled': 'Eigene Startseite',
+  'home.enabled.desc': 'Ersetzt den Standard-Feed durch deine eigenen Bereiche.',
+  'home.showSaved': 'Gespeicherte Videos anzeigen',
+  'home.showSaved.desc': 'Videos, die du in BetterTube gespeichert hast.',
+  'home.showWatchLater': 'Videos aus „Später ansehen“ anzeigen',
+  'home.showWatchLater.desc': 'Deine YouTube-Liste „Später ansehen“.',
+  'home.showChannels': 'Gespeicherte Kanäle anzeigen',
+  'home.showChannels.desc': 'Kanäle, die du in BetterTube gespeichert hast.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Shorts blockieren',
@@ -59,9 +66,6 @@ export const de: Messages = {
 
   'saved.title': 'Gespeicherte Videos',
 
-  'saved.button.enabled': 'Speichern-Button bei Videos',
-  'saved.button.enabled.desc':
-    'Fügt auf Videoseiten neben „Gefällt mir“ einen Button „In BetterTube speichern“ hinzu.',
   'saved.empty.title': 'Noch nichts gespeichert',
   'saved.empty.desc':
     'Öffne ein Video auf YouTube und klicke neben „Gefällt mir“ auf Speichern. Es erscheint hier.',
@@ -80,6 +84,17 @@ export const de: Messages = {
   'save.button.save.title': 'In BetterTube speichern',
   'save.button.saved.title': 'Aus BetterTube entfernen',
 
+  'channels.title': 'Gespeicherte Kanäle',
+  'channels.empty.title': 'Noch keine Kanäle gespeichert',
+  'channels.empty.desc':
+    'Öffne einen Kanal auf YouTube und klicke neben „Abonnieren“ auf „Kanal in BetterTube speichern“. Er erscheint hier.',
+  'channels.count.one': '{count} Kanal',
+  'channels.count.other': '{count} Kanäle',
+  'channel.button.save': 'Kanal in BetterTube speichern',
+  'channel.button.saved': 'Kanal in BetterTube',
+  'channel.button.save.title': 'Kanal in BetterTube speichern',
+  'channel.button.saved.title': 'Kanal aus BetterTube entfernen',
+
   'about.title': 'Über',
   'about.description':
     'BetterTube ist eine Open-Source-Chrome-Erweiterung für ein besseres YouTube am Desktop.',
@@ -87,6 +102,19 @@ export const de: Messages = {
   'about.disclaimer':
     'Nicht mit YouTube oder Google verbunden und nicht von ihnen unterstützt oder gesponsert.',
   'about.version': 'Version',
+
+  'customHome.saved.title': 'Gespeicherte Videos',
+  'customHome.watchLater.title': 'Später ansehen',
+  'customHome.channels.title': 'Gespeicherte Kanäle',
+  'customHome.loading': 'Wird geladen…',
+  'customHome.retry': 'Erneut versuchen',
+  'customHome.saved.empty':
+    'Noch keine Videos gespeichert. Klicke bei einem Video neben „Gefällt mir“ auf Speichern.',
+  'customHome.watchLater.empty': 'Deine Liste „Später ansehen“ ist leer.',
+  'customHome.watchLater.error':
+    'Deine Liste „Später ansehen“ konnte nicht geladen werden. Prüfe, ob du bei YouTube angemeldet bist.',
+  'customHome.channels.empty':
+    'Noch keine Kanäle gespeichert. Klicke neben „Abonnieren“ auf „Kanal in BetterTube speichern“.',
 
   'popup.openSettings': 'Einstellungen öffnen',
 };

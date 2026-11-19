@@ -8,17 +8,17 @@
 Status values: `todo` · `in-progress` · `done`.
 **Rule:** an agent may propose `done`, but only José can confirm it. Ask before changing any item to `done`.
 
-| Milestone | Title                     | Status |
-| --------- | ------------------------- | ------ |
-| M0        | Foundation                | done   |
-| M1        | Settings core             | done   |
-| M2        | YouTube integration layer | done   |
-| M3        | Save videos               | done   |
-| M4        | Custom home               | todo   |
-| M5        | Shorts blocking           | todo   |
-| M6        | Recommendations control   | todo   |
-| M7        | Ad handling               | todo   |
-| M8        | Polish & release          | todo   |
+| Milestone | Title                     | Status      |
+| --------- | ------------------------- | ----------- |
+| M0        | Foundation                | done        |
+| M1        | Settings core             | done        |
+| M2        | YouTube integration layer | done        |
+| M3        | Save videos               | done        |
+| M4        | Custom home               | in-progress |
+| M5        | Shorts blocking           | todo        |
+| M6        | Recommendations control   | todo        |
+| M7        | Ad handling               | todo        |
+| M8        | Polish & release          | todo        |
 
 Milestones are executed one at a time, only when José asks.
 
@@ -26,7 +26,8 @@ Milestones are executed one at a time, only when José asks.
 
 ## Product goals
 
-- Replace the default YouTube home with a personal one: videos saved via BetterTube + YouTube "Watch Later".
+- A master "Enable" switch (on by default on first install) gates the whole extension. When off, YouTube is stock.
+- Replace the default YouTube home with a personal one ("Custom Home Page"), with three independent sections: videos saved via BetterTube, YouTube "Watch Later", and channels saved via BetterTube.
 - Block Shorts and recommendations on demand.
 - Block ads, or mute and auto-skip as fallback.
 - Highly customizable, all settings stored locally in the browser. No backend, no accounts.
@@ -159,13 +160,18 @@ Acceptance: save/unsave works across navigation and reloads; export then import 
 
 Tasks:
 
-- [ ] Hide default home feed (option)
-- [ ] Section 1: BetterTube saved videos
-- [ ] Section 2: YouTube Watch Later via adapter (see decisions)
-- [ ] Loading, empty and error states; graceful fallback when the adapter breaks
-- [ ] Videos open natively (SPA navigation preserved)
+- [x] Master `enabled` setting (default `true`), replacing the "Save button on videos" flag. Needs a storage schema migration (drop the old flag, add `enabled`). The popup shows an "Enable" switch in its place and the options page follows. Content scripts mount nothing and apply no feature when `enabled` is `false`. (Touches M1/M3 code; those milestones stay `done`.)
+- [x] "Save channel to BetterTube" button on the channel page, next to the Subscribe button (toggle state)
+- [x] Saved channels stored in `storage.local` (id = `@handle` or `channel/UC...`, name, avatar, savedAt), with a manage list in options (remove, reorder, export/import JSON)
+- [x] "Custom Home Page" option (replaces "Home with my saved videos"); hides the default home feed when on
+- [x] When "Custom Home Page" is on, the popup and options reveal three sub-options: "Show saved videos", "Show watch later videos", "Show saved channels"
+- [x] Section 1: BetterTube saved videos
+- [x] Section 2: YouTube Watch Later via adapter (see decisions)
+- [x] Section 3: BetterTube saved channels (data from M3)
+- [x] Loading, empty and error states; graceful fallback when the adapter breaks
+- [ ] Videos and channels open without a full page reload. Not done: cards are plain links today (full navigation). Needs a MAIN-world bridge to YouTube's router.
 
-Acceptance: home shows both sections when enabled; disabling the option restores stock YouTube.
+Acceptance: toggling `enabled` off removes all injected UI without a reload and the migration is unit tested; save/unsave of channels survives navigation and reloads; home shows each enabled section independently; disabling "Custom Home Page" restores stock YouTube.
 
 ### M5 — Shorts blocking
 

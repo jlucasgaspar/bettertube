@@ -11,6 +11,7 @@ export const pt_BR: Messages = {
   'nav.recommendations': 'Recomendações',
   'nav.ads': 'Anúncios',
   'nav.saved': 'Vídeos salvos',
+  'nav.channels': 'Canais salvos',
   'nav.about': 'Sobre',
 
   'state.on': 'Ativado',
@@ -26,12 +27,18 @@ export const pt_BR: Messages = {
   'theme.light': 'Claro',
   'theme.dark': 'Escuro',
 
+  'enabled.label': 'Ativar',
+  'enabled.desc': 'Chave geral. Desativada, o YouTube fica e funciona como de costume.',
+
   'home.title': 'Início',
-  'home.enabled': 'Início com meus vídeos salvos',
-  'home.enabled.desc': 'Mostra seus vídeos salvos no lugar do feed padrão.',
-  'home.watchLater': 'Incluir Assistir mais tarde',
-  'home.watchLater.desc':
-    'Adiciona sua lista Assistir mais tarde do YouTube abaixo dos vídeos salvos.',
+  'home.enabled': 'Página inicial personalizada',
+  'home.enabled.desc': 'Troca o feed padrão por suas próprias seções.',
+  'home.showSaved': 'Mostrar vídeos salvos',
+  'home.showSaved.desc': 'Vídeos que você salvou no BetterTube.',
+  'home.showWatchLater': 'Mostrar vídeos de Assistir mais tarde',
+  'home.showWatchLater.desc': 'Sua lista Assistir mais tarde do YouTube.',
+  'home.showChannels': 'Mostrar canais salvos',
+  'home.showChannels.desc': 'Canais que você salvou no BetterTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Bloquear Shorts',
@@ -60,9 +67,6 @@ export const pt_BR: Messages = {
 
   'saved.title': 'Vídeos salvos',
 
-  'saved.button.enabled': 'Botão Salvar nos vídeos',
-  'saved.button.enabled.desc':
-    'Adiciona um botão Salvar no BetterTube ao lado de Gostei nas páginas de vídeo.',
   'saved.empty.title': 'Nada salvo ainda',
   'saved.empty.desc':
     'Abra um vídeo no YouTube e clique em Salvar ao lado de Gostei. Ele aparece aqui.',
@@ -81,12 +85,36 @@ export const pt_BR: Messages = {
   'save.button.save.title': 'Salvar no BetterTube',
   'save.button.saved.title': 'Remover do BetterTube',
 
+  'channels.title': 'Canais salvos',
+  'channels.empty.title': 'Nenhum canal salvo ainda',
+  'channels.empty.desc':
+    'Abra um canal no YouTube e clique em Salvar canal no BetterTube ao lado de Inscrever-se. Ele aparecerá aqui.',
+  'channels.count.one': '{count} canal',
+  'channels.count.other': '{count} canais',
+  'channel.button.save': 'Salvar canal no BetterTube',
+  'channel.button.saved': 'Canal no BetterTube',
+  'channel.button.save.title': 'Salvar canal no BetterTube',
+  'channel.button.saved.title': 'Remover canal do BetterTube',
+
   'about.title': 'Sobre',
   'about.description':
     'BetterTube é uma extensão open source do Chrome para um YouTube melhor no desktop.',
   'about.privacy': 'Tudo fica no seu navegador. Não há conta nem servidor.',
   'about.disclaimer': 'Sem afiliação, endosso ou patrocínio do YouTube ou do Google.',
   'about.version': 'Versão',
+
+  'customHome.saved.title': 'Vídeos salvos',
+  'customHome.watchLater.title': 'Assistir mais tarde',
+  'customHome.channels.title': 'Canais salvos',
+  'customHome.loading': 'Carregando…',
+  'customHome.retry': 'Tentar de novo',
+  'customHome.saved.empty':
+    'Nenhum vídeo salvo ainda. Clique em Salvar ao lado de Gostei em qualquer vídeo.',
+  'customHome.watchLater.empty': 'Sua lista Assistir mais tarde está vazia.',
+  'customHome.watchLater.error':
+    'Não foi possível carregar sua lista Assistir mais tarde. Confirme que você está logado no YouTube.',
+  'customHome.channels.empty':
+    'Nenhum canal salvo ainda. Clique em Salvar canal no BetterTube ao lado de Inscrever-se.',
 
   'popup.openSettings': 'Abrir configurações',
 };

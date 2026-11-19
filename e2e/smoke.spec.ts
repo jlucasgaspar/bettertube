@@ -79,20 +79,30 @@ test('saved videos: list, reorder, remove, export and import', async ({ context,
   await expect(page.getByRole('status')).toContainText('1 added');
 });
 
-test('the Save button has its own switch, independent from the home', async ({
+test('Enable is on by default and disables the other switches when off', async ({
   context,
   extensionId,
 }) => {
   const page = await context.newPage();
-  await page.goto(`chrome-extension://${extensionId}/options.html#general`);
-  const save = page.getByRole('switch', { name: 'Save button on videos' });
-  await expect(save).toHaveAttribute('aria-checked', 'true');
-  await save.click();
-  await expect(save).toHaveAttribute('aria-checked', 'false');
+  await page.goto(`chrome-extension://${extensionId}/popup.html`);
+  const enable = page.getByRole('switch', { name: 'Enable', exact: true });
+  await expect(enable).toHaveAttribute('aria-checked', 'true');
+  await expect(page.getByRole('switch', { name: 'Block Shorts' })).toBeEnabled();
 
+  await enable.click();
+  await expect(enable).toHaveAttribute('aria-checked', 'false');
+  await expect(page.getByRole('switch', { name: 'Block Shorts' })).toBeDisabled();
+  await expect(page.getByRole('switch', { name: 'Custom Home Page' })).toBeDisabled();
+});
+
+test('Custom Home Page reveals its three sections', async ({ context, extensionId }) => {
+  const page = await context.newPage();
   await page.goto(`chrome-extension://${extensionId}/options.html#home`);
-  await expect(page.getByRole('switch', { name: 'Home with my saved videos' })).toHaveAttribute(
-    'aria-checked',
-    'false',
-  );
+  const sections = ['Show saved videos', 'Show watch later videos', 'Show saved channels'];
+  for (const name of sections) await expect(page.getByRole('switch', { name })).toHaveCount(0);
+
+  await page.getByRole('switch', { name: 'Custom Home Page' }).click();
+  for (const name of sections) {
+    await expect(page.getByRole('switch', { name })).toHaveAttribute('aria-checked', 'true');
+  }
 });

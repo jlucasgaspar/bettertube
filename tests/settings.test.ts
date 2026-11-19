@@ -4,6 +4,7 @@ import {
   DEFAULT_SETTINGS,
   applyPatch,
   getSettings,
+  migrateV1ToV2,
   normalizeSettings,
   updateSettings,
 } from '../lib/settings';
@@ -67,5 +68,40 @@ describe('storage', () => {
     expect(settings.theme).toBe('dark');
     expect(settings.shorts.enabled).toBe(true);
     expect(settings.locale).toBe('fr');
+  });
+});
+
+describe('master switch', () => {
+  it('is on by default, with every home section on', () => {
+    expect(DEFAULT_SETTINGS.enabled).toBe(true);
+    expect(DEFAULT_SETTINGS.home).toEqual({
+      enabled: false,
+      showSaved: true,
+      showWatchLater: true,
+      showChannels: true,
+    });
+  });
+
+  it('migrates v1 settings: drops saveButton, turns the master switch on, keeps the rest', () => {
+    const migrated = migrateV1ToV2({
+      theme: 'dark',
+      saveButton: { enabled: false },
+      home: { enabled: true, showWatchLater: false },
+    });
+    expect(migrated).toEqual({
+      theme: 'dark',
+      enabled: true,
+      home: { enabled: true, showWatchLater: false },
+    });
+    expect(normalizeSettings(migrated).home).toEqual({
+      enabled: true,
+      showSaved: true,
+      showWatchLater: false,
+      showChannels: true,
+    });
+  });
+
+  it('leaves non-object input alone', () => {
+    expect(migrateV1ToV2(undefined)).toBeUndefined();
   });
 });

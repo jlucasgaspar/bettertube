@@ -10,12 +10,14 @@ export type ThemeSetting = (typeof THEMES)[number];
 export interface Settings {
   locale: LocaleSetting;
   theme: ThemeSetting;
-  saveButton: {
-    enabled: boolean;
-  };
+  /** Master switch: when off, YouTube is left untouched. */
+  enabled: boolean;
   home: {
+    /** The "Custom Home Page" switch. */
     enabled: boolean;
+    showSaved: boolean;
     showWatchLater: boolean;
+    showChannels: boolean;
   };
   shorts: {
     enabled: boolean;
@@ -35,12 +37,12 @@ export interface Settings {
 
 export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
-/** Conservative defaults: nothing changes on YouTube until the user opts in. */
+/** The extension starts enabled; each feature still waits for the user to opt in. */
 export const DEFAULT_SETTINGS: Settings = {
   locale: 'auto',
   theme: 'system',
-  saveButton: { enabled: true },
-  home: { enabled: false, showWatchLater: true },
+  enabled: true,
+  home: { enabled: false, showSaved: true, showWatchLater: true, showChannels: true },
   shorts: { enabled: false, redirectToWatch: false },
   recommendations: { enabled: false, showSaved: false },
   ads: { enabled: false, blockRequests: true, stripPlayerAds: true, autoSkip: true },
@@ -107,8 +109,19 @@ export function applyPatch(current: Settings, patch: DeepPartial<Settings>): Set
  * Bump `version` and add an entry to `migrations` whenever the stored shape changes
  * in a way `normalizeSettings` cannot absorb (renames, splits, changed meaning).
  */
-export const SETTINGS_VERSION = 1;
-export const settingsMigrations: Record<number, (old: unknown) => unknown> = {};
+export const SETTINGS_VERSION = 2;
+
+/** v1 had a `saveButton.enabled` flag; the master `enabled` switch replaces it. */
+export function migrateV1ToV2(old: unknown): unknown {
+  if (!isPlain(old)) return old;
+  const next: Plain = { ...old, enabled: true };
+  delete next.saveButton;
+  return next;
+}
+
+export const settingsMigrations: Record<number, (old: unknown) => unknown> = {
+  2: migrateV1ToV2,
+};
 
 export const settingsItem = storage.defineItem<Settings>('sync:settings', {
   fallback: DEFAULT_SETTINGS,

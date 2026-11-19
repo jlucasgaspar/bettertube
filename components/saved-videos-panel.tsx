@@ -1,6 +1,7 @@
 import { ChevronDown, ChevronUp, Download, Trash2, Upload } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../lib/app-context';
+import { downloadJson } from '../lib/download-json';
 import {
   InvalidImportError,
   getSavedVideos,
@@ -24,15 +25,6 @@ function useSavedVideos() {
     };
   }, []);
   return videos;
-}
-
-function downloadJson(json: string) {
-  const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `bettertube-saved-${new Date().toISOString().slice(0, 10)}.json`;
-  link.click();
-  URL.revokeObjectURL(url);
 }
 
 /** The saved list: reorder, remove, export and import. Reads and writes storage directly. */
@@ -69,7 +61,7 @@ export function SavedVideosPanel() {
           type="button"
           className="btn"
           disabled={videos.length === 0}
-          onClick={() => downloadJson(serializeList(videos))}
+          onClick={() => downloadJson(serializeList(videos), 'bettertube-saved')}
         >
           <Download size={16} aria-hidden="true" />
           {t('saved.export')}

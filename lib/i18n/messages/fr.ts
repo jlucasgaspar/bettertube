@@ -11,6 +11,7 @@ export const fr: Messages = {
   'nav.recommendations': 'Recommandations',
   'nav.ads': 'Publicités',
   'nav.saved': 'Vidéos enregistrées',
+  'nav.channels': 'Chaînes enregistrées',
   'nav.about': 'À propos',
 
   'state.on': 'Activé',
@@ -26,12 +27,19 @@ export const fr: Messages = {
   'theme.light': 'Clair',
   'theme.dark': 'Sombre',
 
+  'enabled.label': 'Activer',
+  'enabled.desc':
+    'Interrupteur général. Désactivé, YouTube s’affiche et fonctionne comme d’habitude.',
+
   'home.title': 'Accueil',
-  'home.enabled': 'Accueil avec mes vidéos enregistrées',
-  'home.enabled.desc': 'Affiche vos vidéos enregistrées à la place du flux par défaut.',
-  'home.watchLater': 'Inclure À regarder plus tard',
-  'home.watchLater.desc':
-    'Ajoute votre liste À regarder plus tard de YouTube sous vos vidéos enregistrées.',
+  'home.enabled': 'Page d’accueil personnalisée',
+  'home.enabled.desc': 'Remplace le flux par défaut par vos propres sections.',
+  'home.showSaved': 'Afficher les vidéos enregistrées',
+  'home.showSaved.desc': 'Les vidéos que vous avez enregistrées dans BetterTube.',
+  'home.showWatchLater': 'Afficher les vidéos à regarder plus tard',
+  'home.showWatchLater.desc': 'Votre liste À regarder plus tard de YouTube.',
+  'home.showChannels': 'Afficher les chaînes enregistrées',
+  'home.showChannels.desc': 'Les chaînes que vous avez enregistrées dans BetterTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Bloquer les Shorts',
@@ -61,9 +69,6 @@ export const fr: Messages = {
 
   'saved.title': 'Vidéos enregistrées',
 
-  'saved.button.enabled': 'Bouton Enregistrer sur les vidéos',
-  'saved.button.enabled.desc':
-    'Ajoute un bouton Ajouter à BetterTube à côté de J’aime sur les pages de vidéo.',
   'saved.empty.title': 'Rien d’enregistré pour l’instant',
   'saved.empty.desc':
     'Ouvrez une vidéo sur YouTube et cliquez sur Enregistrer à côté de J’aime. Elle apparaîtra ici.',
@@ -82,12 +87,36 @@ export const fr: Messages = {
   'save.button.save.title': 'Enregistrer dans BetterTube',
   'save.button.saved.title': 'Retirer de BetterTube',
 
+  'channels.title': 'Chaînes enregistrées',
+  'channels.empty.title': 'Aucune chaîne enregistrée',
+  'channels.empty.desc':
+    'Ouvrez une chaîne sur YouTube et cliquez sur Enregistrer la chaîne dans BetterTube à côté de S’abonner. Elle apparaîtra ici.',
+  'channels.count.one': '{count} chaîne',
+  'channels.count.other': '{count} chaînes',
+  'channel.button.save': 'Enregistrer la chaîne dans BetterTube',
+  'channel.button.saved': 'Chaîne dans BetterTube',
+  'channel.button.save.title': 'Enregistrer la chaîne dans BetterTube',
+  'channel.button.saved.title': 'Retirer la chaîne de BetterTube',
+
   'about.title': 'À propos',
   'about.description':
     'BetterTube est une extension Chrome open source pour un meilleur YouTube sur ordinateur.',
   'about.privacy': 'Tout reste dans votre navigateur. Pas de compte, pas de serveur.',
   'about.disclaimer': 'Non affilié à YouTube ou Google, ni approuvé ou sponsorisé par eux.',
   'about.version': 'Version',
+
+  'customHome.saved.title': 'Vidéos enregistrées',
+  'customHome.watchLater.title': 'À regarder plus tard',
+  'customHome.channels.title': 'Chaînes enregistrées',
+  'customHome.loading': 'Chargement…',
+  'customHome.retry': 'Réessayer',
+  'customHome.saved.empty':
+    'Aucune vidéo enregistrée. Cliquez sur Ajouter à BetterTube à côté de J’aime sur n’importe quelle vidéo.',
+  'customHome.watchLater.empty': 'Votre liste À regarder plus tard est vide.',
+  'customHome.watchLater.error':
+    'Impossible de charger votre liste À regarder plus tard. Vérifiez que vous êtes connecté à YouTube.',
+  'customHome.channels.empty':
+    'Aucune chaîne enregistrée. Cliquez sur Enregistrer la chaîne dans BetterTube à côté de S’abonner.',
 
   'popup.openSettings': 'Ouvrir les réglages',
 };
