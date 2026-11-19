@@ -15,7 +15,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M2        | YouTube integration layer | done        |
 | M3        | Save videos               | done        |
 | M4        | Custom home               | in-progress |
-| M5        | Shorts blocking           | todo        |
+| M5        | Shorts blocking           | done        |
 | M6        | Recommendations control   | todo        |
 | M7        | Ad handling               | todo        |
 | M8        | Polish & release          | todo        |
@@ -177,9 +177,9 @@ Acceptance: toggling `enabled` off removes all injected UI without a reload and 
 
 Tasks:
 
-- [ ] Hide Shorts shelves on home/search/subscriptions
-- [ ] Hide Shorts entry in sidebar
-- [ ] Optional redirect `/shorts/ID` → `/watch?v=ID`
+- [x] Hide Shorts shelves on home/search/subscriptions
+- [x] Hide Shorts entry in sidebar
+- [x] Optional redirect `/shorts/ID` → `/watch?v=ID`
 
 Acceptance: each toggle works independently, no layout gaps left behind.
 
