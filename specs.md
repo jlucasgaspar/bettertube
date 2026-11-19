@@ -16,7 +16,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M3        | Save videos               | done        |
 | M4        | Custom home               | in-progress |
 | M5        | Shorts blocking           | done        |
-| M6        | Recommendations control   | todo        |
+| M6        | Recommendations control   | in-progress |
 | M7        | Ad handling               | todo        |
 | M8        | Polish & release          | todo        |
 
@@ -187,8 +187,8 @@ Acceptance: each toggle works independently, no layout gaps left behind.
 
 Tasks:
 
-- [ ] Hide watch-page recommendations and end-screen suggestions
-- [ ] Optional: show saved videos in place of recommendations
+- [x] Hide watch-page recommendations and end-screen suggestions
+- [x] Optional: show saved videos in place of recommendations
 
 Acceptance: toggle works on watch page, no layout breakage in theater/fullscreen.
 
