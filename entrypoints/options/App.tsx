@@ -14,7 +14,7 @@ import { AdsCounter } from '../../components/ads-counter';
 import { SavedChannelsPanel } from '../../components/saved-channels-panel';
 import { SavedVideosPanel } from '../../components/saved-videos-panel';
 import { PreferenceFields } from '../../components/preference-fields';
-import { RegistrationMark } from '../../components/registration-mark';
+import { BrandMark } from '../../components/brand-mark';
 import { SwitchRow } from '../../components/setting-row';
 import { useApp } from '../../lib/app-context';
 import type { MessageKey } from '../../lib/i18n';
@@ -74,7 +74,7 @@ export default function App() {
     <div className="grid min-h-screen grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-[15rem_1fr] md:grid-rows-1">
       <aside className="border-b border-line md:sticky md:top-0 md:h-screen md:border-r md:border-b-0">
         <div className="flex items-center gap-2.5 px-6 pt-6 pb-4 md:pb-8">
-          <RegistrationMark />
+          <BrandMark />
           <div>
             <div className="text-xl font-bold leading-none">{t('app.name')}</div>
             <div className="mt-1 text-xs text-muted">{t('app.tagline')}</div>

@@ -1,5 +1,5 @@
 import { ExternalLink } from 'lucide-react';
-import { RegistrationMark } from '../../components/registration-mark';
+import { BrandMark } from '../../components/brand-mark';
 import { PreferenceFields } from '../../components/preference-fields';
 import { SwitchRow } from '../../components/setting-row';
 import { useApp } from '../../lib/app-context';
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="w-[22.5rem] px-4 pt-4 pb-4" aria-busy={!loaded}>
       <header className="mb-3 flex items-center gap-2.5">
-        <RegistrationMark size={22} />
+        <BrandMark size={22} />
         <h1 className="text-xl leading-none font-bold">{t('app.name')}</h1>
       </header>
       {loaded && (
