@@ -8,18 +8,18 @@
 Status values: `todo` · `in-progress` · `done`.
 **Rule:** an agent may propose `done`, but only José can confirm it. Ask before changing any item to `done`.
 
-| Milestone | Title                     | Status      |
-| --------- | ------------------------- | ----------- |
-| M0        | Foundation                | done        |
-| M1        | Settings core             | done        |
-| M2        | YouTube integration layer | done        |
-| M3        | Save videos               | done        |
-| M4        | Custom home               | in-progress |
-| M5        | Shorts blocking           | done        |
-| M6        | Recommendations control   | in-progress |
-| M7        | Ad handling               | done        |
-| M8        | Polish                    | in-progress |
-| M9        | Release                   | todo        |
+| Milestone | Title                     | Status |
+| --------- | ------------------------- | ------ |
+| M0        | Foundation                | done   |
+| M1        | Settings core             | done   |
+| M2        | YouTube integration layer | done   |
+| M3        | Save videos               | done   |
+| M4        | Custom home               | done   |
+| M5        | Shorts blocking           | done   |
+| M6        | Recommendations control   | done   |
+| M7        | Ad handling               | done   |
+| M8        | Polish                    | done   |
+| M9        | Release                   | todo   |
 
 Milestones are executed one at a time, only when José asks.
 
