@@ -17,7 +17,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M4        | Custom home               | in-progress |
 | M5        | Shorts blocking           | done        |
 | M6        | Recommendations control   | in-progress |
-| M7        | Ad handling               | todo        |
+| M7        | Ad handling               | done        |
 | M8        | Polish & release          | todo        |
 
 Milestones are executed one at a time, only when José asks.
@@ -196,10 +196,11 @@ Acceptance: toggle works on watch page, no layout breakage in theater/fullscreen
 
 Tasks:
 
-- [ ] Layer 1: `declarativeNetRequest` rules
-- [ ] Layer 2: player-response stripping (MAIN world)
-- [ ] Layer 3: mute + auto-skip fallback
-- [ ] Per-layer toggles and an "ads handled" counter
+- [x] Layer 1: `declarativeNetRequest` rules
+- [x] Layer 2: player-response stripping (MAIN world)
+- [x] Layer 3: mute + auto-skip fallback
+- [x] Hide feed ads (banners, sponsored cards) by CSS, own toggle under the ads switch
+- [x] Per-layer toggles and an "ads handled" counter (layers 2 and 3 only; blocked requests are not counted, since reading matches in production needs the `declarativeNetRequestFeedback` permission)
 
 Acceptance: with all layers off, stock behavior; each layer verifiable on its own.
 

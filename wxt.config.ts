@@ -11,6 +11,10 @@ export default defineConfig({
     default_locale: 'en',
     name: '__MSG_extName__',
     description: '__MSG_extDescription__',
-    permissions: ['storage'],
+    permissions: ['storage', 'declarativeNetRequest'],
+    declarative_net_request: {
+      // Off by default: the background turns it on from the ad settings.
+      rule_resources: [{ id: 'ads', enabled: false, path: 'rules/ads.json' }],
+    },
   },
 });

@@ -64,6 +64,13 @@ export const it: Messages = {
   'ads.autoSkip': 'Silenzia e salta il resto',
   'ads.autoSkip.desc':
     'Silenzia ogni annuncio ancora in riproduzione e preme Salta appena compare.',
+  'ads.hideFeedAds': 'Nascondi banner e schede sponsorizzate',
+  'ads.hideFeedAds.desc':
+    'Rimuove banner pubblicitari ed elementi sponsorizzati da home, ricerca e pagina del video.',
+  'ads.stats.title': 'Annunci gestiti',
+  'ads.stats.desc':
+    '{count} in totale: {stripped} rimossi dal player, {skipped} silenziati e saltati. Le richieste bloccate non vengono contate.',
+  'ads.stats.reset': 'Azzera contatore',
 
   'saved.title': 'Video salvati',
 
