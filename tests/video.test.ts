@@ -37,3 +37,15 @@ describe('readVideo', () => {
     expect(result.channel).toBe('');
   });
 });
+
+describe('watchActions selector', () => {
+  it('skips the same-id menus of video cards and picks the watch page action bar', async () => {
+    const { selectors } = await import('../lib/youtube/selectors');
+    document.body.innerHTML = `
+      <ytd-video-renderer><ytd-menu-renderer><div id="top-level-buttons-computed" data-owner="card"></div></ytd-menu-renderer></ytd-video-renderer>
+      <ytd-watch-metadata><ytd-menu-renderer><div id="top-level-buttons-computed" data-owner="watch"></div></ytd-menu-renderer></ytd-watch-metadata>`;
+    expect(document.querySelector(selectors.watchActions)?.getAttribute('data-owner')).toBe(
+      'watch',
+    );
+  });
+});

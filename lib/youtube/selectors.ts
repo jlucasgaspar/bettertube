@@ -2,8 +2,12 @@
  * Every YouTube selector lives here. When YouTube changes its markup, fixes touch this file only.
  */
 export const selectors = {
-  /** Container the watch page action bar (Like, Share, ...) renders into. */
-  watchActions: '#top-level-buttons-computed',
+  /**
+   * Container the watch page action bar (Like, Share, ...) renders into. Scoped to the watch
+   * metadata: every video card in search results and playlists has a menu with the same id, and a
+   * bare id selector picked a hidden one left over from the previous page.
+   */
+  watchActions: 'ytd-watch-metadata #top-level-buttons-computed',
   /** Title heading of the watch page. */
   watchTitle: 'ytd-watch-metadata h1',
   /** Channel link under the watch page title. */
