@@ -4,7 +4,7 @@
 
 BetterTube lets you take control of YouTube: build your own home page, cut out the noise, and make the site look and behave the way you want.
 
-> **Status:** early development. Nothing is released yet. See [specs.md](specs.md) for the roadmap.
+> **Status:** not on the Chrome Web Store yet. You can already load it as an unpacked extension (see Getting started). See [specs.md](specs.md) for the roadmap.
 
 ## Planned features
 
@@ -27,14 +27,38 @@ BetterTube has no backend and no accounts. All settings and saved videos are sto
 
 ## Getting started
 
-Setup is coming with the first milestone. Once available:
-
 ```sh
 pnpm install
+```
+
+### Use it in your own Chrome
+
+You can run BetterTube in your everyday Chrome without the Web Store:
+
+1. `pnpm build`
+2. Open `chrome://extensions` and turn on **Developer mode** (top right).
+3. Click **Load unpacked** and pick the `.output/chrome-mv3` folder.
+4. Pin it from the puzzle-piece menu in the toolbar.
+
+After pulling new changes, run `pnpm build` again, click the reload button on the extension card, and refresh any open YouTube tabs.
+
+### Develop
+
+```sh
 pnpm dev
 ```
 
-Then load the generated build as an unpacked extension at `chrome://extensions`.
+This opens a separate Chrome profile with the extension loaded and reloads it on every change. Saved data lives in that temporary profile, not in your regular Chrome.
+
+### Useful commands
+
+| Command         | What it does                                                     |
+| --------------- | ---------------------------------------------------------------- |
+| `pnpm check`    | Format check, lint, typecheck and unit tests (run before commit) |
+| `pnpm build`    | Production build into `.output/chrome-mv3`                       |
+| `pnpm budget`   | Check the build against the size budget (run after `pnpm build`) |
+| `pnpm test:e2e` | Build and run the Playwright end-to-end tests                    |
+| `pnpm zip`      | Package the build as a zip for the Chrome Web Store              |
 
 ## Contributing
 
