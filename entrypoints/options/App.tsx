@@ -267,6 +267,15 @@ function Section({ id }: { id: SectionId }) {
             stateLabel={state(settings.ads.autoSkip)}
             onChange={(autoSkip) => update({ ads: { autoSkip } })}
           />
+          <SwitchRow
+            nested
+            label={t('ads.hideFeedAds')}
+            description={t('ads.hideFeedAds.desc')}
+            checked={settings.ads.hideFeedAds}
+            disabled={off || !settings.ads.enabled}
+            stateLabel={state(settings.ads.hideFeedAds)}
+            onChange={(hideFeedAds) => update({ ads: { hideFeedAds } })}
+          />
           <AdsCounter />
         </section>
       );

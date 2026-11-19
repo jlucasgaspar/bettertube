@@ -148,3 +148,10 @@ describe('createAdSkipper', () => {
     expect(video.playbackRate).toBe(1);
   });
 });
+
+describe('feed ads', () => {
+  it('is on by default but only applies once ads are enabled', () => {
+    expect(DEFAULT_SETTINGS.ads.hideFeedAds).toBe(true);
+    expect(DEFAULT_SETTINGS.ads.enabled).toBe(false);
+  });
+});

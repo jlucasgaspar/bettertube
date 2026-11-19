@@ -66,6 +66,9 @@ export const fr: Messages = {
   'ads.autoSkip': 'Couper le son et passer le reste',
   'ads.autoSkip.desc':
     'Coupe le son de toute publicité encore diffusée et clique sur Passer dès que possible.',
+  'ads.hideFeedAds': 'Masquer bannières et cartes sponsorisées',
+  'ads.hideFeedAds.desc':
+    "Retire les bannières publicitaires et les éléments sponsorisés de l'accueil, de la recherche et de la page vidéo.",
   'ads.stats.title': 'Publicités traitées',
   'ads.stats.desc':
     '{count} au total : {stripped} retirées du lecteur, {skipped} coupées et passées. Les requêtes bloquées ne sont pas comptées.',

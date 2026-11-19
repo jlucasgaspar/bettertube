@@ -64,6 +64,9 @@ export const pt_BR: Messages = {
   'ads.autoSkip': 'Silenciar e pular o que sobrar',
   'ads.autoSkip.desc':
     'Silencia qualquer anúncio que ainda toque e clica em Pular assim que aparecer.',
+  'ads.hideFeedAds': 'Ocultar banners e cards patrocinados',
+  'ads.hideFeedAds.desc':
+    'Remove banners de anúncio e itens patrocinados da home, da busca e da página do vídeo.',
   'ads.stats.title': 'Anúncios tratados',
   'ads.stats.desc':
     '{count} no total: {stripped} removidos do player, {skipped} silenciados e pulados. Requisições bloqueadas não entram na conta.',

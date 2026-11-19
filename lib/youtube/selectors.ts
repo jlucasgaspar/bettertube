@@ -47,6 +47,22 @@ export const selectors = {
     'ytd-mini-guide-entry-renderer:has(a[href^="/shorts"])',
     'ytd-mini-guide-entry-renderer[aria-label="Shorts"]',
   ].join(', '),
+  /** Banners and sponsored cards in feeds, search results and the watch page (not video ads). */
+  feedAds: [
+    '#masthead-ad',
+    '#player-ads',
+    'ytd-ad-slot-renderer',
+    'ytd-in-feed-ad-layout-renderer',
+    'ytd-display-ad-renderer',
+    'ytd-promoted-sparkles-web-renderer',
+    'ytd-promoted-video-renderer',
+    'ytd-banner-promo-renderer',
+    'ytd-statement-banner-renderer',
+    'ytd-companion-slot-renderer',
+    'ytd-rich-item-renderer:has(ytd-ad-slot-renderer)',
+    'ytd-rich-section-renderer:has(ytd-statement-banner-renderer)',
+    'ytd-rich-section-renderer:has(ytd-ad-slot-renderer)',
+  ].join(', '),
   /** The player element; YouTube adds the `ad-showing` class to it while an ad plays. */
   player: '.html5-video-player',
   /** Main video element inside the player. It also plays the ad. */

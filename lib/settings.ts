@@ -32,6 +32,8 @@ export interface Settings {
     blockRequests: boolean;
     stripPlayerAds: boolean;
     autoSkip: boolean;
+    /** Hide banners and sponsored cards in feeds, search and the watch page. */
+    hideFeedAds: boolean;
   };
 }
 
@@ -45,7 +47,13 @@ export const DEFAULT_SETTINGS: Settings = {
   home: { enabled: false, showSaved: true, showWatchLater: true, showChannels: true },
   shorts: { enabled: false, redirectToWatch: false },
   recommendations: { enabled: false, showSaved: false },
-  ads: { enabled: false, blockRequests: true, stripPlayerAds: true, autoSkip: true },
+  ads: {
+    enabled: false,
+    blockRequests: true,
+    stripPlayerAds: true,
+    autoSkip: true,
+    hideFeedAds: true,
+  },
 };
 
 type Plain = Record<string, unknown>;

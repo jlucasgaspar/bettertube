@@ -199,6 +199,7 @@ Tasks:
 - [x] Layer 1: `declarativeNetRequest` rules
 - [x] Layer 2: player-response stripping (MAIN world)
 - [x] Layer 3: mute + auto-skip fallback
+- [x] Hide feed ads (banners, sponsored cards) by CSS, own toggle under the ads switch
 - [x] Per-layer toggles and an "ads handled" counter (layers 2 and 3 only; blocked requests are not counted, since reading matches in production needs the `declarativeNetRequestFeedback` permission)
 
 Acceptance: with all layers off, stock behavior; each layer verifiable on its own.
