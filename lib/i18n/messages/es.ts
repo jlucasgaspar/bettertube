@@ -62,6 +62,10 @@ export const es: Messages = {
   'ads.stripPlayerAds.desc': 'Elimina los datos de anuncios de la respuesta del reproductor.',
   'ads.autoSkip': 'Silenciar y saltar lo que quede',
   'ads.autoSkip.desc': 'Silencia cualquier anuncio que aún suene y pulsa Saltar en cuanto aparece.',
+  'ads.stats.title': 'Anuncios gestionados',
+  'ads.stats.desc':
+    '{count} en total: {stripped} limpiados del reproductor, {skipped} silenciados y saltados. Las solicitudes bloqueadas no se cuentan.',
+  'ads.stats.reset': 'Reiniciar contador',
 
   'saved.title': 'Videos guardados',
 

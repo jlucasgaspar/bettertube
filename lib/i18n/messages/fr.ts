@@ -66,6 +66,10 @@ export const fr: Messages = {
   'ads.autoSkip': 'Couper le son et passer le reste',
   'ads.autoSkip.desc':
     'Coupe le son de toute publicité encore diffusée et clique sur Passer dès que possible.',
+  'ads.stats.title': 'Publicités traitées',
+  'ads.stats.desc':
+    '{count} au total : {stripped} retirées du lecteur, {skipped} coupées et passées. Les requêtes bloquées ne sont pas comptées.',
+  'ads.stats.reset': 'Réinitialiser le compteur',
 
   'saved.title': 'Vidéos enregistrées',
 

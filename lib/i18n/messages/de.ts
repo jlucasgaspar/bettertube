@@ -63,6 +63,10 @@ export const de: Messages = {
   'ads.autoSkip': 'Stummschalten und Rest überspringen',
   'ads.autoSkip.desc':
     'Schaltet jede noch laufende Werbung stumm und klickt auf Überspringen, sobald es erscheint.',
+  'ads.stats.title': 'Behandelte Werbung',
+  'ads.stats.desc':
+    '{count} insgesamt: {stripped} aus dem Player entfernt, {skipped} stummgeschaltet und übersprungen. Blockierte Anfragen werden nicht gezählt.',
+  'ads.stats.reset': 'Zähler zurücksetzen',
 
   'saved.title': 'Gespeicherte Videos',
 

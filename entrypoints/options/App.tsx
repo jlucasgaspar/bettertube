@@ -10,6 +10,7 @@ import {
   Smartphone,
   Users,
 } from 'lucide-react';
+import { AdsCounter } from '../../components/ads-counter';
 import { SavedChannelsPanel } from '../../components/saved-channels-panel';
 import { SavedVideosPanel } from '../../components/saved-videos-panel';
 import { PreferenceFields } from '../../components/preference-fields';
@@ -266,6 +267,7 @@ function Section({ id }: { id: SectionId }) {
             stateLabel={state(settings.ads.autoSkip)}
             onChange={(autoSkip) => update({ ads: { autoSkip } })}
           />
+          <AdsCounter />
         </section>
       );
     case 'saved':

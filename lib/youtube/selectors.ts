@@ -47,7 +47,21 @@ export const selectors = {
     'ytd-mini-guide-entry-renderer:has(a[href^="/shorts"])',
     'ytd-mini-guide-entry-renderer[aria-label="Shorts"]',
   ].join(', '),
+  /** The player element; YouTube adds the `ad-showing` class to it while an ad plays. */
+  player: '.html5-video-player',
+  /** Main video element inside the player. It also plays the ad. */
+  playerVideo: '.html5-video-player video.html5-main-video, .html5-video-player video',
+  /** "Skip" button, old and new (modern) player layouts. */
+  adSkipButton: [
+    '.ytp-skip-ad-button',
+    '.ytp-ad-skip-button',
+    '.ytp-ad-skip-button-modern',
+    '.ytp-ad-skip-button-container button',
+  ].join(', '),
 } as const;
+
+/** Class YouTube puts on the player while an ad plays. */
+export const AD_SHOWING_CLASS = 'ad-showing';
 
 export type SelectorKey = keyof typeof selectors;
 
