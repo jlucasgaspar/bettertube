@@ -1,5 +1,9 @@
 import { createRoot } from 'react-dom/client';
 import { CUSTOM_HOME_CSS, CustomHome } from '../../components/custom-home';
+import {
+  SAVED_RECOMMENDATIONS_CSS,
+  SavedRecommendations,
+} from '../../components/saved-recommendations';
 import { SAVE_CHANNEL_CSS, SaveChannelButton } from '../../components/save-channel-button';
 import { SAVE_BUTTON_CSS, SaveButton } from '../../components/save-button';
 import { getSettings, watchSettings, type Settings } from '../../lib/settings';
@@ -72,6 +76,22 @@ export default defineContentScript({
       selectors.shortsGuideEntry,
     );
 
+    const savedRecommendations = await createPageMount(ctx, {
+      name: 'bettertube-saved-recommendations',
+      pages: ['watch'],
+      anchor: 'watchRelated',
+      css: SAVED_RECOMMENDATIONS_CSS,
+      append: 'before',
+      onMount: (container) => {
+        const root = createRoot(container);
+        root.render(<SavedRecommendations />);
+        return root;
+      },
+      onRemove: (root) => root?.unmount(),
+    });
+    const relatedHider = createHider('bettertube-hide-related', selectors.watchRelated);
+    const endScreenHider = createHider('bettertube-hide-end-screen', selectors.watchEndScreen);
+
     // Every feature needs the master switch on, its own setting, and a page that allows it.
     let pageType: PageType = 'other';
     let settings = await getSettings();
@@ -86,6 +106,13 @@ export default defineContentScript({
       const blockShorts = on && settings.shorts.enabled;
       shortsFeedHider.set(blockShorts);
       shortsGuideHider.set(blockShorts);
+      const hideRecommendations = on && settings.recommendations.enabled;
+      relatedHider.set(hideRecommendations);
+      endScreenHider.set(hideRecommendations);
+      savedRecommendations.update(
+        hideRecommendations && settings.recommendations.showSaved ? pageType : 'other',
+      );
+
       if (on && settings.shorts.redirectToWatch && pageType === 'shorts') {
         const target = shortsToWatchUrl(location.href);
         if (target) location.replace(target);
@@ -109,6 +136,9 @@ export default defineContentScript({
       homeFeedHider.set(false);
       shortsFeedHider.set(false);
       shortsGuideHider.set(false);
+      savedRecommendations.dispose();
+      relatedHider.set(false);
+      endScreenHider.set(false);
     });
   },
 });

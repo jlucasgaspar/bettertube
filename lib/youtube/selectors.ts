@@ -37,6 +37,10 @@ export const selectors = {
     'grid-shelf-view-model:has(a[href^="/shorts/"])',
     'yt-lockup-view-model:has(a[href^="/shorts/"])',
   ].join(', '),
+  /** Suggested videos column on the watch page. Playlist panel and live chat are siblings, untouched. */
+  watchRelated: '#secondary ytd-watch-next-secondary-results-renderer',
+  /** Suggestions the player shows when a video ends, plus creator end cards over the video. */
+  watchEndScreen: ['.html5-endscreen', '.ytp-endscreen-content', '.ytp-ce-element'].join(', '),
   /** Shorts entry in the expanded sidebar and in the collapsed mini sidebar. */
   shortsGuideEntry: [
     'ytd-guide-entry-renderer:has(a[href^="/shorts"])',
