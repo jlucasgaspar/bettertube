@@ -27,7 +27,7 @@ export function AdsCounter() {
   return (
     <div className="flex items-start gap-4 border-b border-line py-4">
       <div className="min-w-0 flex-1">
-        <div className="font-medium">{t('ads.stats.title')}</div>
+        <div className="text-base font-medium">{t('ads.stats.title')}</div>
         <div className="mt-0.5 text-sm text-muted">
           {t('ads.stats.desc', {
             count: totalHandled(stats),

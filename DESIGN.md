@@ -15,7 +15,7 @@ colors:
   rule-light: '#e6e0de'
   rule-dark: '#2b2725'
   rule-strong-light: '#857d7a'
-  rule-strong-dark: '#6b6361'
+  rule-strong-dark: '#787070'
 typography:
   display:
     fontFamily: 'Barlow, system-ui, sans-serif'
@@ -127,7 +127,7 @@ A two-room palette: a clean white leader and a true-black projection room, with 
 - **Leader Ink** (#1a1514): light-theme ink. **Projection White** (#f2eeec): dark-theme ink.
 - **Leader Gray** (#5f5755 light, #a8a09d dark): descriptions, inactive rail items, switch thumb when off.
 - **Hairline** (#e6e0de light, #2b2725 dark): row dividers and the rail's right border.
-- **Strong Hairline** (#857d7a light, #6b6361 dark): control outlines (switch, field, button), the off cue dot, ticks, the rail connector.
+- **Strong Hairline** (#857d7a light, #787070 dark): control outlines (switch, field, button), the off cue dot, ticks, the rail connector.
 
 ### Named Rules
 
