@@ -115,6 +115,10 @@ export const de: Messages = {
   'customHome.channels.title': 'Gespeicherte Kanäle',
   'customHome.loading': 'Wird geladen…',
   'customHome.retry': 'Erneut versuchen',
+  'customHome.menu.open': 'Weitere Optionen',
+  'customHome.menu.remove': 'Entfernen',
+  'customHome.scroll.prev': 'Nach links scrollen',
+  'customHome.scroll.next': 'Nach rechts scrollen',
   'customHome.saved.empty':
     'Noch keine Videos gespeichert. Klicke bei einem Video neben „Gefällt mir“ auf Speichern.',
   'customHome.watchLater.empty': 'Deine Liste „Später ansehen“ ist leer.',

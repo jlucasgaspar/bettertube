@@ -109,6 +109,10 @@ export const en = {
   'customHome.channels.title': 'Saved channels',
   'customHome.loading': 'Loading…',
   'customHome.retry': 'Try again',
+  'customHome.menu.open': 'More options',
+  'customHome.menu.remove': 'Remove',
+  'customHome.scroll.prev': 'Scroll left',
+  'customHome.scroll.next': 'Scroll right',
   'customHome.saved.empty': 'No saved videos yet. Press Save next to Like on any video.',
   'customHome.watchLater.empty': 'Your Watch Later list is empty.',
   'customHome.watchLater.error':

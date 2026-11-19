@@ -4,37 +4,38 @@ import { resolveLocale, translate, type MessageKey } from '../lib/i18n';
 import {
   channelUrl,
   getSavedChannels,
+  unsaveChannel,
   watchSavedChannels,
   type SavedChannel,
 } from '../lib/saved-channels';
-import { getSavedVideos, watchSavedVideos, type SavedVideo } from '../lib/saved-videos';
+import {
+  getSavedVideos,
+  unsaveVideo,
+  watchSavedVideos,
+  type SavedVideo,
+} from '../lib/saved-videos';
 import { fetchWatchLater, type WatchLaterVideo } from '../lib/youtube/watch-later';
+import { Carousel, CardMenu, HOME_CAROUSEL_CSS } from './home-carousel';
 import { usePageTheme, useSettings } from './inject-hooks';
 
 /**
  * Styles for the shadow root. YouTube's own CSS variables do not reach the shadow root reliably,
  * so colors follow the page theme through `data-page-theme`, like the Save buttons.
  */
-export const CUSTOM_HOME_CSS = `
+export const CUSTOM_HOME_CSS = `${HOME_CAROUSEL_CSS}
   :host { display: block; }
   .home {
-    --ink: #0f0f0f; --muted: #606060; --line: #e5e5e5; --surface: #f2f2f2;
+    --ink: #0f0f0f; --muted: #606060; --line: #e5e5e5; --surface: #f2f2f2; --bg: #ffffff;
     box-sizing: border-box;
     padding: 24px 24px 48px;
     color: var(--ink);
     font: 400 14px/1.4 Roboto, Arial, sans-serif;
   }
   .home[data-page-theme='dark'] {
-    --ink: #f1f1f1; --muted: #aaaaaa; --line: #3f3f3f; --surface: #272727;
+    --ink: #f1f1f1; --muted: #aaaaaa; --line: #3f3f3f; --surface: #272727; --bg: #0f0f0f;
   }
   section + section { margin-top: 40px; }
   h2 { margin: 0 0 16px; font: 700 20px/1.2 Roboto, Arial, sans-serif; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 24px 16px;
-    margin: 0; padding: 0; list-style: none;
-  }
   a { color: inherit; text-decoration: none; }
   a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
   .thumb {
@@ -66,6 +67,26 @@ export const CUSTOM_HOME_CSS = `
 
 type Translate = (key: MessageKey) => string;
 
+function CardRow({
+  t,
+  compact,
+  children,
+}: {
+  t: Translate;
+  compact?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <Carousel
+      prevLabel={t('customHome.scroll.prev')}
+      nextLabel={t('customHome.scroll.next')}
+      compact={compact}
+    >
+      {children}
+    </Carousel>
+  );
+}
+
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section>
@@ -82,9 +103,18 @@ interface Card {
   thumbnail: string;
 }
 
-function VideoGrid({ videos }: { videos: Card[] }) {
+function VideoRow({
+  videos,
+  t,
+  onRemove,
+}: {
+  videos: Card[];
+  t: Translate;
+  /** Only for lists BetterTube owns. Watch Later belongs to YouTube, so it has no menu. */
+  onRemove?: (id: string) => void;
+}) {
   return (
-    <ul className="grid">
+    <CardRow t={t}>
       {videos.map((video) => (
         <li key={video.id}>
           <a href={`/watch?v=${video.id}`}>
@@ -92,9 +122,16 @@ function VideoGrid({ videos }: { videos: Card[] }) {
             <span className="title">{video.title}</span>
             {video.channel && <div className="meta">{video.channel}</div>}
           </a>
+          {onRemove && (
+            <CardMenu
+              label={`${t('customHome.menu.open')}: ${video.title}`}
+              removeLabel={t('customHome.menu.remove')}
+              onRemove={() => onRemove(video.id)}
+            />
+          )}
         </li>
       ))}
-    </ul>
+    </CardRow>
   );
 }
 
@@ -117,7 +154,7 @@ function SavedVideosSection({ t }: { t: Translate }) {
       ) : videos.length === 0 ? (
         <p className="state">{t('customHome.saved.empty')}</p>
       ) : (
-        <VideoGrid videos={videos} />
+        <VideoRow videos={videos} t={t} onRemove={(id) => void unsaveVideo(id)} />
       )}
     </Section>
   );
@@ -164,7 +201,7 @@ function WatchLaterSection({ t }: { t: Translate }) {
         (state.videos.length === 0 ? (
           <p className="state">{t('customHome.watchLater.empty')}</p>
         ) : (
-          <VideoGrid videos={state.videos} />
+          <VideoRow videos={state.videos} t={t} />
         ))}
     </Section>
   );
@@ -189,9 +226,9 @@ function SavedChannelsSection({ t }: { t: Translate }) {
       ) : channels.length === 0 ? (
         <p className="state">{t('customHome.channels.empty')}</p>
       ) : (
-        <ul className="grid">
+        <CardRow t={t} compact>
           {channels.map((channel) => (
-            <li key={channel.id}>
+            <li key={channel.id} className="has-menu">
               <a className="channel" href={channelUrl(channel.id)}>
                 {channel.avatar ? (
                   <img className="avatar" src={channel.avatar} alt="" loading="lazy" />
@@ -200,9 +237,15 @@ function SavedChannelsSection({ t }: { t: Translate }) {
                 )}
                 <span className="name">{channel.name}</span>
               </a>
+              <CardMenu
+                inline
+                label={`${t('customHome.menu.open')}: ${channel.name}`}
+                removeLabel={t('customHome.menu.remove')}
+                onRemove={() => void unsaveChannel(channel.id)}
+              />
             </li>
           ))}
-        </ul>
+        </CardRow>
       )}
     </Section>
   );
