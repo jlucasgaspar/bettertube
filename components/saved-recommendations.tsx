@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { resolveLocale, translate, type MessageKey } from '../lib/i18n';
-import { channelUrl } from '../lib/saved-channels';
-import { fetchWatchLaterCached, type WatchLaterVideo } from '../lib/youtube/watch-later';
+import { channelUrl, unsaveChannel } from '../lib/saved-channels';
+import { unsaveVideo } from '../lib/saved-videos';
+import {
+  fetchWatchLaterCached,
+  removeFromWatchLater,
+  type WatchLaterVideo,
+} from '../lib/youtube/watch-later';
+import { CardMenu, HOME_CAROUSEL_CSS } from './home-carousel';
 import { usePageTheme, useSavedChannelList, useSavedVideoList, useSettings } from './inject-hooks';
 
 /** Rows shown at first, and added by each "Show more". Keeps the side column short. */
@@ -10,15 +16,15 @@ const FIRST_ROWS = 4;
 const MORE_ROWS = 8;
 
 /** Styles for the shadow root: compact rows that fit the watch page side column. */
-export const SAVED_RECOMMENDATIONS_CSS = `
+export const SAVED_RECOMMENDATIONS_CSS = `${HOME_CAROUSEL_CSS}
   :host { display: block; }
   .panel {
-    --ink: #0f0f0f; --muted: #606060; --line: #e5e5e5; --surface: #f2f2f2;
+    --ink: #0f0f0f; --muted: #606060; --line: #e5e5e5; --surface: #f2f2f2; --bg: #ffffff;
     box-sizing: border-box; padding: 0 0 16px;
     color: var(--ink);
     font: 400 14px/1.4 Roboto, Arial, sans-serif;
   }
-  .panel[data-page-theme='dark'] { --ink: #f1f1f1; --muted: #aaaaaa; --line: #3f3f3f; --surface: #272727; }
+  .panel[data-page-theme='dark'] { --ink: #f1f1f1; --muted: #aaaaaa; --line: #3f3f3f; --surface: #272727; --bg: #0f0f0f; }
   section + section { margin-top: 20px; }
   h2 { margin: 0 0 12px; font: 700 16px/1.2 Roboto, Arial, sans-serif; }
   .list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -42,6 +48,9 @@ export const SAVED_RECOMMENDATIONS_CSS = `
   }
   .name { font-weight: 500; font-size: 14px; overflow-wrap: anywhere; }
   .state { margin: 0; color: var(--muted); }
+  .list > li { position: relative; }
+  .has-menu > a { padding-right: 36px; }
+  .panel[data-page-theme='dark'] { color-scheme: dark; }
   .actions { display: flex; gap: 8px; margin-top: 12px; }
   button {
     height: 32px; padding: 0 14px; border: 1px solid var(--line); border-radius: 16px;
@@ -95,23 +104,44 @@ interface VideoItem {
   thumbnail: string;
 }
 
-const videoRow = (video: VideoItem) => (
-  <li key={video.id}>
-    <a href={`/watch?v=${video.id}`}>
-      <img className="thumb" src={video.thumbnail} alt="" loading="lazy" />
-      <span>
-        <span className="title">{video.title}</span>
-        {video.channel && <span className="meta">{video.channel}</span>}
-      </span>
-    </a>
-  </li>
-);
+/** One video row. With `onRemove` it gets the three-dots menu. */
+function VideoRowItem({
+  video,
+  t,
+  onRemove,
+}: {
+  video: VideoItem;
+  t: Translate;
+  onRemove: (id: string) => void;
+}) {
+  return (
+    <li className="has-menu">
+      <a href={`/watch?v=${video.id}`}>
+        <img className="thumb" src={video.thumbnail} alt="" loading="lazy" />
+        <span>
+          <span className="title">{video.title}</span>
+          {video.channel && <span className="meta">{video.channel}</span>}
+        </span>
+      </a>
+      <CardMenu
+        inline
+        label={`${t('customHome.menu.open')}: ${video.title}`}
+        removeLabel={t('customHome.menu.remove')}
+        onRemove={() => onRemove(video.id)}
+      />
+    </li>
+  );
+}
 
 type WatchLaterState =
   { status: 'loading' } | { status: 'error' } | { status: 'ready'; videos: WatchLaterVideo[] };
 
-function useWatchLater(): WatchLaterState {
+/** Watch Later with an optimistic remove. If YouTube refuses, the real list is loaded again. */
+function useWatchLater() {
   const [state, setState] = useState<WatchLaterState>({ status: 'loading' });
+  const [attempt, setAttempt] = useState(0);
+  const [removeFailed, setRemoveFailed] = useState(false);
+
   useEffect(() => {
     let active = true;
     fetchWatchLaterCached().then(
@@ -121,8 +151,22 @@ function useWatchLater(): WatchLaterState {
     return () => {
       active = false;
     };
-  }, []);
-  return state;
+  }, [attempt]);
+
+  const remove = (id: string) => {
+    setRemoveFailed(false);
+    setState((current) =>
+      current.status === 'ready'
+        ? { status: 'ready', videos: current.videos.filter((video) => video.id !== id) }
+        : current,
+    );
+    removeFromWatchLater(id).catch(() => {
+      setRemoveFailed(true);
+      setAttempt((count) => count + 1);
+    });
+  };
+
+  return { state, remove, removeFailed };
 }
 
 /**
@@ -136,7 +180,7 @@ export function SavedRecommendations() {
   const t: Translate = (key) => translate(locale, key);
   const videos = useSavedVideoList();
   const channels = useSavedChannelList();
-  const watchLater = useWatchLater();
+  const { state: watchLater, remove: removeWatchLater, removeFailed } = useWatchLater();
 
   const loading = !videos || !channels;
   const hasWatchLater = watchLater.status === 'ready' && watchLater.videos.length > 0;
@@ -157,7 +201,24 @@ export function SavedRecommendations() {
         </section>
       )}
       {videos && videos.length > 0 && (
-        <Group title={t('customHome.saved.title')} items={videos} t={t} row={videoRow} />
+        <Group
+          title={t('customHome.saved.title')}
+          items={videos}
+          t={t}
+          row={(video) => (
+            <VideoRowItem
+              key={video.id}
+              video={video}
+              t={t}
+              onRemove={(id) => void unsaveVideo(id)}
+            />
+          )}
+        />
+      )}
+      {removeFailed && (
+        <p className="state" role="alert">
+          {t('customHome.watchLater.removeError')}
+        </p>
       )}
       {watchLater.status === 'error' && (
         <section>
@@ -172,7 +233,9 @@ export function SavedRecommendations() {
           title={t('customHome.watchLater.title')}
           items={watchLater.videos}
           t={t}
-          row={videoRow}
+          row={(video) => (
+            <VideoRowItem key={video.id} video={video} t={t} onRemove={removeWatchLater} />
+          )}
         />
       )}
       {channels && channels.length > 0 && (
@@ -181,7 +244,7 @@ export function SavedRecommendations() {
           items={channels}
           t={t}
           row={(channel) => (
-            <li key={channel.id}>
+            <li key={channel.id} className="has-menu">
               <a className="channel" href={channelUrl(channel.id)}>
                 {channel.avatar ? (
                   <img className="avatar" src={channel.avatar} alt="" loading="lazy" />
@@ -190,6 +253,12 @@ export function SavedRecommendations() {
                 )}
                 <span className="name">{channel.name}</span>
               </a>
+              <CardMenu
+                inline
+                label={`${t('customHome.menu.open')}: ${channel.name}`}
+                removeLabel={t('customHome.menu.remove')}
+                onRemove={() => void unsaveChannel(channel.id)}
+              />
             </li>
           )}
         />
