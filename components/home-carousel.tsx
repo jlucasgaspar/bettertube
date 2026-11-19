@@ -36,7 +36,8 @@ export const HOME_CAROUSEL_CSS = `
     border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   }
-  .menu-btn.inline + .menu { top: calc(50% + 20px); }
+  /* Rows are short and the rail clips what falls below them, so open beside the button instead. */
+  .menu-btn.inline + .menu { top: 50%; right: 40px; transform: translateY(-50%); }
   .menu-item {
     display: block; width: 100%; height: auto; margin: 0; padding: 8px 16px; border: 0;
     border-radius: 0; background: transparent; color: inherit; font: 400 14px/20px Roboto, Arial, sans-serif;
