@@ -115,6 +115,10 @@ export const pt_BR: Messages = {
   'customHome.channels.title': 'Canais salvos',
   'customHome.loading': 'Carregando…',
   'customHome.retry': 'Tentar de novo',
+  'customHome.menu.open': 'Mais opções',
+  'customHome.menu.remove': 'Remover',
+  'customHome.scroll.prev': 'Rolar para a esquerda',
+  'customHome.scroll.next': 'Rolar para a direita',
   'customHome.saved.empty':
     'Nenhum vídeo salvo ainda. Clique em Salvar ao lado de Gostei em qualquer vídeo.',
   'customHome.watchLater.empty': 'Sua lista Assistir mais tarde está vazia.',

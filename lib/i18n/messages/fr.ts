@@ -117,6 +117,10 @@ export const fr: Messages = {
   'customHome.channels.title': 'Chaînes enregistrées',
   'customHome.loading': 'Chargement…',
   'customHome.retry': 'Réessayer',
+  'customHome.menu.open': 'Plus d’options',
+  'customHome.menu.remove': 'Retirer',
+  'customHome.scroll.prev': 'Défiler vers la gauche',
+  'customHome.scroll.next': 'Défiler vers la droite',
   'customHome.saved.empty':
     'Aucune vidéo enregistrée. Cliquez sur Ajouter à BetterTube à côté de J’aime sur n’importe quelle vidéo.',
   'customHome.watchLater.empty': 'Votre liste À regarder plus tard est vide.',
