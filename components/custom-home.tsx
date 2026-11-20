@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { resolveLocale, translate, type MessageKey } from '../lib/i18n';
+import type { Locale } from '../lib/settings';
+import { fetchPlaylists, type UserPlaylist } from '../lib/youtube/playlists';
 import { channelUrl, unsaveChannel } from '../lib/saved-channels';
 import { unsaveVideo } from '../lib/saved-videos';
 import {
@@ -77,7 +79,7 @@ export const CUSTOM_HOME_CSS = `${HOME_CAROUSEL_CSS}
   button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 `;
 
-type Translate = (key: MessageKey) => string;
+type Translate = (key: MessageKey, vars?: Record<string, string | number>) => string;
 
 function CardRow({
   t,
@@ -357,19 +359,83 @@ function SavedChannelsSection({ t }: { t: Translate }) {
   );
 }
 
+type PlaylistsState =
+  { status: 'loading' } | { status: 'error' } | { status: 'ready'; playlists: UserPlaylist[] };
+
+/** The user's own YouTube playlists, one card each. Read with their session, like Watch Later. */
+function PlaylistsSection({ t, locale }: { t: Translate; locale: Locale }) {
+  const [state, setState] = useState<PlaylistsState>({ status: 'loading' });
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+    fetchPlaylists().then(
+      (playlists) => active && setState({ status: 'ready', playlists }),
+      () => active && setState({ status: 'error' }),
+    );
+    return () => {
+      active = false;
+    };
+  }, [attempt]);
+
+  const retry = () => {
+    setState({ status: 'loading' });
+    setAttempt((count) => count + 1);
+  };
+
+  const plural = new Intl.PluralRules(locale.replace('_', '-'));
+  const countText = (count: number) =>
+    t(plural.select(count) === 'one' ? 'saved.count.one' : 'saved.count.other', { count });
+
+  return (
+    <Section title={t('customHome.playlists.title')}>
+      {state.status === 'loading' && <p className="state">{t('customHome.loading')}</p>}
+      {state.status === 'error' && (
+        <div>
+          <p className="state" role="alert">
+            {t('customHome.playlists.error')}
+          </p>
+          <button type="button" onClick={retry}>
+            {t('customHome.retry')}
+          </button>
+        </div>
+      )}
+      {state.status === 'ready' &&
+        (state.playlists.length === 0 ? (
+          <p className="state">{t('customHome.playlists.empty')}</p>
+        ) : (
+          <CardRow t={t}>
+            {state.playlists.map((playlist) => (
+              <li key={playlist.id}>
+                <a href={`/playlist?list=${encodeURIComponent(playlist.id)}`}>
+                  <img className="thumb" src={playlist.thumbnail} alt="" loading="lazy" />
+                  <span className="title">{playlist.title}</span>
+                  {playlist.count !== undefined && (
+                    <div className="meta">{countText(playlist.count)}</div>
+                  )}
+                </a>
+              </li>
+            ))}
+          </CardRow>
+        ))}
+    </Section>
+  );
+}
+
 /** The custom home page: one section per enabled option, in a fixed order. */
 export function CustomHome() {
   const settings = useSettings();
   const pageTheme = usePageTheme();
   const locale = resolveLocale(settings.locale, navigator.language);
-  const t: Translate = (key) => translate(locale, key);
-  const { showSaved, showWatchLater, showChannels } = settings.home;
+  const t: Translate = (key, vars) => translate(locale, key, vars);
+  const { showSaved, showWatchLater, showChannels, showPlaylists } = settings.home;
 
   return (
     <div className="home" data-page-theme={pageTheme}>
       {showSaved && <SavedVideosSection t={t} />}
       {showWatchLater && <WatchLaterSection t={t} />}
       {showChannels && <SavedChannelsSection t={t} />}
+      {showPlaylists && <PlaylistsSection t={t} locale={locale} />}
     </div>
   );
 }

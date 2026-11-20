@@ -179,6 +179,15 @@ function Section({ id }: { id: SectionId }) {
                 stateLabel={state(settings.home.showChannels)}
                 onChange={(showChannels) => update({ home: { showChannels } })}
               />
+              <SwitchRow
+                nested
+                label={t('home.showPlaylists')}
+                description={t('home.showPlaylists.desc')}
+                checked={settings.home.showPlaylists}
+                disabled={off}
+                stateLabel={state(settings.home.showPlaylists)}
+                onChange={(showPlaylists) => update({ home: { showPlaylists } })}
+              />
             </>
           )}
         </section>
