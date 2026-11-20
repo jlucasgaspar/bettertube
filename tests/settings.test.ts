@@ -79,6 +79,7 @@ describe('master switch', () => {
       showSaved: true,
       showWatchLater: true,
       showChannels: true,
+      showPlaylists: true,
     });
   });
 
@@ -98,6 +99,7 @@ describe('master switch', () => {
       showSaved: true,
       showWatchLater: false,
       showChannels: true,
+      showPlaylists: true,
     });
   });
 

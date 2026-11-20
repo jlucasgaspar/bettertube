@@ -37,6 +37,8 @@ export const en = {
   'home.showWatchLater.desc': 'Your YouTube Watch Later list.',
   'home.showChannels': 'Show saved channels',
   'home.showChannels.desc': 'Channels you saved with BetterTube.',
+  'home.showPlaylists': 'Show my playlists',
+  'home.showPlaylists.desc': 'Your own YouTube playlists.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Block Shorts',
@@ -110,6 +112,10 @@ export const en = {
   'customHome.channels.title': 'Saved channels',
   'customHome.loading': 'Loading…',
   'customHome.retry': 'Try again',
+  'customHome.playlists.title': 'My playlists',
+  'customHome.playlists.empty': 'You have no playlists yet.',
+  'customHome.playlists.error':
+    'Could not load your playlists. YouTube may have changed something.',
   'customHome.showMore': 'Show more',
   'customHome.showLess': 'Show less',
   'customHome.menu.open': 'More options',

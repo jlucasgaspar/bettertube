@@ -61,6 +61,15 @@ export default function App() {
                 stateLabel={state(settings.home.showChannels)}
                 onChange={(showChannels) => update({ home: { showChannels } })}
               />
+              <SwitchRow
+                compact
+                nested
+                label={t('home.showPlaylists')}
+                checked={settings.home.showPlaylists}
+                disabled={off}
+                stateLabel={state(settings.home.showPlaylists)}
+                onChange={(showPlaylists) => update({ home: { showPlaylists } })}
+              />
             </>
           )}
           <SwitchRow

@@ -40,6 +40,8 @@ export const it: Messages = {
   'home.showWatchLater.desc': 'La tua lista Guarda più tardi di YouTube.',
   'home.showChannels': 'Mostra i canali salvati',
   'home.showChannels.desc': 'I canali che hai salvato su BetterTube.',
+  'home.showPlaylists': 'Mostra le mie playlist',
+  'home.showPlaylists.desc': 'Le tue playlist di YouTube.',
 
   'shorts.title': 'Shorts',
   'shorts.enabled': 'Blocca gli Shorts',
@@ -115,6 +117,10 @@ export const it: Messages = {
   'customHome.channels.title': 'Canali salvati',
   'customHome.loading': 'Caricamento…',
   'customHome.retry': 'Riprova',
+  'customHome.playlists.title': 'Le mie playlist',
+  'customHome.playlists.empty': 'Non hai ancora playlist.',
+  'customHome.playlists.error':
+    'Impossibile caricare le tue playlist. YouTube potrebbe aver cambiato qualcosa.',
   'customHome.showMore': 'Mostra altro',
   'customHome.showLess': 'Mostra meno',
   'customHome.menu.open': 'Altre opzioni',

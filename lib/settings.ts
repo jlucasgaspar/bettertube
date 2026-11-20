@@ -18,6 +18,7 @@ export interface Settings {
     showSaved: boolean;
     showWatchLater: boolean;
     showChannels: boolean;
+    showPlaylists: boolean;
   };
   shorts: {
     enabled: boolean;
@@ -44,7 +45,13 @@ export const DEFAULT_SETTINGS: Settings = {
   locale: 'auto',
   theme: 'system',
   enabled: true,
-  home: { enabled: false, showSaved: true, showWatchLater: true, showChannels: true },
+  home: {
+    enabled: false,
+    showSaved: true,
+    showWatchLater: true,
+    showChannels: true,
+    showPlaylists: true,
+  },
   shorts: { enabled: false, redirectToWatch: false },
   recommendations: { enabled: false, showSaved: false },
   ads: {

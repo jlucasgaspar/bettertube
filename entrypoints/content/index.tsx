@@ -16,7 +16,11 @@ import { shortsToWatchUrl } from '../../lib/youtube/shorts';
 
 /** The custom home needs the switch on and at least one section to show. */
 function customHomeActive({ enabled, home }: Settings): boolean {
-  return enabled && home.enabled && (home.showSaved || home.showWatchLater || home.showChannels);
+  return (
+    enabled &&
+    home.enabled &&
+    (home.showSaved || home.showWatchLater || home.showChannels || home.showPlaylists)
+  );
 }
 
 export default defineContentScript({
