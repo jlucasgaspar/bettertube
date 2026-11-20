@@ -15,18 +15,16 @@ Instructions for AI coding agents working on BetterTube. `CLAUDE.md` is a symlin
 - Chat with José: Brazilian Portuguese (keep technical terms in English).
 - Extension UI strings go through i18n (`en`, `pt_BR`, `es`, `fr`, `it`, `de`). No hardcoded user-facing text.
 
-## Branches and pull requests
+## Branches and commits
+
+José reviews and commits everything himself, so he controls what enters the repository.
 
 - Every change goes on a new branch (`feat-...`, `fix-...`, `docs-...`) created from an up-to-date `main`.
-- Commit, push the branch, then give José the pull request link: `https://github.com/jlucasgaspar/bettertube/pull/new/<branch>`.
-- **Never merge.** Do not merge into `main`, do not push to `main`, do not open and merge a PR. José reviews and merges.
-- Never mark a task or milestone `done` in `specs.md` as part of a merge. See Workflow.
-
-## Commits
-
-- Run `pnpm check` before every commit (format, lint, typecheck, tests).
-- Never bypass hooks (`--no-verify`) and never disable checks to make them pass.
-- Conventional Commits. Small commits, one concern each.
+- **Never commit.** Do not run `git commit`, `git push`, `git merge` or `git rebase`, and do not open or merge a PR. Leave the changes uncommitted in the working tree of the new branch.
+- When the work is done, tell José the branch name and list what changed, so he can review the diff and commit by hand.
+- Run `pnpm check` before handing off (format, lint, typecheck, tests) and report the result. Never bypass hooks and never disable checks to make them pass.
+- Keep the changes in small, single-concern groups of files, so José can split them into Conventional Commits (`feat:`, `fix:`, `docs:`...). Suggest the commit messages when handing off.
+- Never mark a task or milestone `done` in `specs.md` on your own. See Workflow.
 
 ## Code rules
 
