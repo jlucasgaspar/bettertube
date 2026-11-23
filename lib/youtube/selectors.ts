@@ -41,8 +41,12 @@ export const selectors = {
     'grid-shelf-view-model:has(a[href^="/shorts/"])',
     'yt-lockup-view-model:has(a[href^="/shorts/"])',
   ].join(', '),
-  /** Suggested videos column on the watch page. Playlist panel and live chat are siblings, untouched. */
-  watchRelated: '#secondary ytd-watch-next-secondary-results-renderer',
+  /**
+   * Suggested videos on the watch page. YouTube moves this renderer from the `#secondary` column
+   * (wide viewport) to `#related` under the video (narrow viewport), so the selector must not be
+   * tied to `#secondary`. Playlist panel and live chat are siblings, untouched.
+   */
+  watchRelated: 'ytd-watch-flexy ytd-watch-next-secondary-results-renderer',
   /** Suggestions the player shows when a video ends, plus creator end cards over the video. */
   watchEndScreen: ['.html5-endscreen', '.ytp-endscreen-content', '.ytp-ce-element'].join(', '),
   /** Shorts entry in the expanded sidebar and in the collapsed mini sidebar. */
