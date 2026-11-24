@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{% if page.url != '/' %}{{ page.title }} · {% endif %}BetterTube</title>
+    <meta name="description" content="A better YouTube on desktop: your own home, no Shorts and fewer recommendations." />
+    <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  </head>
+  <body>
+    <header class="bar">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="" width="28" height="28" />
+        BetterTube
+      </a>
+      <nav aria-label="Project">
+        <a href="https://github.com/jlucasgaspar/bettertube">GitHub</a>
+      </nav>
+    </header>
+    <main>
+      {{ content }}
+    </main>
+    <footer class="foot">
+      <p>MIT licensed. Not affiliated with YouTube or Google.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,269 @@
+/*
+ * BetterTube docs. Same tokens as the extension (DESIGN.md): a white leader in light, true black
+ * in dark, one red-orange accent that only means focus and selection. Fonts are self-hosted so
+ * this page, of all pages, never calls a third party.
+ */
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-700-normal.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: light dark;
+  --ground: #faf8f7;
+  --surface: #ffffff;
+  --ink: #1a1514;
+  --muted: #5f5755;
+  --line: #e6e0de;
+  --line-strong: #857d7a;
+  --accent: #d93a22;
+  --focus: #d93a22;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #131110;
+    --surface: #1d1a19;
+    --ink: #f2eeec;
+    --muted: #a8a09d;
+    --line: #2b2725;
+    --line-strong: #787070;
+    --focus: #ff6a4d;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+html {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Barlow', system-ui, sans-serif;
+  font-size: 100%;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Frame: one column on the same 42rem measure as the options page. */
+.bar,
+main,
+.foot {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+}
+
+.bar nav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+main {
+  flex: 1;
+  padding-block: 2rem 4rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Type: only 12, 14, 16, 22 and 40px exist. */
+h1,
+h2 {
+  margin: 0;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.375rem;
+  line-height: 1.2;
+}
+
+p,
+ul,
+ol {
+  max-width: 65ch;
+  margin: 0.75rem 0 0;
+}
+
+h1 + p {
+  margin-top: 1rem;
+}
+
+/* The "Last updated" line right under the title. */
+h1 + p > em {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}
+
+ul,
+ol {
+  padding-left: 1.25rem;
+}
+
+li::marker {
+  color: var(--line-strong);
+}
+
+strong {
+  font-weight: 700;
+}
+
+code {
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  overflow-wrap: anywhere;
+}
+
+/* Index links, set like the extension's setting rows: hairlines, no cards. */
+.links {
+  max-width: none;
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.links li {
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.links a {
+  display: block;
+  padding: 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.foot {
+  padding-block: 1.5rem 2rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.foot p {
+  margin: 0;
+}
+
+.foot p + p {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 48rem) {
+  .bar,
+  main,
+  .foot {
+    padding-inline: 0;
+  }
+
+  main {
+    padding-block: 3rem 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}

@@ -1,6 +1,5 @@
 title: BetterTube
 description: A better YouTube on desktop.
-theme: jekyll-theme-minimal
 permalink: pretty
 plugins:
   - jekyll-optional-front-matter
