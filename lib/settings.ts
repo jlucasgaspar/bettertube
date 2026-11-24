@@ -28,14 +28,6 @@ export interface Settings {
     enabled: boolean;
     showSaved: boolean;
   };
-  ads: {
-    enabled: boolean;
-    blockRequests: boolean;
-    stripPlayerAds: boolean;
-    autoSkip: boolean;
-    /** Hide banners and sponsored cards in feeds, search and the watch page. */
-    hideFeedAds: boolean;
-  };
 }
 
 export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
@@ -54,13 +46,6 @@ export const DEFAULT_SETTINGS: Settings = {
   },
   shorts: { enabled: false, redirectToWatch: false },
   recommendations: { enabled: false, showSaved: false },
-  ads: {
-    enabled: false,
-    blockRequests: true,
-    stripPlayerAds: true,
-    autoSkip: true,
-    hideFeedAds: true,
-  },
 };
 
 type Plain = Record<string, unknown>;

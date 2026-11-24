@@ -9,7 +9,6 @@ export const pt_BR: Messages = {
   'nav.home': 'Início',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Recomendações',
-  'nav.ads': 'Anúncios',
   'nav.saved': 'Vídeos salvos',
   'nav.channels': 'Canais salvos',
   'nav.about': 'Sobre',
@@ -55,25 +54,6 @@ export const pt_BR: Messages = {
   'recommendations.showSaved': 'Mostrar vídeos salvos no lugar',
   'recommendations.showSaved.desc':
     'Preenche o espaço vazio com seus vídeos salvos, Assistir mais tarde e canais salvos.',
-
-  'ads.title': 'Anúncios',
-  'ads.enabled': 'Bloquear anúncios',
-  'ads.enabled.desc': 'Chave geral das três camadas abaixo.',
-  'ads.blockRequests': 'Bloquear requisições de anúncios',
-  'ads.blockRequests.desc':
-    'Impede requisições conhecidas de anúncios e rastreamento antes de carregar.',
-  'ads.stripPlayerAds': 'Remover anúncios do player',
-  'ads.stripPlayerAds.desc': 'Retira os dados de anúncio da resposta do player de vídeo.',
-  'ads.autoSkip': 'Silenciar e pular o que sobrar',
-  'ads.autoSkip.desc':
-    'Silencia qualquer anúncio que ainda toque e clica em Pular assim que aparecer.',
-  'ads.hideFeedAds': 'Ocultar banners e cards patrocinados',
-  'ads.hideFeedAds.desc':
-    'Remove banners de anúncio e itens patrocinados da home, da busca e da página do vídeo.',
-  'ads.stats.title': 'Anúncios tratados',
-  'ads.stats.desc':
-    '{count} no total: {stripped} removidos do player, {skipped} silenciados e pulados. Requisições bloqueadas não entram na conta.',
-  'ads.stats.reset': 'Zerar contador',
 
   'saved.title': 'Vídeos salvos',
 

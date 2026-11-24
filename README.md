@@ -12,7 +12,6 @@ BetterTube lets you take control of YouTube: build your own home page, cut out t
 - **Save button** — a one-click "Save" button next to Like on every video.
 - **Block Shorts** — hide Shorts shelves and entries, optionally redirect Shorts links to the regular player.
 - **Block recommendations** — hide suggested videos, optionally replacing them with your saved ones.
-- **Ad handling** — block ads where possible; otherwise mute and auto-skip.
 - **Light and dark theme** — follows your Chrome/OS theme by default.
 - **Multilingual** — English, Português, Español, Français, Italiano, Deutsch.
 - **Highly customizable** — every feature can be toggled independently.

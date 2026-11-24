@@ -4,7 +4,7 @@ Draft copy and checklist for the v1.0.0 submission (M9). Locale strings for the 
 
 ## Short description (max 132 characters)
 
-> A better YouTube on desktop: your own home, no Shorts, fewer recommendations and ads.
+> A better YouTube on desktop: your own home, no Shorts and fewer recommendations.
 
 ## Detailed description
 
@@ -14,7 +14,6 @@ BetterTube gives you control of YouTube on desktop.
 - **Save button.** Save any video from the watch page, and any channel from its page.
 - **No Shorts.** Hide Shorts shelves and the sidebar entry, and optionally open Shorts in the regular player.
 - **Fewer recommendations.** Hide suggested videos and end-screen suggestions, or show your saved videos in their place.
-- **Ad handling.** Block ads in layers, or mute and skip as a fallback. Each layer has its own switch.
 - **Light and dark.** Follows your system theme by default.
 - **Six languages.** English, Português (Brasil), Español, Français, Italiano, Deutsch.
 - **Private.** No accounts, no servers, no tracking. Everything stays in your browser.
@@ -27,14 +26,13 @@ Productivity
 
 ## Single purpose statement
 
-Customize the YouTube desktop experience: personal home page, saved videos and channels, and removal of Shorts, recommendations and ads.
+Customize the YouTube desktop experience: personal home page, saved videos and channels, and removal of Shorts and recommendations.
 
 ## Permission justifications
 
 | Permission                 | Justification                                                                             |
 | -------------------------- | ----------------------------------------------------------------------------------------- |
 | `storage`                  | Keep settings and the user's saved videos and channels.                                   |
-| `declarativeNetRequest`    | Block known ad requests when the user enables the option.                                 |
 | Host `*://*.youtube.com/*` | Content scripts add buttons and change the page layout on YouTube. No other site is used. |
 
 ## Data disclosure form
@@ -54,7 +52,7 @@ Customize the YouTube desktop experience: personal home page, saved videos and c
 
 ## Release checklist
 
-- [ ] Ad handling policy risk reviewed (see specs.md, Ads section)
+- [x] Ad handling removed from 1.0.0, so no ad policy risk (see specs.md, Ads section)
 - [ ] Bump `version` in `package.json` to `1.0.0`
 - [ ] `pnpm check`, `pnpm build`, `pnpm budget`, `pnpm test:e2e`
 - [ ] `pnpm zip` and upload to the Developer Dashboard

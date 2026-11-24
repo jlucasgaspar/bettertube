@@ -4,7 +4,7 @@ test('popup renders the quick toggles', async ({ context, extensionId }) => {
   const page = await context.newPage();
   await page.goto(`chrome-extension://${extensionId}/popup.html`);
   await expect(page.getByRole('heading', { name: 'BetterTube' })).toBeVisible();
-  await expect(page.getByRole('switch')).toHaveCount(5);
+  await expect(page.getByRole('switch')).toHaveCount(4);
 });
 
 test('a toggle persists after reload and syncs to the popup', async ({ context, extensionId }) => {

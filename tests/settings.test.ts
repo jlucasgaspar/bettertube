@@ -26,7 +26,13 @@ describe('normalizeSettings', () => {
     expect(result.theme).toBe('dark');
     expect(result.home.enabled).toBe(true);
     expect(result.home.showWatchLater).toBe(DEFAULT_SETTINGS.home.showWatchLater);
-    expect(result.ads).toEqual(DEFAULT_SETTINGS.ads);
+    expect(result.shorts).toEqual(DEFAULT_SETTINGS.shorts);
+  });
+
+  it('drops the removed ads settings from stored data', () => {
+    const result = normalizeSettings({ theme: 'dark', ads: { enabled: true, autoSkip: true } });
+    expect(result).not.toHaveProperty('ads');
+    expect(result.theme).toBe('dark');
   });
 
   it('drops unknown keys and values of the wrong type', () => {
@@ -44,9 +50,9 @@ describe('normalizeSettings', () => {
 
 describe('applyPatch', () => {
   it('updates nested values without touching siblings', () => {
-    const next = applyPatch(DEFAULT_SETTINGS, { ads: { autoSkip: false } });
-    expect(next.ads.autoSkip).toBe(false);
-    expect(next.ads.blockRequests).toBe(DEFAULT_SETTINGS.ads.blockRequests);
+    const next = applyPatch(DEFAULT_SETTINGS, { shorts: { enabled: true } });
+    expect(next.shorts.enabled).toBe(true);
+    expect(next.shorts.redirectToWatch).toBe(DEFAULT_SETTINGS.shorts.redirectToWatch);
   });
 
   it('does not mutate the input', () => {

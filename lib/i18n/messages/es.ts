@@ -9,7 +9,6 @@ export const es: Messages = {
   'nav.home': 'Inicio',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Recomendaciones',
-  'nav.ads': 'Anuncios',
   'nav.saved': 'Videos guardados',
   'nav.channels': 'Canales guardados',
   'nav.about': 'Acerca de',
@@ -55,23 +54,6 @@ export const es: Messages = {
   'recommendations.showSaved': 'Mostrar videos guardados en su lugar',
   'recommendations.showSaved.desc':
     'Llena el espacio vacío con tus videos guardados, Ver más tarde y canales guardados.',
-
-  'ads.title': 'Anuncios',
-  'ads.enabled': 'Bloquear anuncios',
-  'ads.enabled.desc': 'Interruptor general de las tres capas de abajo.',
-  'ads.blockRequests': 'Bloquear solicitudes de anuncios',
-  'ads.blockRequests.desc': 'Detiene solicitudes conocidas de anuncios y rastreo antes de cargar.',
-  'ads.stripPlayerAds': 'Quitar anuncios del reproductor',
-  'ads.stripPlayerAds.desc': 'Elimina los datos de anuncios de la respuesta del reproductor.',
-  'ads.autoSkip': 'Silenciar y saltar lo que quede',
-  'ads.autoSkip.desc': 'Silencia cualquier anuncio que aún suene y pulsa Saltar en cuanto aparece.',
-  'ads.hideFeedAds': 'Ocultar banners y tarjetas patrocinadas',
-  'ads.hideFeedAds.desc':
-    'Quita banners de anuncios y elementos patrocinados del inicio, la búsqueda y la página del video.',
-  'ads.stats.title': 'Anuncios gestionados',
-  'ads.stats.desc':
-    '{count} en total: {stripped} limpiados del reproductor, {skipped} silenciados y saltados. Las solicitudes bloqueadas no se cuentan.',
-  'ads.stats.reset': 'Reiniciar contador',
 
   'saved.title': 'Videos guardados',
 

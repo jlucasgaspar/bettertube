@@ -160,7 +160,7 @@ A two-room palette: a clean white leader and a true-black projection room, with 
 
 ## Layout
 
-Options: a two-column grid, 15rem rail (sticky, full height, hairline right border) and a content column with 56px horizontal and 48px vertical padding at 48rem and up, content capped at 42rem. Below 48rem the grid stacks: the rail becomes a horizontally scrolling strip under the wordmark with faded edges (mask) so it reads as scrollable, and the current item is scrolled into view. Popup: fixed 22.5rem (360px) width, 16px padding, four compact feature rows, then the two selects, then a full-width "Open settings" button with 16px above it.
+Options: a two-column grid, 15rem rail (sticky, full height, hairline right border) and a content column with 56px horizontal and 48px vertical padding at 48rem and up, content capped at 42rem. Below 48rem the grid stacks: the rail becomes a horizontally scrolling strip under the wordmark with faded edges (mask) so it reads as scrollable, and the current item is scrolled into view. Popup: fixed 22.5rem (360px) width, 16px padding, three compact feature rows, then the two selects, then a full-width "Open settings" button with 16px above it.
 
 Rows: flex, 16px gap, hairline bottom border, 16px vertical padding (10px compact in the popup). Left: cue dot (top-aligned to the first line). Middle: label and one-line description. Right: switch or select. A nested row (sub-setting) is indented 28px and dims to 55% opacity when its master is off, with its dot unlit and its switch disabled. Spacing rhythm is Tailwind's 4px base: 4, 8, 12, 16, 24.
 

@@ -9,7 +9,6 @@ export const it: Messages = {
   'nav.home': 'Home',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Consigli',
-  'nav.ads': 'Annunci',
   'nav.saved': 'Video salvati',
   'nav.channels': 'Canali salvati',
   'nav.about': 'Informazioni',
@@ -55,25 +54,6 @@ export const it: Messages = {
   'recommendations.showSaved': 'Mostra invece i video salvati',
   'recommendations.showSaved.desc':
     'Riempie lo spazio vuoto con i tuoi video salvati, Guarda più tardi e i canali salvati.',
-
-  'ads.title': 'Annunci',
-  'ads.enabled': 'Blocca gli annunci',
-  'ads.enabled.desc': 'Interruttore generale dei tre livelli qui sotto.',
-  'ads.blockRequests': 'Blocca le richieste pubblicitarie',
-  'ads.blockRequests.desc':
-    'Ferma le richieste note di pubblicità e tracciamento prima del caricamento.',
-  'ads.stripPlayerAds': 'Rimuovi gli annunci dal player',
-  'ads.stripPlayerAds.desc': 'Elimina i dati pubblicitari dalla risposta del player video.',
-  'ads.autoSkip': 'Silenzia e salta il resto',
-  'ads.autoSkip.desc':
-    'Silenzia ogni annuncio ancora in riproduzione e preme Salta appena compare.',
-  'ads.hideFeedAds': 'Nascondi banner e schede sponsorizzate',
-  'ads.hideFeedAds.desc':
-    'Rimuove banner pubblicitari ed elementi sponsorizzati da home, ricerca e pagina del video.',
-  'ads.stats.title': 'Annunci gestiti',
-  'ads.stats.desc':
-    '{count} in totale: {stripped} rimossi dal player, {skipped} silenziati e saltati. Le richieste bloccate non vengono contate.',
-  'ads.stats.reset': 'Azzera contatore',
 
   'saved.title': 'Video salvati',
 

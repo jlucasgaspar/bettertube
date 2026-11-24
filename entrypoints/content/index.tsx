@@ -80,8 +80,6 @@ export default defineContentScript({
       selectors.shortsGuideEntry,
     );
 
-    const feedAdsHider = createHider('bettertube-hide-feed-ads', selectors.feedAds);
-
     const savedRecommendations = await createPageMount(ctx, {
       name: 'bettertube-saved-recommendations',
       pages: ['watch'],
@@ -112,7 +110,6 @@ export default defineContentScript({
       const blockShorts = on && settings.shorts.enabled;
       shortsFeedHider.set(blockShorts);
       shortsGuideHider.set(blockShorts);
-      feedAdsHider.set(on && settings.ads.enabled && settings.ads.hideFeedAds);
       const hideRecommendations = on && settings.recommendations.enabled;
       relatedHider.set(hideRecommendations);
       endScreenHider.set(hideRecommendations);
@@ -143,7 +140,6 @@ export default defineContentScript({
       homeFeedHider.set(false);
       shortsFeedHider.set(false);
       shortsGuideHider.set(false);
-      feedAdsHider.set(false);
       savedRecommendations.dispose();
       relatedHider.set(false);
       endScreenHider.set(false);

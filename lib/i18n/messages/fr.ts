@@ -9,7 +9,6 @@ export const fr: Messages = {
   'nav.home': 'Accueil',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Recommandations',
-  'nav.ads': 'Publicités',
   'nav.saved': 'Vidéos enregistrées',
   'nav.channels': 'Chaînes enregistrées',
   'nav.about': 'À propos',
@@ -56,25 +55,6 @@ export const fr: Messages = {
   'recommendations.showSaved': 'Afficher les vidéos enregistrées à la place',
   'recommendations.showSaved.desc':
     "Remplit l'espace libéré avec les vidéos que vous avez enregistrées.",
-
-  'ads.title': 'Publicités',
-  'ads.enabled': 'Bloquer les publicités',
-  'ads.enabled.desc': 'Interrupteur général des trois couches ci-dessous.',
-  'ads.blockRequests': 'Bloquer les requêtes publicitaires',
-  'ads.blockRequests.desc':
-    'Arrête les requêtes publicitaires et de suivi connues avant leur chargement.',
-  'ads.stripPlayerAds': 'Retirer les publicités du lecteur',
-  'ads.stripPlayerAds.desc': 'Supprime les données publicitaires de la réponse du lecteur vidéo.',
-  'ads.autoSkip': 'Couper le son et passer le reste',
-  'ads.autoSkip.desc':
-    'Coupe le son de toute publicité encore diffusée et clique sur Passer dès que possible.',
-  'ads.hideFeedAds': 'Masquer bannières et cartes sponsorisées',
-  'ads.hideFeedAds.desc':
-    "Retire les bannières publicitaires et les éléments sponsorisés de l'accueil, de la recherche et de la page vidéo.",
-  'ads.stats.title': 'Publicités traitées',
-  'ads.stats.desc':
-    '{count} au total : {stripped} retirées du lecteur, {skipped} coupées et passées. Les requêtes bloquées ne sont pas comptées.',
-  'ads.stats.reset': 'Réinitialiser le compteur',
 
   'saved.title': 'Vidéos enregistrées',
 

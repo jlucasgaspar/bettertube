@@ -12,11 +12,11 @@ Existing codebase: WXT (Manifest V3) + React 19 + TypeScript + Tailwind CSS. See
 
 ## Users
 
-Heavy YouTube users on desktop Chrome (including the author) who spend a lot of time on the site and want less noise (Shorts, recommendations, ads) and a home page they control. They use the extension in two places: a toolbar popup for quick toggles, and an options page for the full set of settings and the saved-videos list.
+Heavy YouTube users on desktop Chrome (including the author) who spend a lot of time on the site and want less noise (Shorts, recommendations) and a home page they control. They use the extension in two places: a toolbar popup for quick toggles, and an options page for the full set of settings and the saved-videos list.
 
 ## Product Purpose
 
-BetterTube is a Chrome extension for an enhanced YouTube experience on desktop. It replaces the default YouTube home with the user's own: videos saved through a BetterTube button plus the native "Watch Later" list. It also blocks Shorts, blocks recommendations, and handles ads (block, or mute and auto-skip as fallback). Success: the user opens YouTube and sees only what they chose to see.
+BetterTube is a Chrome extension for an enhanced YouTube experience on desktop. It replaces the default YouTube home with the user's own: videos saved through a BetterTube button plus the native "Watch Later" list. It also blocks Shorts, and blocks recommendations. Success: the user opens YouTube and sees only what they chose to see.
 
 ## Positioning
 
@@ -32,7 +32,7 @@ A personal, curated home page built from the user's own saved videos and native 
 
 ## Capabilities and Constraints
 
-- Planned features, milestone by milestone, are tracked in `specs.md` (save button, custom home, Shorts block, recommendations block, ad handling).
+- Planned features, milestone by milestone, are tracked in `specs.md` (save button, custom home, Shorts block, recommendations block).
 - Watch Later access relies on unofficial YouTube endpoints and may break; UI must handle error and fallback states.
 - Every user-facing string must go through i18n; layouts must tolerate long German/French strings.
 - Public repository, MIT licensed. Not affiliated with YouTube or Google.

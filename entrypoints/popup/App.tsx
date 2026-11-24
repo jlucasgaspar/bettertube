@@ -99,14 +99,6 @@ export default function App() {
               onChange={(showSaved) => update({ recommendations: { showSaved } })}
             />
           )}
-          <SwitchRow
-            compact
-            label={t('ads.enabled')}
-            checked={settings.ads.enabled}
-            disabled={off}
-            stateLabel={state(settings.ads.enabled)}
-            onChange={(enabled) => update({ ads: { enabled } })}
-          />
           <PreferenceFields compact />
           <button
             type="button"
