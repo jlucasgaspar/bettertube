@@ -212,7 +212,7 @@ Tasks:
 
 - [x] Ad handling policy risk: resolved by removing ad handling from 1.0.0 (see Ads section)
 - [ ] Store assets: screenshots (1280x800), small promo tile (440x280), optional marquee. Listing copy is drafted in `docs/store-listing.md`
-- [ ] Privacy policy: text is in `docs/privacy-policy.md`; host it at a public URL
+- [x] Privacy policy: text is in `docs/privacy-policy.md`; host it at a public URL
 - [x] Bump `version` to `1.0.0`, run `pnpm check`, `pnpm build`, `pnpm budget`, `pnpm test:e2e`
 - [ ] Chrome Web Store submission and `v1.0.0` tag
 

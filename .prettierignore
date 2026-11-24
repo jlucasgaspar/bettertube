@@ -6,3 +6,4 @@ playwright-report
 test-results
 first-prompt.md
 .impeccable/hook.cache.json
+docs/_layouts

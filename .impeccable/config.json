@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "sf mono",
+        "createdAt": "2026-11-24T20:05:58.930Z",
+        "reason": "Assistant decision, not user confirmed: system monospace for inline code identifiers on the docs site (chrome.storage.sync), domain-appropriate use of mono for code"
+      }
+    ]
+  }
+}
