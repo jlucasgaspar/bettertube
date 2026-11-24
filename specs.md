@@ -17,7 +17,7 @@ Status values: `todo` · `in-progress` · `done`.
 | M4        | Custom home               | done   |
 | M5        | Shorts blocking           | done   |
 | M6        | Recommendations control   | done   |
-| M7        | Ad handling               | done   |
+| M7        | Ad handling (removed)     | done   |
 | M8        | Polish                    | done   |
 | M9        | Release                   | todo   |
 
@@ -30,7 +30,6 @@ Milestones are executed one at a time, only when José asks.
 - A master "Enable" switch (on by default on first install) gates the whole extension. When off, YouTube is stock.
 - Replace the default YouTube home with a personal one ("Custom Home Page"), with three independent sections: videos saved via BetterTube, YouTube "Watch Later", and channels saved via BetterTube.
 - Block Shorts and recommendations on demand.
-- Block ads, or mute and auto-skip as fallback.
 - Highly customizable, all settings stored locally in the browser. No backend, no accounts.
 - Internationalized: English, Portuguese (pt-BR), Spanish, French, Italian, German.
 - Light/dark theme, defaulting to the Chrome/OS color scheme.
@@ -80,13 +79,7 @@ The official Data API v3 no longer exposes Watch Later. Risk: unofficial endpoin
 
 ### Ads
 
-Layered, each layer toggleable:
-
-1. `declarativeNetRequest` rules for known ad/tracking endpoints.
-2. MAIN-world script stripping `adPlacements` / `playerAds` from the player response (most effective, most brittle).
-3. Fallback: detect `.ad-showing`, mute, speed up, click "Skip ad" when available, restore player state after.
-
-Risks: YouTube anti-adblock detection and Chrome Web Store policy. Revisit before M9.
+Out of scope for 1.0.0. The M7 ad handling code (request blocking, player-response stripping, mute and auto-skip, feed ad hiding, counter) was removed before release: it adds Chrome Web Store policy risk and conflicts with the YouTube Terms of Service, and the author uses YouTube Premium. It can come back later as its own milestone; see git history of M7.
 
 ### YouTube SPA handling
 
@@ -192,7 +185,9 @@ Tasks:
 
 Acceptance: toggle works on watch page, no layout breakage in theater/fullscreen.
 
-### M7 — Ad handling
+### M7 — Ad handling (removed before 1.0.0)
+
+Built, then removed in branch `feat-remove-ads-handling` so the Chrome Web Store release does not ship ad blocking. The tasks below were completed and later reverted. Recover them from git history if the feature returns.
 
 Tasks:
 
@@ -200,9 +195,7 @@ Tasks:
 - [x] Layer 2: player-response stripping (MAIN world)
 - [x] Layer 3: mute + auto-skip fallback
 - [x] Hide feed ads (banners, sponsored cards) by CSS, own toggle under the ads switch
-- [x] Per-layer toggles and an "ads handled" counter (layers 2 and 3 only; blocked requests are not counted, since reading matches in production needs the `declarativeNetRequestFeedback` permission)
-
-Acceptance: with all layers off, stock behavior; each layer verifiable on its own.
+- [x] Per-layer toggles and an "ads handled" counter
 
 ### M8 — Polish
 
@@ -217,7 +210,7 @@ Tasks:
 
 Tasks:
 
-- [ ] Review the ad handling policy risk for the Chrome Web Store (see Ads section)
+- [x] Ad handling policy risk: resolved by removing ad handling from 1.0.0 (see Ads section)
 - [ ] Store assets: screenshots (1280x800), small promo tile (440x280), optional marquee. Listing copy is drafted in `docs/store-listing.md`
 - [ ] Privacy policy: text is in `docs/privacy-policy.md`; host it at a public URL
 - [ ] Bump `version` to `1.0.0`, run `pnpm check`, `pnpm build`, `pnpm budget`, `pnpm test:e2e`

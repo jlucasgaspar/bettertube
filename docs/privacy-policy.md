@@ -14,15 +14,13 @@ Everything BetterTube remembers stays in your browser, using Chrome's extension 
 
 - **Settings** (which features are on, language, theme), in `chrome.storage.sync`. If you are signed in to Chrome with sync enabled, Chrome itself may sync these between your devices. That sync is handled by Chrome and Google, not by BetterTube.
 - **Saved videos and saved channels** (id, title, channel name, thumbnail or avatar URL, date saved), in `chrome.storage.local`. They never leave your device.
-- **An "ads handled" counter**, in local storage.
 
 You can delete all of this by removing the saved items in the options page, or by uninstalling the extension.
 
 ## Permissions and why they are needed
 
-- **Access to youtube.com pages.** Content scripts run only on `*.youtube.com` to add the Save buttons, build the custom home page, hide Shorts and recommendations, and handle ads. BetterTube reads page content (video titles, thumbnails, channel names) only to show it back to you in your own saved lists.
+- **Access to youtube.com pages.** Content scripts run only on `*.youtube.com` to add the Save buttons, build the custom home page, and hide Shorts and recommendations. BetterTube reads page content (video titles, thumbnails, channel names) only to show it back to you in your own saved lists.
 - **`storage`.** To keep your settings and saved items.
-- **`declarativeNetRequest`.** To block known ad requests when you turn that option on. Rules are static and run inside the browser. BetterTube does not see the requests it blocks.
 
 ## Watch Later
 
