@@ -40,7 +40,7 @@ Customize the YouTube desktop experience: personal home page, saved videos and c
 - Collects user data: **no**.
 - Sells or transfers user data: **no**.
 - Remote code: **no**.
-- Privacy policy URL: publish `docs/privacy-policy.md` (for example GitHub Pages or the raw repo link) and paste the URL.
+- Privacy policy URL: `https://jlucasgaspar.github.io/bettertube/privacy-policy/` (GitHub Pages, served from `docs/` on `main`).
 
 ## Assets checklist
 

@@ -1,0 +1,16 @@
+title: BetterTube
+description: A better YouTube on desktop.
+theme: jekyll-theme-minimal
+permalink: pretty
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: default
+# Only the privacy policy (and the index that links to it) is public.
+exclude:
+  - loop-engineering.md
+  - store-listing.md
