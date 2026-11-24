@@ -7,7 +7,6 @@ export const en = {
   'nav.home': 'Home',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Recommendations',
-  'nav.ads': 'Ads',
   'nav.saved': 'Saved videos',
   'nav.channels': 'Saved channels',
   'nav.about': 'About',
@@ -52,23 +51,6 @@ export const en = {
   'recommendations.showSaved': 'Show saved videos instead',
   'recommendations.showSaved.desc':
     'Fill the empty space with your saved videos, Watch Later and saved channels.',
-
-  'ads.title': 'Ads',
-  'ads.enabled': 'Block ads',
-  'ads.enabled.desc': 'Master switch for the three layers below.',
-  'ads.blockRequests': 'Block ad requests',
-  'ads.blockRequests.desc': 'Stop known ad and tracking requests before they load.',
-  'ads.stripPlayerAds': 'Remove ads from the player',
-  'ads.stripPlayerAds.desc': 'Strip ad data from the video player response.',
-  'ads.autoSkip': 'Mute and skip what remains',
-  'ads.autoSkip.desc': 'Mute any ad that still plays and press Skip as soon as it appears.',
-  'ads.hideFeedAds': 'Hide banners and sponsored cards',
-  'ads.hideFeedAds.desc':
-    'Remove ad banners and sponsored items from the home, search results and watch page.',
-  'ads.stats.title': 'Ads handled',
-  'ads.stats.desc':
-    '{count} total: {stripped} cleaned from the player, {skipped} muted and skipped. Blocked requests are not counted.',
-  'ads.stats.reset': 'Reset counter',
 
   'saved.title': 'Saved videos',
 

@@ -5,12 +5,10 @@ import {
   House,
   Info,
   PanelRightClose,
-  ShieldBan,
   SlidersHorizontal,
   Smartphone,
   Users,
 } from 'lucide-react';
-import { AdsCounter } from '../../components/ads-counter';
 import { SavedChannelsPanel } from '../../components/saved-channels-panel';
 import { SavedVideosPanel } from '../../components/saved-videos-panel';
 import { PreferenceFields } from '../../components/preference-fields';
@@ -19,8 +17,7 @@ import { SwitchRow } from '../../components/setting-row';
 import { useApp } from '../../lib/app-context';
 import type { MessageKey } from '../../lib/i18n';
 
-type SectionId =
-  'general' | 'home' | 'shorts' | 'recommendations' | 'ads' | 'saved' | 'channels' | 'about';
+type SectionId = 'general' | 'home' | 'shorts' | 'recommendations' | 'saved' | 'channels' | 'about';
 
 const SECTIONS: {
   id: SectionId;
@@ -30,7 +27,6 @@ const SECTIONS: {
   { id: 'home', icon: House },
   { id: 'shorts', icon: Smartphone },
   { id: 'recommendations', icon: PanelRightClose },
-  { id: 'ads', icon: ShieldBan },
   { id: 'saved', icon: Bookmark },
   { id: 'channels', icon: Users },
   { id: 'about', icon: Info },
@@ -67,7 +63,6 @@ export default function App() {
     home: settings.enabled && settings.home.enabled,
     shorts: settings.enabled && settings.shorts.enabled,
     recommendations: settings.enabled && settings.recommendations.enabled,
-    ads: settings.enabled && settings.ads.enabled,
   };
 
   return (
@@ -235,57 +230,6 @@ function Section({ id }: { id: SectionId }) {
             stateLabel={state(settings.recommendations.showSaved)}
             onChange={(showSaved) => update({ recommendations: { showSaved } })}
           />
-        </section>
-      );
-    case 'ads':
-      return (
-        <section>
-          <SectionTitle>{t('ads.title')}</SectionTitle>
-          <SwitchRow
-            label={t('ads.enabled')}
-            description={t('ads.enabled.desc')}
-            checked={settings.ads.enabled}
-            disabled={off}
-            stateLabel={state(settings.ads.enabled)}
-            onChange={(enabled) => update({ ads: { enabled } })}
-          />
-          <SwitchRow
-            nested
-            label={t('ads.blockRequests')}
-            description={t('ads.blockRequests.desc')}
-            checked={settings.ads.blockRequests}
-            disabled={off || !settings.ads.enabled}
-            stateLabel={state(settings.ads.blockRequests)}
-            onChange={(blockRequests) => update({ ads: { blockRequests } })}
-          />
-          <SwitchRow
-            nested
-            label={t('ads.stripPlayerAds')}
-            description={t('ads.stripPlayerAds.desc')}
-            checked={settings.ads.stripPlayerAds}
-            disabled={off || !settings.ads.enabled}
-            stateLabel={state(settings.ads.stripPlayerAds)}
-            onChange={(stripPlayerAds) => update({ ads: { stripPlayerAds } })}
-          />
-          <SwitchRow
-            nested
-            label={t('ads.autoSkip')}
-            description={t('ads.autoSkip.desc')}
-            checked={settings.ads.autoSkip}
-            disabled={off || !settings.ads.enabled}
-            stateLabel={state(settings.ads.autoSkip)}
-            onChange={(autoSkip) => update({ ads: { autoSkip } })}
-          />
-          <SwitchRow
-            nested
-            label={t('ads.hideFeedAds')}
-            description={t('ads.hideFeedAds.desc')}
-            checked={settings.ads.hideFeedAds}
-            disabled={off || !settings.ads.enabled}
-            stateLabel={state(settings.ads.hideFeedAds)}
-            onChange={(hideFeedAds) => update({ ads: { hideFeedAds } })}
-          />
-          <AdsCounter />
         </section>
       );
     case 'saved':

@@ -9,8 +9,6 @@ const KB = 1024;
 // Bytes, uncompressed. Budgets sit ~15% above the size at v1.0.0 prep.
 const BUDGETS = [
   { name: 'content script (content.js)', file: 'content-scripts/content.js', max: 340 * KB },
-  { name: 'ads bridge (ads-bridge.js)', file: 'content-scripts/ads-bridge.js', max: 30 * KB },
-  { name: 'ads main world (ads-main.js)', file: 'content-scripts/ads-main.js', max: 4 * KB },
   { name: 'background (background.js)', file: 'background.js', max: 20 * KB },
 ];
 const TOTAL_MAX = 900 * KB;

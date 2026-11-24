@@ -9,7 +9,6 @@ export const de: Messages = {
   'nav.home': 'Startseite',
   'nav.shorts': 'Shorts',
   'nav.recommendations': 'Empfehlungen',
-  'nav.ads': 'Werbung',
   'nav.saved': 'Gespeicherte Videos',
   'nav.channels': 'Gespeicherte Kanäle',
   'nav.about': 'Über',
@@ -55,24 +54,6 @@ export const de: Messages = {
   'recommendations.showSaved': 'Stattdessen gespeicherte Videos zeigen',
   'recommendations.showSaved.desc':
     'Füllt den freien Platz mit deinen gespeicherten Videos, Später ansehen und gespeicherten Kanälen.',
-
-  'ads.title': 'Werbung',
-  'ads.enabled': 'Werbung blockieren',
-  'ads.enabled.desc': 'Hauptschalter für die drei Ebenen darunter.',
-  'ads.blockRequests': 'Werbeanfragen blockieren',
-  'ads.blockRequests.desc': 'Stoppt bekannte Werbe- und Tracking-Anfragen, bevor sie laden.',
-  'ads.stripPlayerAds': 'Werbung aus dem Player entfernen',
-  'ads.stripPlayerAds.desc': 'Entfernt Werbedaten aus der Antwort des Videoplayers.',
-  'ads.autoSkip': 'Stummschalten und Rest überspringen',
-  'ads.autoSkip.desc':
-    'Schaltet jede noch laufende Werbung stumm und klickt auf Überspringen, sobald es erscheint.',
-  'ads.hideFeedAds': 'Banner und gesponserte Karten ausblenden',
-  'ads.hideFeedAds.desc':
-    'Entfernt Werbebanner und gesponserte Einträge von Startseite, Suche und Videoseite.',
-  'ads.stats.title': 'Behandelte Werbung',
-  'ads.stats.desc':
-    '{count} insgesamt: {stripped} aus dem Player entfernt, {skipped} stummgeschaltet und übersprungen. Blockierte Anfragen werden nicht gezählt.',
-  'ads.stats.reset': 'Zähler zurücksetzen',
 
   'saved.title': 'Gespeicherte Videos',
 
